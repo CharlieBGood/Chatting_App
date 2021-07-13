@@ -36,3 +36,70 @@
     transform: rotate(360deg);
   }
 }
+
+* {
+  box-sizing: border-box;
+}
+h2 {
+    text-align: center;
+}
+h3{
+    text-align: center;
+    font-style:italic;
+    margin-top: 3%;
+}
+#myInput {
+  margin-top: 10px ;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form-check-label{
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+.form-check :hover:not(.header) {
+  background-color: #eee;
+}
+
+#checkbox{
+  float: right;
+  margin-left: 20%;
+}
+.busqueda{
+    width: 30%;
+    float: left;
+    margin-left: 3%;
+    margin-right: 4%; 
+}
+.configGrupo{
+    width: 60%;
+    float: right;
+    margin-right: 3%;
+}
+.form-control, .input-group-text{
+    margin-top: 2%
+}
+#fotoGrupo{
+    display: block;
+    margin-top: 2%;    
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
