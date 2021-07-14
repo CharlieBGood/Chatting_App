@@ -51,8 +51,9 @@ function App() {
             </div>
           </li>
         </ul>
+        <button type='button'>Guardar</button>
      </div>
-
+     
      {/* Parte derecha: Configuraciones de grupo    */}
       <div  class="configGrupo"> 
         <h2>Configuracion del grupo</h2>
@@ -65,6 +66,7 @@ function App() {
          <input type="file" class="form-control" id="inputGroupFile02"/>
          <label class="input-group-text" for="inputGroupFile02">Subir</label>
         </div>
+        <button type='button'>Guardar</button>
       </div>
     </div>    
   );
