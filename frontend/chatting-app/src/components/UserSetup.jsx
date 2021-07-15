@@ -1,6 +1,6 @@
 import React from 'react'
 import ModalPass from './ModalPass'
-import InputMoment from './InputMoment'
+import momentjs from 'moment';
 import FormPass from './FormPass'
 
 function UserSetup() {
@@ -14,7 +14,7 @@ function UserSetup() {
                                    <label class="form-check-label" >Auto-Answer</label>
                               </div>
                               <div className="col-md-6">
-                                   <InputMoment/>
+                                   {momentjs}
                               </div>
                          </div>
                          <div className="col-md-12">
