@@ -106,3 +106,8 @@ button{
  margin-right: auto;
  width: 80px;
 }
+
+.contGrupo{
+  text-align: center;
+  background-color: rgba(160, 229, 169, 0.658);
+}
