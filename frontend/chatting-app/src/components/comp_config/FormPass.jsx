@@ -2,7 +2,7 @@ import React from 'react'
 
 function FormPass() {
      return (
-          <div className="row col-12">
+          <div className="container-fluid row col-12">
                <div className="row g-2 align-items-center">
                     <div className="col-auto">
                          <label for="inputPassword6" className="col-form-label">Actual Password</label>
