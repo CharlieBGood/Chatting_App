@@ -1,16 +1,16 @@
 import React from 'react'
-import UserSetup from './UserSetup'
-import User from './User'
+import UserSetup from './comp_config/UserSetup'
+import UserRobot from './comp_config/UserRobot'
 
 function Configuration() {
      return (
           <div className="container">
                <div className="row">
-                    <div className="col-md-5">
-                         <UserSetup/>
+                    <div className="col-lg-3 mb-md-5">
+                         <UserRobot/>
                     </div>
-                    <div className="col-md-7">
-                         <User/>
+                    <div className="col-lg-9 mt-md-5">
+                         <UserSetup/>
                     </div>
                </div>
           </div>
