@@ -1,13 +1,10 @@
 import React from "react";
 import {Link} from 'react-router-dom'
 
-
-const Register = () => {
-   
-        return (
-            <React.Fragment>
-    
-				<div className="container-login100">
+const Register = (props) => {
+	return (
+		<React.Fragment>
+			<div className="container-login100">
 				<div class="wrap-login101">
 					<div>
 
@@ -58,7 +55,7 @@ const Register = () => {
 							</div>
 
 							<div class="container-login100-form-btn">
-								<button class="login100-form-btn">
+								<button class="login100-form-btn" onClick={props.login}>
 									Login
 								</button>
 							</div>
@@ -67,14 +64,10 @@ const Register = () => {
 
 					</div>
 
-					
-					
 				</div>
-				
 			</div>
-            </React.Fragment>
-        )
-    
+		</React.Fragment>
+	)
 }
 
 export default Register;
