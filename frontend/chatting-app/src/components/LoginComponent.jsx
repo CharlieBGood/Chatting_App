@@ -8,7 +8,7 @@ export default class Login extends Component {
 			<div className="container-login100">
             	<div class="wrap-login100">
 						<div class="login100-pic js-tilt" data-tilt>
-							<img src="images/login-icon.jpeg" alt="IMG" />
+							<img src="images/login.png" alt="IMG" />
 						</div>
 						
 						<form class="validate-form login100-form ">
@@ -34,14 +34,14 @@ export default class Login extends Component {
 									Login
 								</button>
 							</div>
-							{/* <div class="text-center pt-2">
+							<div class="text-center pt-2">
 								<span class="txt1">
 									Forgot
 								</span>
 								<a class="txt2 ml-2" href="#">
 									Username / Password?
 								</a>
-							</div> */}
+							</div>
 							<div class="text-center pt-5">
 								<a class="txt2" href="#">
 									Create your Account
