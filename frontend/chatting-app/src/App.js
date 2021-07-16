@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter } from 'react-router-dom';
 import Main from './components/MainComponent';
-import NewContact from "./components/modals/NewContactComponent";
+import NewContact from "./components/modals/NewContact/NewContactComponent";
 import './App.css';
 import './Utils.css';
 

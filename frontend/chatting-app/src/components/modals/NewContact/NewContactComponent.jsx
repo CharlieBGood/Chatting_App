@@ -2,12 +2,13 @@ import { render } from '@testing-library/react'
 import React, { Component } from 'react'
 
 
-function RenderUsersList({users}){
+function RenderUsersList(props){
     var id = -1;
-    const usersList = users.sort().map((user) =>{
+    const usersList = props.users.sort().map((user) =>{
         id++;
         return(
-            <li className="list-group-item" id={"id_user_"+id}>
+            <li className="list-group-item" id={"id_user_"+id}
+            onClick={props.changeProfile}>
                 {user}
             </li>
         );
@@ -22,15 +23,15 @@ function RenderUsersList({users}){
     );
 }
 
-function RightSide(){
-    if(true){
+function RightSide({profile}){
+    if (profile == null){
         return(
             <img src="images/iconoFoto.png" className="img-fluid" id="fotoGrupo" alt="logo" />
         );
     }
     else{
         return(
-            'hi there'
+            profile
         );
     }
 };
@@ -41,13 +42,21 @@ class NewContact extends Component{
     constructor(props){
         super(props)
         this.state = {
-          users: ['Adele', 'Agnes', 'Paquita la del barrio', 'Billy Joel', 'Bob Dylan']
+          users: ['Adele', 'Agnes', 'Paquita la del barrio', 'Billy Joel', 'Bob Dylan'],
+          profile : null
         }
+        this.changeProfile = this.changeProfile.bind(this);
+    }
+
+    changeProfile(e){
+        this.setState({
+            profile : e.target.innerHTML + ' profile'
+        })
     }
 
     render(){
         return (
-            <div className='container'>
+            <div className='container border'>
                 <div class="row">
                     {/* Parte izquierda: barra de búsqueda de contactos */}
                     <div className="col-5 text-center mt-5">
@@ -58,12 +67,12 @@ class NewContact extends Component{
                             placeholder="Contact name..." title="Type in a name" 
                             class="form-control w-75"/>
                         </div>
-                        <RenderUsersList users={this.state.users} />
+                        <RenderUsersList users={this.state.users} changeProfile={this.changeProfile}/>
                     </div>
             
                     {/* Parte derecha: Configuraciones de grupo    */}
                     <div  class="col-7 text-center"> 
-                       <RightSide />
+                       <RightSide profile={this.state.profile} />
                     </div>
                 </div>
             </div>
