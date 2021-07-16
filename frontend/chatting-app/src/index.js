@@ -16,10 +16,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-<<<<<<< HEAD:frontend/chatting-app/src/index.js
-=======
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-
->>>>>>> aeff77a594f5d2a8c51270a45408fc61c5938975:frontend/src/index.js
