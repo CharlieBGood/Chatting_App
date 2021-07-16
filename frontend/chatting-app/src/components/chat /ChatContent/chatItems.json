@@ -1,0 +1,28 @@
+  [
+        {
+            "key": 1,
+            "type": "",
+            "msg": "Hola, ¿Cómo vas?"
+          },
+          {
+            "key": 2,
+            "type": "other",
+            "msg": "Estoy bien"
+          },
+          {
+            "key": 3,
+            "type": "other",
+            "msg": "¿Y tu?"
+          },
+          {
+            "key": 4,
+            "type": "",
+            "msg": "Genial"
+          },
+          {
+            "key": 5,
+            "type": "other",
+            "msg": "¿Cuál es el plan?"
+          }
+    ]
+    
