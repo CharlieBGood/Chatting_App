@@ -1,66 +1,21 @@
 .main_userProfile {
   padding: 20px 40px;
-  max-width: 100%;
+  max-width: 63%;
   border-right: 1px solid #ebe7fb;
 }
 
-.profile-pic {
-  align-items: center;
-}
-
-.profile-pic img {
-  width: 300px;
-}
-
-.contact-info p{
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-}
-.contact-info p span{
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-
-}
-
-
-.button-nuevo-chat {
-  background-color: #fff;
-  display: flex;
+.profile {
   justify-content: space-between;
-  padding: 10px;
-  border-radius: 8px;
+  align-items: center;
 }
-.button-nuevo-chat button {
+.profile-pic img {
   width: 200px;
-  height: 40px;
-  background-color: #ecefff;
-  border: none;
-  box-shadow: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 16px;
-  color: #0C6291;
-  padding: 0;
-  border-radius: 5px;
-  line-height: 40px;
-  transition: all 0.3s cubic-bezier(0.88, 0.19, 0.37, 1.11);
+  margin-bottom: 20px;
+  align-items: center;
 }
 
-.button-nuevo-chat button i {
-  display: block;
-}
-.button-nuevo-chat input {
-  flex-grow: 1;
-  padding: 0 15px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
-#button-nuevo-chat {
-  background-color: #9B9ECE;
-  color: #fff;
-}
+.profile-info {
+  width: 200px;
+  
 
+}

@@ -1,9 +1,8 @@
-.main_chatcontent {
+.container {
     flex-grow: 1;
     background-color: #f4f3f8;
     border-radius: 10px;
     padding: 15px 20px;
-    margin: 20px 20px 20px 20px;
 }
 
 .main__chatcontent {
@@ -13,7 +12,7 @@
 }
 
 .content__header {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #ebe7fb;
 }
 

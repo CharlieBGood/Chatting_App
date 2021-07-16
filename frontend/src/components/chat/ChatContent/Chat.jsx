@@ -1,28 +1,28 @@
 import React, { useState, } from 'react';
 import ChatItem from './ChatItem'
+import chatItms from './chatItems.json'
 import Avatar from './Avatar'
-
+import  "react-icons/fa";
 
 const Chat = (props) => {
    
+    
     return (
         <div className="main_chatcontent">
                 <div className="content_header">
-                    <button type="button" className="btn-close" aria-label="Close"></button>
                     <div className="blocks">
                         <div className="current-chatting-user ">
                             <Avatar
-                            image={props.image}
-                            name={props.name}
+                            image="https://image.flaticon.com/icons/png/512/147/147144.png"
+                            name="Juan Perez"
                             /> 
                         </div>
-                                                
                     </div>
                    
                 </div>
                 <div className="content__body">
             <div className="chat__items">
-                {props.mesages.map((itm) => {
+                {chatItms.map((itm) => {
                 return (
                     <ChatItem
                     key={itm.key}
