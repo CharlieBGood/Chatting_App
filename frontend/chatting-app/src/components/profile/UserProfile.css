@@ -1,0 +1,21 @@
+.main_userProfile {
+  padding: 20px 40px;
+  max-width: 63%;
+  border-right: 1px solid #ebe7fb;
+}
+
+.profile {
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-pic img {
+  width: 200px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.profile-info {
+  width: 200px;
+  
+
+}
