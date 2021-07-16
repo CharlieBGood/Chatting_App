@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 const ChatItem = (props) => {
-    return ( 
+    return (
+
         <div className={`chat__item ${props.user ? props.user : ""}`}>
             <div className="chat__item__content">
             <div className="chat__msg">{props.msg}</div>
