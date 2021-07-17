@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ChatsGrid from './chat/ChatsGrid'
 import ChatListComponent from "./chats_list/ChatsListComponent";
+import MiniatureProfileSummary from "./MiniatureProfileSummaryComponent";
 
 class ChatAppComponent extends Component {
     constructor(props){
@@ -12,7 +13,7 @@ class ChatAppComponent extends Component {
             <div class="row app-container">
                 <div class="col-3">
                     <div class="miniature-profile-summary">
-                        hi
+                        <MiniatureProfileSummary />
                     </div>
                     <div class="border">
                         <ChatListComponent />
