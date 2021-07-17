@@ -41,7 +41,7 @@ class ChatListComponent extends Component {
         return(
             <React.Fragment>
                 <div class="row">
-                    <div class="card">
+                    <div class="card border-0">
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-4 text-center">
