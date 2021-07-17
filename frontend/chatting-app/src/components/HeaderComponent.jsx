@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function ReturnNavElements(props){
-  console.log(props)
   if (!props.isLoggedIn){
     return(
       <React.Fragment>

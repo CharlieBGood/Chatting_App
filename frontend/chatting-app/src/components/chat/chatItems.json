@@ -3,7 +3,7 @@
         "id":1,
         "nombre":"Juan Perez",
         "tipo": "individual",
-        "imagen": "https://image.flaticon.com/icons/png/512/147/147144.png",
+        "imagen": "images/man.png",
         "mensajes": [
                         {
                           "key": 1,
@@ -37,7 +37,7 @@
         "id":2,
         "nombre":"Ana Trabajo",
         "tipo": "individual",
-        "imagen": "https://image.flaticon.com/icons/png/512/194/194938.png",
+        "imagen": "images/woman.png",
         "mensajes": [
                         {
                           "key": 1,
@@ -71,7 +71,7 @@
         "id":3,
         "nombre":"Paula",
         "tipo": "individual",
-        "imagen": "https://image.flaticon.com/icons/png/512/219/219969.png",
+        "imagen": "images/woman.png",
         "mensajes": [
                         {
                           "key": 1,
@@ -105,7 +105,7 @@
         "id":4,
         "nombre":"MisionTIC",
         "tipo": "grupal",
-        "imagen": "http://misiontic2022.gov.co/746/channels-645_logo_mision.png",
+        "imagen": "images/misionTIC.png",
         "mensajes": [
                         {
                           "key": 1,
