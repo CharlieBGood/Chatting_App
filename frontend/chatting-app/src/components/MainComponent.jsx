@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from 'react-router-dom';
 // import Footer from './FooterComponent';
-import Login from './LoginComponent'
+import Login from './registration/LoginComponent'
 import Header from './HeaderComponent'
-import Register from "./RegisterComponent";
-import BusienessRegister from "./BusienessRegisterComponent"
-import ChatsGrid from './chat/ChatsGrid'
+import Register from "./registration/RegisterComponent";
+import BusienessRegister from "./registration/BusienessRegisterComponent"
+import ChatAppComponent from './ChatAppComponent'
 
 
 function RenderMainComponent(props){
@@ -22,7 +22,7 @@ function RenderMainComponent(props){
   }
   else{
     return(
-      <ChatsGrid />
+      <ChatAppComponent />
     );
   }
 }
@@ -50,7 +50,6 @@ class Main extends Component{
           <Header isLoggedIn={this.state.isLoggedIn} login={this.login}/>
           <RenderMainComponent isLoggedIn={this.state.isLoggedIn} login={this.login}/>
           {/* <Footer /> */}
-
         </React.Fragment>
       );
     }  

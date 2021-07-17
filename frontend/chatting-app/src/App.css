@@ -444,6 +444,19 @@ ul, li {
 .scrollable{
   overflow-y: scroll;
 }
+
+/*------------------------------------------------------------------
+[ ChatAppComponent ]*/
+.app-container{
+  position: absolute;
+  top: 6%;
+  bottom: 0;
+  left: 1%;
+  right: 1%;
+}
+
+.miniature-profile-summary{
+  height: 30%;
+  color: green;
+}
 /*-----------------------------------------------------------------*/
-
-
