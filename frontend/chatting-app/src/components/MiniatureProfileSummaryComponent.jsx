@@ -4,8 +4,8 @@ import React from 'react'
 export default function MiniatureProfileSummary() {
     return (
         <div className="container">
-          <div className="row justify-content-center">
-            <img src="images/man.png" className='fotoRedes profile-image center-block' alt="fb" />  
+          <div className="row justify-content-center mt-4">
+            <img src="images/man.png" className='profile-image' alt="profile img" />  
           </div>                     
           <div class="row justify-content-center">
             Username    
