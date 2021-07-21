@@ -138,11 +138,14 @@ ul, li {
   justify-content: center;
   align-items: center;
   padding: 15px;
+
+
   background: #9053c7;
   background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
   background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
   background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
   background: linear-gradient(-135deg, #c850c0, #4158d0);
+ 
 }
 
 .wrap-login100 {
@@ -176,7 +179,7 @@ ul, li {
 
   width: 100%;
   display: block;
-  padding-bottom: 54px;
+  padding-bottom: 10px;
 }
 
 /*---------------------------------------------*/
@@ -289,6 +292,7 @@ ul, li {
   flex-wrap: wrap;
   justify-content: center;
   padding-top: 20px;
+  
 }
 
 .login100-form-btn {
@@ -317,9 +321,87 @@ ul, li {
   transition: all 0.4s;
 }
 
+.container-images{
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.registerBusiness-form-btn {
+  width: 100%;  
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+
+  padding-top:80px;
+
+  background: #9053c7;
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+}
+
+
+
 .login100-form-btn:hover {
   background: #333333;
 }
+
+.flexButton-container{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.login101-form-btn{
+  font-family: Montserrat-Bold;
+  font-size: 12px;
+  /*line-height: 1.5;*/
+  color: #fff;
+  text-transform: uppercase;
+
+  width: 50%;
+  height: 40px;
+  border-radius: 25px;
+  background: #198af3;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.login101-form-btn:hover{
+  background: #333333;
+}
+
+.container-flex{
+  width: 100%;
+  height: 100%;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  flex-direction: column;
+ 
+}
+
+
 
 /*------------------------------------------------------------------
 [ Responsive ]*/
@@ -357,12 +439,41 @@ ul, li {
     padding: 100px 15px 33px 15px;
   }
 }
-
 /*------------------------------------------------------------------
 [ Utils ]*/
 .scrollable{
   overflow-y: scroll;
 }
-/*-----------------------------------------------------------------*/
 
+.fa{
+  color: #4158d0;
+}
 
+/*------------------------------------------------------------------
+[ ChatAppComponent ]*/
+.app-container{
+  position: absolute;
+  top: 6%;
+  bottom: 0;
+  left: 1%;
+  right: 1%;
+}
+
+.miniature-profile-summary{
+  height: 20%;
+  color: green;
+}
+
+/*------------------------------------------------------------------
+[ ChatListComponent ]*/
+.chat-list-miniature{
+  width: 100%;
+  height: 100%;
+}
+
+/*------------------------------------------------------------------
+[ MiniatureProfileSummary ]*/
+.profile-image{
+  height: 200px;
+  width: 240px;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
-import UserSetup from './comp_config/UserSetup'
-import UserRobot from './comp_config/UserRobot'
+import UserSetup from '../comp_config/UserSetup'
+import UserRobot from '../comp_config/UserRobot'
 
 function Configuration() {
      return (
