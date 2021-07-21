@@ -91,6 +91,16 @@
 .chat__item.other .chat__item__content .chat__meta span {
   color: #d1d1d1;
 }
+
+::-webkit-scrollbar{
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: #bfc0c7;
+  border-radius: 6px;
+}
+
 .content__footer {
   padding-top: 30px;
 }
