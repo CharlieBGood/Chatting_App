@@ -7,7 +7,7 @@ const Avatar = (props) => {
             <div className="avatar-img ">
               <Grid container>
                   <Grid item sm={7}>
-                    <img src={props.image} />
+                    <img src={props.image} alt="profile pic" />
                   </Grid>
                   <Grid item sm={5}>
                       <p>{props.name}</p>

@@ -4,9 +4,6 @@ import ChatListComponent from "./chats_list/ChatsListComponent";
 import MiniatureProfileSummary from "./MiniatureProfileSummaryComponent";
 
 class ChatAppComponent extends Component {
-    constructor(props){
-        super(props)
-      }
 
     render(){
         return(

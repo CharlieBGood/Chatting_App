@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import chatItems from '../chat/chatItems.json'
+import NewContact from "../modals/NewContactComponent";
 
 
 function RenderUsersList(props){
-    console.log(props.chats.sort())
     var id = -1;
     const chatsList = props.chats.sort().map((chat) =>{
         id++;
@@ -33,13 +33,22 @@ class ChatListComponent extends Component {
     constructor(props){
         super(props)
         this.state = {
-          profile : null
+          profile : null,
+          isNewContactModalOpen: false
         }
+        this.toggleNewContactModal = this.toggleNewContactModal.bind(this);
+    }
+
+    toggleNewContactModal(){
+        this.setState({
+            isNewContactModalOpen: !this.state.isNewContactModalOpen
+        });
     }
 
     render(){
         return(
             <React.Fragment>
+                <NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal}/>
                 <div class="row">
                     <div class="card border-0">
                         <div class="card-header">
@@ -56,8 +65,8 @@ class ChatListComponent extends Component {
                                         <i class="fa fa-bullhorn fa-stack-1x fa-inverse"></i>
                                     </span>
                                 </div>
-                                <div class="col-4 text-center">
-                                    <span class="fa-stack fa-2x">
+                                <div class="col-4 text-center" onClick={this.toggleNewContactModal}>
+                                    <span class="fa-stack fa-2x" >
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-user-plus fa-stack-1x fa-inverse"></i>
                                     </span>
@@ -69,7 +78,7 @@ class ChatListComponent extends Component {
                                 <div class="card-header">
                                     <ul class="nav nav-tabs card-header-tabs">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#">Chats</a>
+                                        <a class="nav-link active" href="">Chats</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">Friends</a>
