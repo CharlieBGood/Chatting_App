@@ -149,11 +149,13 @@
   box-shadow: none;
   outline: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   color: #9B9ECE;
   padding: 0;
   border-radius: 5px;
   line-height: 36px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .sendNewMessage button i {

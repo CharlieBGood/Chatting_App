@@ -45,10 +45,10 @@ const Chat = (props) => {
                 <div className="sendNewMessage">
                     <input
                         type="text"
-                        placeholder="Escribe un mensaje"
+                        placeholder="Type a message"
                     />
                     <button className="btnSendMsg" id="sendMsgBtn">
-                         Enviar
+                         Send
                     </button>
                 </div>
             </div>

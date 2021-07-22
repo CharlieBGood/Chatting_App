@@ -51,18 +51,18 @@ class UserProfile extends Component {
               </div>
               <div className="button-new-chat" id="newChat">
                   <button>
-                    Nuevo chat
+                    New chat
                   </button>
               </div>
           </div>
           <div class="right">
               <div class="info">
-                  <h3 className="title">Perfil</h3>
+                  <h3 className="title">Profile</h3>
                   <hr />
                   <div className="card-body">
                     <div class="info_data row">
                         <div className="data col-md-3">
-                            <h5>Nombre</h5>
+                            <h5>Full Name</h5>
                         </div>
                         <div className="data col-md-9 text-seconday">
                           <p>{user.nombre}</p>
@@ -88,7 +88,7 @@ class UserProfile extends Component {
                   <div className="card-body">
                     <div class="info_data row">
                         <div className="data col-md-3">
-                            <h5>Teléfono</h5>
+                            <h5>Phone</h5>
                         </div>
                         <div className="data col-md-9 text-seconday">
                           <p>{user.telefono}</p>

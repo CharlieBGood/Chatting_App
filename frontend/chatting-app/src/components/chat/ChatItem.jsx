@@ -7,7 +7,7 @@ const ChatItem = (props) => {
             <div className="chat__item__content">
             <div className="chat__msg">{props.msg}</div>
             <div className="chat__meta">
-                <span>Hace 16 min</span>
+                <span>16 minutes ago</span>
             </div>
             </div>
         
