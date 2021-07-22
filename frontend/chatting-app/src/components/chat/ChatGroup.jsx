@@ -16,8 +16,9 @@ const ChatGrupo = (props) => {
                                     name={item.name}
                                     /> 
                                 </div>
-                                <button type="button" class="btn-close" aria-label="Close"></button>
+                                
                             </div>
+                            <button type="button" className="btn-close" aria-label="Close"></button>
                            
                         </div>
                         <div className="content__body">

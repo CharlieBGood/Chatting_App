@@ -8,14 +8,16 @@ const Chat = (props) => {
     return (
         <div className="main_chatcontent">
                 <div className="content_header">
-                    <button type="button" className="btn-close" aria-label="Close"></button>
+                    
                     <div className="blocks">
+                        <button type="button" className="btn-close" aria-label="Close"></button>
                         <div className="current-chatting-user ">
                             <Avatar
                             image={props.image}
                             name={props.name}
                             /> 
                         </div>
+                        
                                                 
                     </div>
                    

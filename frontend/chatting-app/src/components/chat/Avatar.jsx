@@ -1,5 +1,6 @@
 import React from 'react'
 import Grid from '@material-ui/core/grid'
+import './chatContent.css'
 
 const Avatar = (props) => {
     return ( 
@@ -12,6 +13,8 @@ const Avatar = (props) => {
                   <Grid item sm={5}>
                       <p>{props.name}</p>
                   </Grid>
+                  
+
               </Grid>
               
           </div>
