@@ -5,17 +5,16 @@ import './chatContent.css'
 const Avatar = (props) => {
     return ( 
         <div className="avatar">
-            <div className="avatar-img ">
-              <Grid container>
-                  <Grid item sm={7}>
+            <div className="avatar-img row ">
+            
+                  <div className=" col-6">
                     <img src={props.image} alt="profile pic" />
-                  </Grid>
-                  <Grid item sm={5}>
-                      <p>{props.name}</p>
-                  </Grid>
                   
-
-              </Grid>
+                  </div>
+                  <div className="col-6">
+                    <p>{props.name}</p>
+                  </div>
+         
               
           </div>
 

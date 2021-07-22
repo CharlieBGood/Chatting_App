@@ -10,7 +10,10 @@ const Chat = (props) => {
                 <div className="content_header">
                     
                     <div className="blocks">
-                        <button type="button" className="btn-close" aria-label="Close"></button>
+                        <div className="buttons-close-min">
+                            <button type="button" className="btn-close" aria-label="Close"></button>
+                        </div>
+                        
                         <div className="current-chatting-user ">
                             <Avatar
                             image={props.image}
@@ -22,6 +25,7 @@ const Chat = (props) => {
                     </div>
                    
                 </div>
+                <hr></hr>
                 <div className="content__body">
             <div className="chat__items">
                 {props.mesages.map((itm) => {
