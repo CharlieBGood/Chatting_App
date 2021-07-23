@@ -8,7 +8,7 @@ function UserSetup() {
           <div className="container-fluid" class="setupUser">
                <div className="row">
                     <div className="col-2 mt-5">
-                         <img src={UserPhoto} />
+                         <img width={310} src={UserPhoto} alt="Hello! Have a nice day" />
 
                          <br />
 
