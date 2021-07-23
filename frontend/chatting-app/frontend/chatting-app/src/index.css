@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body, html, .App, #root, .outer {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.navbar-light {
+  background-color: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+}
+
+/* ====================================== */
+/* ==User Configuration View============= */
+/* ====================================== */
+
+
+@font-face {
+  font-family: "space-ranger";
+  src: url("./fonts/spaceranger-acad.ttf");
+}
+
+main{
+  max-width: 95%;
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+}
+
+.TitlePass{
+  font-family: "space-ranger";
+  line-height: 90px;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+}
+
+.reloj{
+  font-family: "space-ranger";
+  line-height: 20px;
+  text-align: center;
+}
+
+.setupUser{
+  background: darkgray;
+}
+
+.setupRobot{
+  background: silver;
+}
+
+.modal-header{
+  background: #AF7AC5 ;
+}
+
+.modal-body{
+  background: #2980B9;
+}
+
+.modal-footer{
+  background: #76448A;
+}
+
+.butonshift{
+  background: navy;
+  color: orange;
+  border: 2px solid red;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 40px;
+  margin-left: 120px;
+  cursor: pointer;
+}
+
+/* ====================================== */
+/* ==XXXXXXXXXXXXXXXXXXXXXXX============= */
+/* ====================================== */

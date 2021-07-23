@@ -1,0 +1,148 @@
+ [
+      {
+        "id":1,
+        "nombre":"Juan Perez",
+        "tipo": "individual",
+        "imagen": "images/man.png",
+        "mensajes": [
+                        {
+                          "key": 1,
+                          "type": "",
+                          "msg": "Hola Juan, ¿Cómo vas?"
+                        },
+                        {
+                          "key": 2,
+                          "type": "other",
+                          "msg": "Estoy bien"
+                        },
+                        {
+                          "key": 3,
+                          "type": "other",
+                          "msg": "¿Y tu?"
+                        },
+                        {
+                          "key": 4,
+                          "type": "",
+                          "msg": "Genial"
+                        },
+                        {
+                          "key": 5,
+                          "type": "other",
+                          "msg": "¿Cuál es el plan?"
+                        }
+                      ]
+
+      },
+      {
+        "id":2,
+        "nombre":"Ana Trabajo",
+        "tipo": "individual",
+        "imagen": "images/woman.png",
+        "mensajes": [
+                        {
+                          "key": 1,
+                          "type": "other",
+                          "msg": "Hola Laura, ¿Cómo vas?"
+                        },
+                        {
+                          "key": 2,
+                          "type": "",
+                          "msg": "Bien y tu?"
+                        },
+                        {
+                          "key": 3,
+                          "type": "other",
+                          "msg": "Bien, bien"
+                        },
+                        {
+                          "key": 4,
+                          "type": "other",
+                          "msg": "¿Tienes listos los documentos?"
+                        },
+                        {
+                          "key": 5,
+                          "type": "",
+                          "msg": "Ya te los envío"
+                        }
+                      ]
+
+      },
+      {
+        "id":3,
+        "nombre":"Paula",
+        "tipo": "individual",
+        "imagen": "images/woman.png",
+        "mensajes": [
+                        {
+                          "key": 1,
+                          "type": "",
+                          "msg": "Hola Paula, feliz cumpleaños!"
+                        },
+                        {
+                          "key": 2,
+                          "type": "other",
+                          "msg": "Gracias! ¿Cómo has estado?"
+                        },
+                        {
+                          "key": 3,
+                          "type": "",
+                          "msg": "Bien, ¿qué tal el cumpleaños?"
+                        },
+                        {
+                          "key": 4,
+                          "type": "other",
+                          "msg": "Genial"
+                        },
+                        {
+                          "key": 5,
+                          "type": "other",
+                          "msg": "La he pasado muy bien"
+                        }
+                      ]
+
+      },
+      {
+        "id":4,
+        "nombre":"MisionTIC",
+        "tipo": "grupal",
+        "imagen": "images/misionTIC.png",
+        "mensajes": [
+                        {
+                          "key": 1,
+                          "type": "other",
+                          "author":"Luis",
+                          "msg": "Hola muchachos"
+                        },
+                        {
+                          "key": 2,
+                          "type": "other",
+                          "author":"Jahir",
+                          "msg": "Hola ¿cuándo nos reunimos?"
+                        },
+                        {
+                          "key": 3,
+                          "type": "other",
+                          "author":"Sebastian",
+                          "msg": "Yo puedo en la tarde"
+                        },
+                        {
+                          "key": 4,
+                          "type": "",
+                          "author": "",
+                          "msg": "Yo también"
+                        },
+                        {
+                          "key": 5,
+                          "type": "other",
+                          "author":"Carlos",
+                          "msg": "¿Cuál es el plan?"
+                        }
+                      ]
+
+      }
+    ] 
+    
+  
+
+        
+       
