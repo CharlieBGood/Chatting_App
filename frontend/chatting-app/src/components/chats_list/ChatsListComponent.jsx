@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import chatItems from '../chat/chatItems.json'
-import NewContact from "../modals/NewContactComponent";
+import NewContact from '../modals/NewContactModalComponent'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
 function RenderUsersList(props){
