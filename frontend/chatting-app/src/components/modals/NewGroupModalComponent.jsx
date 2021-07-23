@@ -1,73 +1,64 @@
 import React from 'react'
-import logo from '../iconoFoto.png';
-export default function Grupos() {
-    return (
-        <div class='contGrupo'>
-            {/* Parte izquierda: barra de búsqueda de contactos */}
-     <div class="busqueda">
-        <h2>Agregar al grupo</h2>
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Nombre del contacto" title="Type in a name"></input>
+function RenderUsersList(props){
+  var users = ['Adele', 'Agnes', 'Paquita la del barrio', 'Billy Joel', 'Bob Dylan'];
+  var id = -1;
+  const usersList = users.sort().map((user) =>{
+      id++;
+      return(
+          <li className="list-group-item" id={"id_user_"+id}
+          key={"id_user_"+id}>
+            <div class="row">
+              <div class="col-2">
+                <input type="checkbox"></input>
+              </div>
+              <div class="col-10">
+                {user}
+              </div>
+            </div>
+          </li>
+      );
+  });
 
-        <ul id="myUL">
-          <li>
-            <div class='form-check'>
-             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
-             <label class="form-check-label" for="defaultCheck1">Adele</label>
-            </div>
-          </li>
-          <li>
-            <div class='form-check'>
-             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
-             <label class="form-check-label" for="defaultCheck1">Agnes</label>
-            </div>
-          </li>
-          <li>
-            <div class='form-check'>
-             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
-             <label class="form-check-label" for="defaultCheck1">Billy</label>
-            </div>
-          </li>
-          <li>
-            <div class='form-check'>
-             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
-             <label class="form-check-label" for="defaultCheck1">Bob</label>
-            </div>
-          </li>
-          <li>
-            <div class='form-check'>
-             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
-             <label class="form-check-label" for="defaultCheck1">Calvin</label>
-            </div>
-          </li><li>
-            <div class='form-check'>
-             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
-             <label class="form-check-label" for="defaultCheck1">Christina</label>
-            </div>
-          </li><li>
-            <div class='form-check'>
-             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
-             <label class="form-check-label" for="defaultCheck1">Cindy</label>
-            </div>
-          </li>
-        </ul>
-        <button type='button'>Guardar</button>
-     </div>
-     
-     {/* Parte derecha: Configuraciones de grupo    */}
-      <div  class="configGrupo"> 
-        <h2>Configuracion del grupo</h2>
-        <h3 id="nombreGrupo">Nuevo Grupo</h3>
-        <img src={logo} id="fotoGrupo" alt="logo" />
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Nombre del grupo" aria-label="Username" aria-describedby="basic-addon1"></input>
-        </div>       
-        <div class="input-group mb-3">
-         <input type="file" class="form-control" id="inputGroupFile02"/>
-         <label class="input-group-text" for="inputGroupFile02">Subir</label>
-        </div>
-        <button type='button'>Guardar</button>
+  return(
+      <div class="scrollable w-100">
+          <ul className="list-group">
+              {usersList}
+          </ul>
       </div>
-        </div>
+  );
+}
+
+export default function NewGroup(props) {
+
+    return (
+      <Modal isOpen={props.isModalOpen} toggle={props.toggleModal} size='lg'>
+          <ModalHeader toggle={props.toggleModal}>New Group</ModalHeader>
+          <ModalBody>
+              <div className='container border'>
+                  <div class="row">
+                      {/* Parte izquierda: barra de búsqueda de contactos */}
+                      <div className="col-5 text-center mt-5">
+                          <h1>App Users</h1>
+                          <div className="form-group my-5">
+                              <input type="text" id="myInput" onkeyup="myFunction()" 
+                              placeholder="Contact name..." title="Type in a name" 
+                              class="form-control w-75"/>
+                          </div>
+                          <RenderUsersList />
+                      </div>
+                      <div class="col-7"> 
+                        <img src="images/iconoFoto.png" className="img-fluid" id="fotoGrupo" alt="logo" />
+                        <input type="text" class="form-control w-100"></input>
+                      </div>
+                  </div>
+              </div>
+          </ModalBody>
+          <ModalFooter>
+              <Button color="primary" onClick={props.toggleModal}>Do Something</Button>{' '}
+              <Button color="secondary" onClick={props.toggleModal}>Cancel</Button>
+          </ModalFooter>
+      </Modal>
     )
 }
