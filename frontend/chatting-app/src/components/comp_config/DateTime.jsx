@@ -10,16 +10,19 @@ const DateTime = () => {
      const [TimeFinish, TimeSelectF] = useState(new Date());
 
      return(
-          <div className="container g-lg-2">
+          <div className="container-fluid g-lg-2">
                <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <div className="row g-2">
+
+                    <label class="reloj">Commence</label>
                          <div className="col-md-12">
-                              <label>Commence</label>
+
                               <TimePicker value={TimeCommence} onChange={TimeSelectC} />
                          </div>
 
+                    <label class="reloj">Finish</label>
                          <div className="col-md-12">
-                         <label>Finish</label>
+
                               <TimePicker value={TimeFinish} onChange={TimeSelectF} />
                          </div>
                     </div>

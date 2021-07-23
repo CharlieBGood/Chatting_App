@@ -16,20 +16,22 @@ class ModalPass extends React.Component{
 
      render(){
           return(
-               <div className="container-fluid col-md-12" display="grid" place-items="center" margin="auto">
+               <div className="container-fluid col-md-12">
 
                <Button className="btn-danger d-block"  onClick={()=>this.handleModal()}>Open</Button>
 
                <Modal show={this.state.showModal} onHide={()=>this.handleModal()}>
-                    <Modal.Header>
-                         <h2>Change Password</h2>
+                    <Modal.Header  class="modal-header">
+                         <h2 className="TitlePass">Change Password</h2>
                     </Modal.Header>
-                    <Modal.Body>
+
+                    <Modal.Body  class="modal-body">
                          <FormPass/>
                     </Modal.Body>
-                    <Modal.Footer>
-                         <Button className="btn-primary" onClick={()=>this.handleModal()}>Decline</Button>
-                         <Button className="btn-success">Accept</Button>
+
+                    <Modal.Footer  class="modal-footer">
+                         <Button className="btn btn-primary" onClick={()=>this.handleModal()}>Decline</Button>
+                         <Button className="btn btn-success">Accept</Button>
                     </Modal.Footer>
                </Modal>
 
