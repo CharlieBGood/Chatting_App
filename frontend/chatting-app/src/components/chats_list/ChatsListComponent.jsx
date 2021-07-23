@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import chatItems from '../chat/chatItems.json'
 import NewContact from '../modals/NewContactModalComponent'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import NewGroup from "../modals/NewGroupModalComponent";
 
 
 function RenderUsersList(props){
@@ -35,9 +35,11 @@ class ChatListComponent extends Component {
         super(props)
         this.state = {
           profile : null,
-          isNewContactModalOpen: false
+          isNewContactModalOpen: false,
+          isNewGroupModalOpen: false
         }
         this.toggleNewContactModal = this.toggleNewContactModal.bind(this);
+        this.toggleNewGroupModal = this.toggleNewGroupModal.bind(this);
     }
 
     toggleNewContactModal(){
@@ -45,17 +47,23 @@ class ChatListComponent extends Component {
             isNewContactModalOpen: !this.state.isNewContactModalOpen
         });
     }
+    toggleNewGroupModal(){
+        this.setState({
+            isNewGroupModalOpen: !this.state.isNewGroupModalOpen
+        });
+    }
 
     render(){
         return(
             <React.Fragment>
                 <NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal}/>
+                <NewGroup isModalOpen={this.state.isNewGroupModalOpen} toggleModal={this.toggleNewGroupModal}/>
                 <div class="row">
                     <div class="card border-0">
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-4 text-center">
-                                    <span class="fa-stack fa-2x">
+                                    <span class="fa-stack fa-2x" onClick={this.toggleNewGroupModal}>
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-users fa-stack-1x fa-inverse"></i>
                                     </span>
@@ -76,15 +84,8 @@ class ChatListComponent extends Component {
                         </div>
                         <div class="card-body">
                             <div class="card">
-                                <div class="card-header">
-                                    <ul class="nav nav-tabs card-header-tabs">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="">Chats</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Friends</a>
-                                    </li>
-                                    </ul>
+                                <div class="card-header text-center">
+                                    Chats
                                 </div>
                                 <div class="card-body">
                                     <input type="text" id="myInput" onkeyup="myFunction()" 

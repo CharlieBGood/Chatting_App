@@ -9,24 +9,24 @@ class Configuration extends Component {
           return (
 
                <Modal isOpen={this.props.isModalOpen} toggle={this.props.toggleModal} size='lg'>
-                <ModalHeader toggle={this.props.toggleModal}>Configuration</ModalHeader>
-                <ModalBody>
-                    <div className="container-fluid">
-                         <div className="row">
-                              <div className="col-lg-3 mb-md-1">
-                                   <UserRobot/>
-                              </div>
-                              <div className="col-lg-9 mt-md-1">
-                                   <UserSetup/>
+                    <ModalHeader toggle={this.props.toggleModal}>Configuration</ModalHeader>
+                    <ModalBody>
+                         <div className="container-fluid">
+                              <div className="row">
+                                   <div className="col-lg-3 mb-md-1">
+                                        <UserRobot/>
+                                   </div>
+                                   <div className="col-lg-9 mt-md-1">
+                                        <UserSetup/>
+                                   </div>
                               </div>
                          </div>
-                    </div>
-                </ModalBody>
-                <ModalFooter>
-                    <Button color="primary" onClick={this.props.toggleModal}>Do Something</Button>{' '}
-                    <Button color="secondary" onClick={this.props.toggleModal}>Cancel</Button>
-                </ModalFooter>
-            </Modal>
+                    </ModalBody>
+                    <ModalFooter>
+                         <Button color="primary" onClick={this.props.toggleModal}>Do Something</Button>{' '}
+                         <Button color="secondary" onClick={this.props.toggleModal}>Cancel</Button>
+                    </ModalFooter>
+               </Modal>
           )
      }
 }

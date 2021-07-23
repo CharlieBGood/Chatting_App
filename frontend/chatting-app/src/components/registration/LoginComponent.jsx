@@ -37,9 +37,6 @@ const FieldAction = () =>{
 
 
 	)
-
-
-
 }
 
 export default class Login extends Component {

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { FormUser, Label, Input, ContainerCheck, ContainerButton, PushButton, AlertError, MsnSuccess } from '../elements/elementsForm.jsx';
+import { FormUser, ContainerButton, PushButton, AlertError, MsnSuccess } from '../elements/elementsForm.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import FormInputs from './FormInputs';
