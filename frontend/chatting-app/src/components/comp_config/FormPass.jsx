@@ -1,47 +1,72 @@
-import React from 'react'
+import React, {useState} from 'react';
+import FormInputs from './FormInputs';
+import '../../index.css';
 
 function FormPass() {
+
+     const [oldPassword, setOldpassword] = useState({field:'', condition: null});
+     const [newPassword, setNewpassword] = useState({field:'', condition: null});
+     const [confPassword, setConfpassword] = useState({field:'', condition: null});
+
+     const multiregex = {
+          newPassword: /^.{4,12}$/,
+     }
+
+     const validatePassword = () => {
+          if(newPassword.field.length > 0){
+               if(newPassword.field !== confPassword.field){
+                    setConfpassword((prevState)=>{
+                         return {...prevState,  condition: 'false'}
+                    });
+               }else{
+                    setConfpassword((prevState)=>{
+                         return {...prevState,  condition: 'true'}
+                    });
+               }
+          }
+     }
+
      return (
-          <div className="container-fluid row col-12">
-               <div className="row g-2 align-items-center">
-                    <div className="col-auto">
-                         <label for="inputPassword6" className="col-form-label">Actual Password</label>
-                    </div>
 
-                    <div className="col-auto">
-                         <input type="password" id="inputPassword6" className="form-control" />
-                    </div>
+          <main>
+               <FormInputs
+                         status={oldPassword}
+                         change={setOldpassword}
+                         id="oldPassword"
+                         name="oldPassword"
+                         type="password"
+                         label="Old Password"
+                         placeholder="Current Password"
+                         /* patternRegex={multiregex.oldPassword} */
+                         /* message="Please enter a name (max 1)! symbols, numbers, accents are not allowed" */
+                    />
 
-                    <div className="col-auto">
-                         <span id="passwordHelpInline" className="form-text">Remember the password</span>
-                    </div>
-               </div>
+                    <FormInputs
+                         status={newPassword}
+                         change={setNewpassword}
+                         id="newPassword"
+                         name="newPassword"
+                         type="password"
+                         label="New Password"
+                         placeholder="New Password"
+                         patternRegex={multiregex.newPassword}
+                         message="Please enter a strong password with symbols, ambiguities, irrational and illogical reading"
+                    />
 
-               <div className="row g-2 align-items-center">
-                    <div className="col-auto">
-                         <label for="inputPassword6" className="col-form-label">New Password</label>
-                    </div>
-                    <div className="col-auto">
-                         <input type="password" id="inputPassword6" className="form-control" />
-                    </div>
-                    <div className="col-auto">
-                         <span id="passwordHelpInline" className="form-text">Must be 8-20 characters long</span>
-                    </div>
-               </div>
+                    <FormInputs
+                         status={confPassword}
+                         change={setConfpassword}
+                         id="confPassword"
+                         name="confPassword"
+                         type="password"
+                         label="Confirm Password"
+                         placeholder="Password"
+                         /* patternRegex={multiregex.confPassword} */
+                         message="Please repeat the password"
+                         passfunction={validatePassword}
+                    />
 
-               <div className="row g-2 align-items-center">
-                    <div className="col-auto">
-                         <label for="inputPassword6" className="col-form-label">Confirm Password</label>
-                    </div>
-                    <div className="col-auto">
-                         <input type="password" id="inputPassword6" className="form-control" />
-                    </div>
-                    <div className="col-auto">
-                         <span id="passwordHelpInline" className="form-text">Write the New Password</span>
-                    </div>
-               </div>
-
-          </div>
+          </main>
      )
 }
 
