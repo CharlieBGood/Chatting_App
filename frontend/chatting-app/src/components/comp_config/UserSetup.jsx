@@ -5,23 +5,21 @@ import UserPhoto from './../../img/task26.png'
 
 function UserSetup() {
      return (
-          <div className="container">
+          <div className="container-fluid" class="setupUser">
                <div className="row">
-                    <div className="col-lg-4 mt-md-5">
+                    <div className="col-2 mt-5">
                          <img src={UserPhoto} />
 
                          <br />
 
-                         <button type="submit" className="btn btn-primary col-10 m-md-5">New Photograph</button>
-
-
+                         <button type="submit" className="btn btn-primary  m-md-5">New Photograph</button>
                     </div>
 
-                    <div className="col-lg-1">
+                    <div className="col-1">
                          <br />
                     </div>
 
-                    <div className="col-lg-7">
+                    <div className="col-9">
                          <FormUpdate/>
                     </div>
                </div>
