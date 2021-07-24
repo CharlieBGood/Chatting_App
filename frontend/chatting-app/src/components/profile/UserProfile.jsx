@@ -1,19 +1,14 @@
 import React, { Component } from 'react'
 import './UserProfile.css'
-import Contacts from './contacts.json'
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
-
-
+import Contacts from '../../dummydb/contacts.json'
 
 class UserProfile extends Component {
   state = {  
       id:4
   }
-  
- 
   render() {
     return(
-      <div>
+      <React.Fragment>
         {Contacts.map(user => user.id === this.state.id? 
           <div class="wrapper">
           <div class="left">
@@ -108,14 +103,12 @@ class UserProfile extends Component {
                         </div>
                     </div>
                   </div>
-    
-                    
                   </div>
               </div>
               
         </div>
         : <p> </p>)}
-      </div>
+      </React.Fragment>
     );
    
     

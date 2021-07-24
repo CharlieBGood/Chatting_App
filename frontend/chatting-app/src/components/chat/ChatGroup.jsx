@@ -1,7 +1,7 @@
-import React, { useState, } from 'react';
+import React from 'react';
 import ChatItemGroup from './ChatItemGroup'
 import Avatar from './Avatar'
-import chatItems from './chatItems.json'
+import chatItems from '../../dummydb/chatItems.json'
 
 const ChatGrupo = (props) => {
    {chatItems.map(item=>{ 

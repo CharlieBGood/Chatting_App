@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import Contacts from '../../dummydb/contacts.json'
 
 function RenderUsersList(props){
     var id = -1;
-    const usersList = props.users.sort().map((user) =>{
+    const usersList = Contacts.sort().map((user) =>{
         id++;
         return(
             <li className="list-group-item" id={"id_user_"+id}
@@ -40,7 +41,6 @@ class NewContact extends Component{
     constructor(props){
         super(props)
         this.state = {
-          users: ['Adele', 'Agnes', 'Paquita la del barrio', 'Billy Joel', 'Bob Dylan'],
           profile : null
         }
         this.changeProfile = this.changeProfile.bind(this);
@@ -68,7 +68,7 @@ class NewContact extends Component{
                                     placeholder="Contact name..." title="Type in a name" 
                                     class="form-control w-75"/>
                                 </div>
-                                <RenderUsersList users={this.state.users} changeProfile={this.changeProfile}/>
+                                <RenderUsersList changeProfile={this.changeProfile}/>
                             </div>
                     
                             {/* Parte derecha: Configuraciones de grupo    */}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import chatItems from '../chat/chatItems.json'
+import chatItems from '../../dummydb/contacts.json'
 import NewContact from '../modals/NewContactModalComponent'
 import NewGroup from "../modals/NewGroupModalComponent";
 

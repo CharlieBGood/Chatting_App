@@ -1,7 +1,7 @@
 import React from 'react'
 import Chat from './Chat'
 import './chatContent.css'
-import chatItems from './chatItems.json'
+import chatItems from '../../dummydb/chatItems.json'
 import Grid from '@material-ui/core/grid'
 
 const ChatsGrid = () => {
