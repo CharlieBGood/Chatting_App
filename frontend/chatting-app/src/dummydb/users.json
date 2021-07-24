@@ -1,0 +1,90 @@
+[
+    {
+      "id":1,
+      "imagen":"images/man.png",
+      "nombre":"Juan Perez",
+      "nickname": "Juancho",
+      "telefono": "12345678",
+      "email": "juan@gmail.com"
+    },
+    {
+        "id":2,
+        "imagen":"images/woman.png",
+        "nombre":"Ana Gómez",
+        "nickname": "Ana Trabajo",
+        "telefono": "12345678",
+        "email": "ana@gmail.com"
+    },
+    {
+        "id":3,
+        "imagen":"images/woman.png",
+        "nombre":"Paula Jimenez",
+        "nickname": "Pau",
+        "telefono": "12345678",
+        "email": "paula@gmail.com"
+    },
+    {
+        "id":4,
+        "imagen":"images/man.png",
+        "nombre":"Manuel",
+        "nickname": "Jefe",
+        "telefono": "12345678",
+        "email": "manuel@gmail.com"
+      },
+      {
+        "id":5,
+        "imagen":"images/man.png",
+        "nombre":"John Doe",
+        "nickname": "JDoe",
+        "telefono": "12345678",
+        "email": "joe@gmail.com"
+      },
+      {
+        "id":6,
+        "imagen":"images/woman.png",
+        "nombre":"Jane Doe",
+        "nickname": "JaneyDoe",
+        "telefono": "12345678",
+        "email": "janeyDoe@gmail.com"
+      },
+      {
+        "id":6,
+        "imagen":"images/man.png",
+        "nombre":"Frank Sinatra",
+        "nickname": "frankie",
+        "telefono": "12345678",
+        "email": "frankie@gmail.com"
+      },
+      {
+        "id":7,
+        "imagen":"images/man.png",
+        "nombre":"Barack Obama",
+        "nickname": "barack",
+        "telefono": "12345678",
+        "email": "barack@gmail.com"
+      },
+      {
+        "id":8,
+        "imagen":"images/man.png",
+        "nombre":"Andrew Newman",
+        "nickname": "andrew",
+        "telefono": "12345678",
+        "email": "anewman@gmail.com"
+      },
+      {
+        "id":9,
+        "imagen":"images/man.png",
+        "nombre":"Andrew Newman",
+        "nickname": "andrew",
+        "telefono": "12345678",
+        "email": "anewman@gmail.com"
+      },
+      {
+        "id":10,
+        "imagen":"images/woman.png",
+        "nombre":"Hilary Duff",
+        "nickname": "hilary",
+        "telefono": "12345678",
+        "email": "hduff@gmail.com"
+      }
+]

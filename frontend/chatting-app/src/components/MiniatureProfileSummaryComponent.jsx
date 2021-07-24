@@ -23,7 +23,7 @@ class MiniatureProfileSummary extends Component {
           <div className="container">
             <Configuration isModalOpen={this.state.isConfigurationModalOpen} toggleModal={this.toggleConfigurationtModal} />
             <div className="row justify-content-center mt-4">
-              <img src="images/man.png" className='profile-image' alt="profile img" />  
+              <img src="images/man.png" className='miniature-profile-image' alt="profile img" />  
             </div>                     
             <div class="row justify-content-center">
               Username    

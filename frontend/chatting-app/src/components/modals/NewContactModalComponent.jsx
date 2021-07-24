@@ -1,22 +1,35 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import Contacts from '../../dummydb/contacts.json'
+import Users from '../../dummydb/users.json'
+import UserProfile from '../profile/UserProfile'
+
+function GetSortOrder(prop) {    
+    return function(a, b) {    
+        if (a[prop] > b[prop]) {    
+            return 1;    
+        } else if (a[prop] < b[prop]) {    
+            return -1;    
+        }    
+        return 0;    
+    }    
+}    
 
 function RenderUsersList(props){
+    
     var id = -1;
-    const usersList = Contacts.sort().map((user) =>{
+    const usersList = props.users.sort(GetSortOrder("nombre")).map((user) =>{
         id++;
         return(
             <li className="list-group-item" id={"id_user_"+id}
-            key={"id_user_"+id} onClick={props.changeProfile}>
-                {user}
+            key={"id_user_"+id} onClick={() => props.changeProfile(user)}>
+                {user.nombre}
             </li>
         );
     });
 
     return(
         <div class="scrollable w-100">
-            <ul className="list-group">
+            <ul className="list-group scrollable">
                 {usersList}
             </ul>
         </div>
@@ -31,7 +44,7 @@ function RightSide({profile}){
     }
     else{
         return(
-            profile
+            <UserProfile user={profile} />
         );
     }
 };
@@ -41,14 +54,15 @@ class NewContact extends Component{
     constructor(props){
         super(props)
         this.state = {
-          profile : null
+          profile : null,
+          users_list : Users
         }
         this.changeProfile = this.changeProfile.bind(this);
     }
 
-    changeProfile(e){
+    changeProfile(user){
         this.setState({
-            profile : e.target.innerHTML + ' profile'
+            profile : user 
         })
     }
 
@@ -68,12 +82,12 @@ class NewContact extends Component{
                                     placeholder="Contact name..." title="Type in a name" 
                                     class="form-control w-75"/>
                                 </div>
-                                <RenderUsersList changeProfile={this.changeProfile}/>
+                                <RenderUsersList users={this.state.users_list} changeProfile={this.changeProfile}/>
                             </div>
                     
                             {/* Parte derecha: Configuraciones de grupo    */}
                             <div  class="col-7 text-center"> 
-                            <RightSide profile={this.state.profile} />
+                                <RightSide profile={this.state.profile} />
                             </div>
                         </div>
                     </div>
