@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { FormUser, ContainerButton, PushButton, AlertError, MsnSuccess } from '../elements/elementsForm.jsx';
+import { FormUser, AlertError } from '../elements/elementsForm.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import FormInputs from './FormInputs';
@@ -113,7 +113,7 @@ const FormUpdate = () => {
                          label="E-Mail"
                          placeholder="Email"
                          patternRegex={multiregex.email}
-                         message="Please enter a valid email, xample:  wolverine@xmen.org"
+                         message="Please enter a valid email, like:  wolverine@xmen.org"
                     />
 
                     <FormInputs

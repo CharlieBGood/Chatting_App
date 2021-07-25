@@ -1,5 +1,4 @@
 import React from 'react'
-import Grid from '@material-ui/core/grid'
 import './chatContent.css'
 
 const Avatar = (props) => {
