@@ -46,15 +46,15 @@ export default class Login extends Component {
         }
         this.checkUserExists = this.checkUserExists.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.updateUSer = this.updateUSer.bind(this);
 
     }
 
-	updateUSer(newUser){
-		this.setState({
-			user: newUser
-		})
-	}
+	componentDidUpdate(prevProps) {
+		// Uso tipico (no olvides de comparar las props):
+		if (this.state.user !== null) {
+			this.props.login(this.state.user)
+		}
+	  }
 
 	checkUserExists(){
 
@@ -66,7 +66,9 @@ export default class Login extends Component {
 		}
 		Users.map((newUser) =>{
 			if (newUser.email === email){
-				this.updateUSer(newUser);
+				this.setState({
+					user: newUser
+				})
 				userFound = true;
 			}
 		})
@@ -77,12 +79,9 @@ export default class Login extends Component {
 	}
 
 	handleSubmit = (e) => {
-
+		e.preventDefault();
 		if(!this.checkUserExists()){
 			e.preventDefault();
-		}
-		else{
-			this.props.login();
 		}
 	}
 

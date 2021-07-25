@@ -7,7 +7,6 @@ class MiniatureProfileSummary extends Component {
     constructor(props){
         super(props)
         this.state = {
-          profile : null,
           isConfigurationModalOpen: false
         }
         this.toggleConfigurationtModal = this.toggleConfigurationtModal.bind(this);
@@ -23,10 +22,10 @@ class MiniatureProfileSummary extends Component {
           <div className="container">
             <Configuration isModalOpen={this.state.isConfigurationModalOpen} toggleModal={this.toggleConfigurationtModal} />
             <div className="row justify-content-center mt-4">
-              <img src="images/man.png" className='miniature-profile-image' alt="profile img" />  
+              <img src={this.props.user.imagen} className='miniature-profile-image' alt="profile img" />  
             </div>                     
             <div class="row justify-content-center">
-              Username    
+              {this.props.user.nickname}    
             </div>    
             <div class="row justify-content-center">
               <span class="fa-stack fa-2x" onClick={this.toggleConfigurationtModal}>
