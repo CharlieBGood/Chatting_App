@@ -5,26 +5,17 @@ import UserPhoto from './../../img/task26.png'
 
 function UserSetup() {
      return (
-          <div className="container-fluid" class="setupUser">
-
-               <div className="row">
-                    <div className="col-2 mt-5">
-                         <img width={310} src={UserPhoto} alt="ActRazer" />
-
-                         <button class="butonshift" type="button">Shift Photo</button>
-
-                    </div>
-
-                    <div className="col-1">
-                         <br />
-                    </div>
-
-                    <div className="col-9">
-                         <FormUpdate/>
-                    </div>
+          <div className="container">
+               <div className="row justify-content-center">
+                    <img className="miniature-profile-image" src={UserPhoto} alt="ActRazer" />
+                    <hr />
+                    <button className="btn btn-circle btn-md mb-3" type="button">Shift Photo</button>
                </div>
-
+               <div className="row justify-content-center">
+                    <FormUpdate/>
+               </div>
           </div>
+
      )
 }
 

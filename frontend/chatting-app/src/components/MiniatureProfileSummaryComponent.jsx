@@ -30,7 +30,7 @@ class MiniatureProfileSummary extends Component {
             </div>    
             <div class="row justify-content-center">
               <span class="fa-stack fa-2x" onClick={this.toggleConfigurationtModal}>
-                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-circle fa-button fa-stack-2x"></i>
                   <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
               </span>
             </div>

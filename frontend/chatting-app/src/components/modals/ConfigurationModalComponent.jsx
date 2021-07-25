@@ -13,10 +13,10 @@ class Configuration extends Component {
                     <ModalBody>
                          <div className="container-fluid">
                               <div className="row">
-                                   <div className="col-lg-3 mb-md-1">
+                                   <div className="col-md-5 col-12 mb-md-1">
                                         <UserRobot/>
                                    </div>
-                                   <div className="col-lg-9 mt-md-1">
+                                   <div className="col-md-7 col-12 mt-md-1">
                                         <UserSetup/>
                                    </div>
                               </div>
