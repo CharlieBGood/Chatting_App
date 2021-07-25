@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import FormInputs from './FormInputs';
 
-const FormUpdate = () => {
+const FormUpdate = (props) => {
 
      const [name, setName] = useState({field:'', condition: null});
      const [surname, setSurname] = useState({field:'', condition: null});
@@ -63,7 +63,8 @@ const FormUpdate = () => {
                          name="name"
                          type="text"
                          label="Name"
-                         placeholder="First Name"
+                         value={props.user.nombre}
+                         placeholder={props.user.nombre}
                          patternRegex={multiregex.name}
                          message="Please enter a name (max 1)! symbols, numbers, accents are not allowed"
                     />
@@ -75,7 +76,7 @@ const FormUpdate = () => {
                          name="surname"
                          type="text"
                          label="Last Name"
-                         placeholder="Last Name"
+                         placeholder={props.user.apellidos}
                          patternRegex={multiregex.surname}
                          message="Please enter a name (max 2)! symbols, numbers, accents are not allowed"
                     />
@@ -111,7 +112,7 @@ const FormUpdate = () => {
                          name="email"
                          type="email"
                          label="E-Mail"
-                         placeholder="Email"
+                         placeholder={props.user.email}
                          patternRegex={multiregex.email}
                          message="Please enter a valid email, like:  wolverine@xmen.org"
                     />
@@ -123,7 +124,7 @@ const FormUpdate = () => {
                          name="cellphone"
                          type="number"
                          label="Cellphone"
-                         placeholder="Phone Number"
+                         placeholder={props.user.telefono}
                          patternRegex={multiregex.cellphone}
                          message="Please enter a number between 7 and 14 numbers, without dots, symbols or spaces"
                     />

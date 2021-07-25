@@ -3,11 +3,11 @@ import FormUpdate from './FormUpdate'
 import UserPhoto from './../../img/task26.png'
 
 
-function UserSetup() {
+function UserSetup(props) {
      return (
           <div className="container">
                <div className="row justify-content-center">
-                    <img className="miniature-profile-image" src={UserPhoto} alt="ActRazer" />
+                    <img className="miniature-profile-image" src={props.user.imagen} alt="ActRazer" />
                     <hr />
                     <span class="fa-stack fa-2x mb-4">
                          <i class="fa fa-circle fa-button fa-stack-2x"></i>
@@ -15,10 +15,9 @@ function UserSetup() {
                     </span>
                </div>
                <div className="row justify-content-center">
-                    <FormUpdate/>
+                    <FormUpdate user={props.user}/>
                </div>
           </div>
-
      )
 }
 

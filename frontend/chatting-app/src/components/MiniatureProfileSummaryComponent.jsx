@@ -20,7 +20,8 @@ class MiniatureProfileSummary extends Component {
     render(){
       return (
           <div className="container">
-            <Configuration isModalOpen={this.state.isConfigurationModalOpen} toggleModal={this.toggleConfigurationtModal} />
+            <Configuration isModalOpen={this.state.isConfigurationModalOpen} toggleModal={this.toggleConfigurationtModal} 
+              user={this.props.user}/>
             <div className="row justify-content-center mt-4">
               <img src={this.props.user.imagen} className='miniature-profile-image' alt="profile img" />  
             </div>                     

@@ -17,7 +17,7 @@ class Configuration extends Component {
                                         <UserRobot/>
                                    </div>
                                    <div className="col-md-7 col-12 mt-md-1">
-                                        <UserSetup/>
+                                        <UserSetup user={this.props.user}/>
                                    </div>
                               </div>
                          </div>
