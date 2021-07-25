@@ -9,7 +9,10 @@ function UserSetup() {
                <div className="row justify-content-center">
                     <img className="miniature-profile-image" src={UserPhoto} alt="ActRazer" />
                     <hr />
-                    <button className="btn btn-circle btn-md mb-3" type="button">Shift Photo</button>
+                    <span class="fa-stack fa-2x mb-4">
+                         <i class="fa fa-circle fa-button fa-stack-2x"></i>
+                         <i class="fa fa-id-badge fa-stack-1x fa-inverse"></i>
+                    </span>
                </div>
                <div className="row justify-content-center">
                     <FormUpdate/>

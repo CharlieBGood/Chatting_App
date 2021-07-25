@@ -9,7 +9,7 @@ class Configuration extends Component {
           return (
 
                <Modal isOpen={this.props.isModalOpen} toggle={this.props.toggleModal} size='lg'>
-                    <ModalHeader toggle={this.props.toggleModal}>Configuration</ModalHeader>
+                    <ModalHeader>Configuration</ModalHeader>
                     <ModalBody>
                          <div className="container-fluid">
                               <div className="row">

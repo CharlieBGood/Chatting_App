@@ -34,7 +34,7 @@ export default function NewGroup(props) {
 
     return (
       <Modal isOpen={props.isModalOpen} toggle={props.toggleModal} size='lg'>
-          <ModalHeader toggle={props.toggleModal}>New Group</ModalHeader>
+          <ModalHeader>New Group</ModalHeader>
           <ModalBody>
               <div className='container border'>
                   <div class="row">

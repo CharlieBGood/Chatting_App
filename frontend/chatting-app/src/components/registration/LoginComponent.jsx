@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import ComponentInput from './elements/ComponentInput';
+import { Link } from 'react-router-dom';
 
 const FieldAction = () =>{
 
@@ -64,10 +65,10 @@ export default class Login extends Component {
 							</button>
 						</div>
 						<div className="text-center pt-5">
-							<a className="txt2" href="/">
-								Create your Account
+							<Link className="txt2" to="/sign-up">
+								Sign up
 								<i className="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-							</a>
+							</Link>
 						</div>
 					</form>
 				</div>

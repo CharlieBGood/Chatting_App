@@ -118,7 +118,7 @@ ul, li {
 
 .txt2 {
   font-family: Poppins-Regular;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.5;
   color: #666666;
 }
@@ -477,4 +477,8 @@ ul, li {
 .miniature-profile-image{
   height: 150px;
   width: 180px;
+}
+
+.robot-container {
+  padding-top: 40px;
 }

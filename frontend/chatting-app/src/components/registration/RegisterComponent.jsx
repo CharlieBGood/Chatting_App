@@ -11,7 +11,7 @@ const Register = (props) => {
 						<form class="validate-form login100-form ">
 
 							<span class="login100-form-title">
-								Register Standar 
+								Standar Form
 							</span>
 
 							<div class="flexButton-container">

@@ -10,7 +10,7 @@ const BusienessRegister = (props) => {
 
 				<div class="container-flex">
 
-					<span class="login100-form-title">Register Busieness</span>
+					<span class="login100-form-title">Busieness Form</span>
 
 					<img src="images/upImage.png" class="my-4" alt="IMG" height="200" width="200" />
 
@@ -56,7 +56,7 @@ const BusienessRegister = (props) => {
 							</span>
 						</div>
 
-						<span class="login100-form-title">
+						<span class="login100-form-title mt-5">
 							First Catalog 
 						</span>
 
@@ -84,9 +84,7 @@ const BusienessRegister = (props) => {
 							</span>
 						</div>
 					
-					</form>		
-
-					<img src="images/upImage.png" class="mt-4" alt="IMG" height="200" width="200" />
+					</form>	
 
 					<div class="mt-4 col-2">
 						<button type="submit" class="login100-form-btn" onClick={props.login}>

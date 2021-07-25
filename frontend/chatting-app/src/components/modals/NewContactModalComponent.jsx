@@ -69,7 +69,7 @@ class NewContact extends Component{
     render(){
         return (
             <Modal isOpen={this.props.isModalOpen} toggle={this.props.toggleModal} size='lg'>
-                <ModalHeader toggle={this.props.toggleModal}>New Contact</ModalHeader>
+                <ModalHeader>New Contact</ModalHeader>
                 <ModalBody>
                     <div className='container border'>
                         <div class="row">
