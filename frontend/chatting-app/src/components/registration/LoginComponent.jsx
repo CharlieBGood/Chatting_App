@@ -1,5 +1,7 @@
 import React, { Component, useState } from "react";
 import ComponentInput from './elements/ComponentInput';
+import { Link } from 'react-router-dom';
+import Users from '../../dummydb/users.json'
 
 const FieldAction = () =>{
 
@@ -14,8 +16,7 @@ const FieldAction = () =>{
 
 	return(
 
-		<div>
-
+		<React.Fragment>
 			<ComponentInput 
 				type="text"
 				nombre="mail"
@@ -24,7 +25,7 @@ const FieldAction = () =>{
 				expresionRegular={expresiones.correo}
 				estado={Email}
 				cambiarEstado={cambiarEmail}
-				leyendaError="El correo solo debe de tener letras, numeros, puntos, guines y guiones bajos"/>
+				leyendaError="Please enter a valid email, like:  wolverine@xmen.org"/>
 
 			{/* <ComponentInput
 				type="password"
@@ -32,14 +33,57 @@ const FieldAction = () =>{
 				placeholder="password"
 				icono="fa fa-lock"/> */}
 
-
-		</div>
-
-
+		</React.Fragment>
 	)
 }
 
 export default class Login extends Component {
+
+	constructor(props){
+        super(props)
+        this.state = {
+			user : null,
+        }
+        this.checkUserExists = this.checkUserExists.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+
+    }
+
+	componentDidUpdate(prevProps) {
+		// Uso tipico (no olvides de comparar las props):
+		if (this.state.user !== null) {
+			this.props.login(this.state.user)
+		}
+	  }
+
+	checkUserExists(){
+
+		var userFound = false
+		var email = document.getElementById('email').value;
+		if (email === ''){
+			alert('Empty email, please provide some')
+			return userFound;
+		}
+		Users.map((newUser) =>{
+			if (newUser.email === email){
+				this.setState({
+					user: newUser
+				})
+				userFound = true;
+			}
+		})
+		if(!userFound){
+			alert('User does not exists!')
+		}
+		return userFound;
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+		if(!this.checkUserExists()){
+			e.preventDefault();
+		}
+	}
 
     render() {
         return (
@@ -51,7 +95,7 @@ export default class Login extends Component {
 						<img src="images/login.png" alt="IMG" />
 					</div>
 					
-					<form className="validate-form login100-form ">
+					<form className="validate-form login100-form" id="login-form" onSubmit={this.handleSubmit}>
 						<span class="login100-form-title">
 							Member Login
 						</span>
@@ -59,23 +103,15 @@ export default class Login extends Component {
 						<FieldAction/>
 
 						<div className="container-login100-form-btn">
-							<button className="login100-form-btn" onClick={this.props.login}>
+							<button className="login100-form-btn">
 								Login
 							</button>
 						</div>
-						<div className="text-center pt-2">
-							<span className="txt1">
-								Forgot
-							</span>
-							<a className="txt2 ml-2" href="/">
-								Username / Password?
-							</a>
-						</div>
 						<div className="text-center pt-5">
-							<a className="txt2" href="/">
-								Create your Account
+							<Link className="txt2" to="/sign-up">
+								Sign up
 								<i className="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-							</a>
+							</Link>
 						</div>
 					</form>
 				</div>

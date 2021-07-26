@@ -5,7 +5,7 @@ import Login from './registration/LoginComponent'
 import Header from './HeaderComponent'
 import Register from "./registration/RegisterComponent";
 import BusienessRegister from "./registration/BusienessRegisterComponent"
-import ChatAppComponent from './ChatAppComponent'
+import ChatApp from './ChatAppComponent'
 
 
 function RenderMainComponent(props){
@@ -22,7 +22,7 @@ function RenderMainComponent(props){
   }
   else{
     return(
-      <ChatAppComponent />
+      <ChatApp user={props.user}/>
     );
   }
 }
@@ -32,14 +32,16 @@ class Main extends Component{
   constructor(props){
     super(props)
     this.state = {
-      isLoggedIn : false
+      isLoggedIn : false,
+      user: null
     }
     this.login = this.login.bind(this);
   }
 
-  login(){
+  login(currentUser){
     this.setState({
-        isLoggedIn : !this.state.isLoggedIn
+        isLoggedIn : !this.state.isLoggedIn,
+        user: currentUser
     })
   }
 
@@ -48,12 +50,12 @@ class Main extends Component{
       return (
         <React.Fragment>
           <Header isLoggedIn={this.state.isLoggedIn} login={this.login}/>
-          <RenderMainComponent isLoggedIn={this.state.isLoggedIn} login={this.login}/>
+          <RenderMainComponent isLoggedIn={this.state.isLoggedIn} login={this.login} user={this.state.user}/>
           {/* <Footer /> */}
         </React.Fragment>
       );
     }  
   
-  }
+}
   
-  export default Main;
+export default Main;

@@ -2,7 +2,9 @@
     {
       "id":1,
       "imagen":"images/man.png",
-      "nombre":"Juan Perez",
+      "password" : "1234",
+      "nombre":"Juan",
+      "apellidos":"Perez",
       "nickname": "Juancho",
       "telefono": "12345678",
       "email": "juan@gmail.com"
@@ -10,7 +12,9 @@
     {
         "id":2,
         "imagen":"images/woman.png",
-        "nombre":"Ana Gómez",
+        "password" : "1234",
+        "nombre":"Ana",
+        "apellidos":"Gómez",
         "nickname": "Ana Trabajo",
         "telefono": "12345678",
         "email": "ana@gmail.com"
@@ -18,7 +22,9 @@
     {
         "id":3,
         "imagen":"images/woman.png",
-        "nombre":"Paula Jimenez",
+        "password" : "1234",
+        "nombre":"Paula",
+        "apellidos":"Jimenez",
         "nickname": "Pau",
         "telefono": "12345678",
         "email": "paula@gmail.com"
@@ -26,7 +32,9 @@
     {
         "id":4,
         "imagen":"images/man.png",
+        "password" : "1234",
         "nombre":"Manuel",
+        "apellidos":"Rodríguez",
         "nickname": "Jefe",
         "telefono": "12345678",
         "email": "manuel@gmail.com"
@@ -34,7 +42,9 @@
       {
         "id":5,
         "imagen":"images/man.png",
-        "nombre":"John Doe",
+        "password" : "1234",
+        "nombre":"John",
+        "apellidos":"Doe",
         "nickname": "JDoe",
         "telefono": "12345678",
         "email": "joe@gmail.com"
@@ -42,7 +52,9 @@
       {
         "id":6,
         "imagen":"images/woman.png",
-        "nombre":"Jane Doe",
+        "password" : "1234",
+        "nombre":"Jane",
+        "apellidos":"Doe",
         "nickname": "JaneyDoe",
         "telefono": "12345678",
         "email": "janeyDoe@gmail.com"
@@ -50,7 +62,9 @@
       {
         "id":6,
         "imagen":"images/man.png",
-        "nombre":"Frank Sinatra",
+        "password" : "1234",
+        "nombre":"Frank",
+        "apellidos":"Sinatra",
         "nickname": "frankie",
         "telefono": "12345678",
         "email": "frankie@gmail.com"
@@ -58,7 +72,9 @@
       {
         "id":7,
         "imagen":"images/man.png",
-        "nombre":"Barack Obama",
+        "password" : "1234",
+        "nombre":"Barack",
+        "apellidos":"Obama",
         "nickname": "barack",
         "telefono": "12345678",
         "email": "barack@gmail.com"
@@ -66,7 +82,9 @@
       {
         "id":8,
         "imagen":"images/man.png",
-        "nombre":"Andrew Newman",
+        "password" : "1234",
+        "nombre":"Andrew",
+        "apellidos":"Newman",
         "nickname": "andrew",
         "telefono": "12345678",
         "email": "anewman@gmail.com"
@@ -74,15 +92,19 @@
       {
         "id":9,
         "imagen":"images/man.png",
-        "nombre":"Andrew Newman",
-        "nickname": "andrew",
+        "password" : "1234",
+        "nombre":"Anthony",
+        "apellidos":"Hopkins",
+        "nickname": "antoine",
         "telefono": "12345678",
-        "email": "anewman@gmail.com"
+        "email": "antoine@gmail.com"
       },
       {
         "id":10,
         "imagen":"images/woman.png",
-        "nombre":"Hilary Duff",
+        "password" : "1234",
+        "nombre":"Hilary",
+        "apellidos":"Duff",
         "nickname": "hilary",
         "telefono": "12345678",
         "email": "hduff@gmail.com"

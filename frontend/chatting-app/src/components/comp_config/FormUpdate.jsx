@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import { FormUser, ContainerButton, PushButton, AlertError, MsnSuccess } from '../elements/elementsForm.jsx';
+import { FormUser, AlertError } from '../elements/elementsForm.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import FormInputs from './FormInputs';
-import '../../index.css';
 
-const FormUpdate = () => {
+const FormUpdate = (props) => {
 
      const [name, setName] = useState({field:'', condition: null});
      const [surname, setSurname] = useState({field:'', condition: null});
@@ -55,7 +54,6 @@ const FormUpdate = () => {
      }
 
      return (
-          <main>
                <FormUser action="" onSubmit={diveRush}>
 
                     <FormInputs
@@ -65,7 +63,8 @@ const FormUpdate = () => {
                          name="name"
                          type="text"
                          label="Name"
-                         placeholder="First Name"
+                         value={props.user.nombre}
+                         placeholder={props.user.nombre}
                          patternRegex={multiregex.name}
                          message="Please enter a name (max 1)! symbols, numbers, accents are not allowed"
                     />
@@ -76,8 +75,8 @@ const FormUpdate = () => {
                          id="surname"
                          name="surname"
                          type="text"
-                         label="Surname"
-                         placeholder="Last Name"
+                         label="Last Name"
+                         placeholder={props.user.apellidos}
                          patternRegex={multiregex.surname}
                          message="Please enter a name (max 2)! symbols, numbers, accents are not allowed"
                     />
@@ -89,7 +88,7 @@ const FormUpdate = () => {
                          name="company"
                          type="text"
                          label="Business"
-                         placeholder="Company  Corporation  Industry"
+                         placeholder="Company Name"
                          /* patternRegex={multiregex.surname} */
                          /* message="Please enter a name (max 2)! symbols, numbers, accents are not allowed" */
                     />
@@ -101,7 +100,7 @@ const FormUpdate = () => {
                          name="webpage"
                          type="text"
                          label="Web Page"
-                         placeholder="Blog  WebPage  Briefcase  Sponsor"
+                         placeholder="Web Page"
                          /* patternRegex={multiregex.surname} */
                          /* message="Please enter a name (max 2)! symbols, numbers, accents are not allowed" */
                     />
@@ -113,9 +112,9 @@ const FormUpdate = () => {
                          name="email"
                          type="email"
                          label="E-Mail"
-                         placeholder="Electronic Mail"
+                         placeholder={props.user.email}
                          patternRegex={multiregex.email}
-                         message="Please enter a valid email, xample:  wolverine@xmen.org"
+                         message="Please enter a valid email, like:  wolverine@xmen.org"
                     />
 
                     <FormInputs
@@ -125,7 +124,7 @@ const FormUpdate = () => {
                          name="cellphone"
                          type="number"
                          label="Cellphone"
-                         placeholder="Cellphone or Mobile number / Whatsapp Telegram"
+                         placeholder={props.user.telefono}
                          patternRegex={multiregex.cellphone}
                          message="Please enter a number between 7 and 14 numbers, without dots, symbols or spaces"
                     />
@@ -137,7 +136,7 @@ const FormUpdate = () => {
                          name="github"
                          type="text"
                          label="GitHub"
-                         placeholder="Link of Github repository"
+                         placeholder="Github"
                          /* patternRegex={multiregex.name} */
                          /* message="Please enter a name (max 2)! symbols, numbers, accents are not allowed" */
                     />
@@ -149,7 +148,7 @@ const FormUpdate = () => {
                          name="linkedin"
                          type="text"
                          label="LinkedIn"
-                         placeholder="Link of LinkedIn Perfil"
+                         placeholder="LinkedIn"
                          /* patternRegex={multiregex.name} */
                          /* message="Please enter a name (max 2)! symbols, numbers, accents are not allowed" */
                     />
@@ -161,7 +160,7 @@ const FormUpdate = () => {
                          name="facebook"
                          type="text"
                          label="Facebook"
-                         placeholder="Link of Facebook"
+                         placeholder="Facebook"
                          /* patternRegex={multiregex.name} */
                          /* message="Please enter a name (max 2)! symbols, numbers, accents are not allowed" */
                     />
@@ -173,7 +172,7 @@ const FormUpdate = () => {
                          name="instagram"
                          type="text"
                          label="Instagram"
-                         placeholder="Link of Instagram"
+                         placeholder="Instagram"
                          /* patternRegex={multiregex.name} */
                          /* message="Please enter a name (max 2)! symbols, numbers, accents are not allowed" */
                     />
@@ -193,13 +192,12 @@ const FormUpdate = () => {
                          </p>
                     </AlertError>}
 
-                    <ContainerButton>
+                    {/* <ContainerButton>
                          <PushButton type="submit">Send</PushButton>
                          {formOK === true && <MsnSuccess>Information sent correctly!</MsnSuccess>}
-                    </ContainerButton>
+                    </ContainerButton> */}
 
                </FormUser>
-          </main>
      );
 }
 

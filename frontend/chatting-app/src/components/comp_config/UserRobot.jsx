@@ -1,42 +1,54 @@
-import React from 'react'
-import ModalPass from './ModalPass'
+import React, {Component} from 'react'
+import PasswordModal from '../modals/PasswordModalComponent'
 import DateTime from './DateTime'
 
 
-function UserSetup() {
+class UserSetup extends Component {
 
-     return (
-          <div className="container" class="setupRobot">
-               <div className="row">
-                    <div className="container col-md-12 mt-5">
-                         <div>
+     constructor(props){
+          super(props)
+          this.state = {
+            isPasswordModalOpen: false
+          }
+          this.togglePasswordModal = this.togglePasswordModal.bind(this);
+      }
+  
+     togglePasswordModal(){
+          this.setState({
+               isPasswordModalOpen: !this.state.isPasswordModalOpen
+          });
+      }
+
+     render(){
+          return (
+               <div className="container">
+                    <PasswordModal isModalOpen={this.state.isPasswordModalOpen} toggleModal={this.togglePasswordModal} />
+                    <div className="row robot-container">
+                         <div className="col-md-12 col-12 mt-5 text-center">
                               <h2 class="TitlePass">ROBOT</h2>
+                              <br />
+                              <div className="mt-4">
+                                   <DateTime/>
+                              </div>
+                              <br />
+                              <textarea className="form-control"></textarea>
+                              <div className="form-check mt-2 text-left">
+                                   <input type="checkbox" className="form-check-input"/>
+                                   <label className="form-check-label">Automatic Answer</label>
+                              </div>
+                              <br />
+                              <button className="btn btn-primary mt-3" type="submit">Program</button>
                          </div>
-
-                         <div className="col-md-12 form-check">
-                              <input type="checkbox" className="form-check-input"/>
-                              <label className="form-check-label" >Automatic Answer <i class="fas fa-satellite"></i></label>
+                         <div className="col-md-12 col-12 mt-5 text-center">
+                              <span class="fa-stack fa-2x" onClick={this.togglePasswordModal}>
+                                   <i class="fa fa-circle fa-button fa-stack-2x"></i>
+                                   <i class="fa fa-user-secret fa-stack-1x fa-inverse"></i>
+                              </span>
                          </div>
-
-                         <br />
-                         <div className="col-md-12 mt-4">
-                              <DateTime/>
-                         </div>
-
-                         <br />
-                         <div className="col-md-12">
-                              <textarea className="form-control" class></textarea>
-                         </div>
-
-                         <button className="btn btn-warning mt-3" type="submit">Program</button>
-                    </div>
-
-                    <div className="col-md-12 mt-lg-5">
-                              <ModalPass/>
                     </div>
                </div>
-          </div>
-     )
+          )
+     }
 }
 
 export default UserSetup

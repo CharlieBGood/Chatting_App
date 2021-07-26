@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import FormInputs from './FormInputs';
-import '../../index.css';
 
 function FormPass() {
 
@@ -28,7 +27,7 @@ function FormPass() {
 
      return (
 
-          <main>
+          <React.Fragment>
                <FormInputs
                          status={oldPassword}
                          change={setOldpassword}
@@ -65,8 +64,7 @@ function FormPass() {
                          message="Please repeat the password"
                          passfunction={validatePassword}
                     />
-
-          </main>
+          </React.Fragment>
      )
 }
 

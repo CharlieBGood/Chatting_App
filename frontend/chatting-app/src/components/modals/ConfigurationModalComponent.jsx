@@ -9,15 +9,15 @@ class Configuration extends Component {
           return (
 
                <Modal isOpen={this.props.isModalOpen} toggle={this.props.toggleModal} size='lg'>
-                    <ModalHeader toggle={this.props.toggleModal}>Configuration</ModalHeader>
+                    <ModalHeader>Configuration</ModalHeader>
                     <ModalBody>
                          <div className="container-fluid">
                               <div className="row">
-                                   <div className="col-lg-3 mb-md-1">
+                                   <div className="col-md-5 col-12 mb-md-1">
                                         <UserRobot/>
                                    </div>
-                                   <div className="col-lg-9 mt-md-1">
-                                        <UserSetup/>
+                                   <div className="col-md-7 col-12 mt-md-1">
+                                        <UserSetup user={this.props.user}/>
                                    </div>
                               </div>
                          </div>

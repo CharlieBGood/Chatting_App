@@ -62,21 +62,15 @@ class ChatListComponent extends Component {
                     <div class="card border-0">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-4 text-center">
+                                <div class="col-6 text-center">
                                     <span class="fa-stack fa-2x" onClick={this.toggleNewGroupModal}>
-                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-circle fa-button fa-stack-2x"></i>
                                         <i class="fa fa-users fa-stack-1x fa-inverse"></i>
                                     </span>
                                 </div>
-                                <div class="col-4 text-center">
-                                    <span class="fa-stack fa-2x">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-bullhorn fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </div>
-                                <div class="col-4 text-center" onClick={this.toggleNewContactModal}>
+                                <div class="col-6 text-center" onClick={this.toggleNewContactModal}>
                                     <span class="fa-stack fa-2x" >
-                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-circle fa-button fa-stack-2x"></i>
                                         <i class="fa fa-user-plus fa-stack-1x fa-inverse"></i>
                                     </span>
                                 </div>

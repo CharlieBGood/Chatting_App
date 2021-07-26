@@ -118,8 +118,8 @@ const PushButton = styled.button`
      height: 45px;
      line-weight: 45px;
      width: 30%;
-     background: navy;
-     color: orange;
+     background: #57b846;
+     color: #fff;
      font-weight: bold;
      border: none;
      border-radius: 3px;

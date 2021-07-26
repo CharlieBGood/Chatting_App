@@ -14,13 +14,13 @@ const DateTime = () => {
                <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <div className="row g-2">
 
-                    <label class="reloj">Commence</label>
+                    <label class="reloj">Since</label>
                          <div className="col-md-12">
 
                               <TimePicker value={TimeCommence} onChange={TimeSelectC} />
                          </div>
 
-                    <label class="reloj">Finish</label>
+                    <label class="reloj">Until</label>
                          <div className="col-md-12">
 
                               <TimePicker value={TimeFinish} onChange={TimeSelectF} />

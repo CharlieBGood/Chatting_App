@@ -118,7 +118,7 @@ ul, li {
 
 .txt2 {
   font-family: Poppins-Regular;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.5;
   color: #666666;
 }
@@ -141,10 +141,10 @@ ul, li {
 
 
   background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -webkit-linear-gradient(-135deg, #9B9ECE, #4158d0);
+  background: -o-linear-gradient(-135deg, #9B9ECE, #4158d0);
+  background: -moz-linear-gradient(-135deg, #9B9ECE, #4158d0);
+  background: linear-gradient(-135deg, #9B9ECE, #4158d0);
  
 }
 
@@ -161,7 +161,7 @@ ul, li {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 177px 130px 33px 95px;
+  padding: 90px 130px 33px 95px;
 }
 
 /*------------------------------------------------------------------
@@ -343,10 +343,11 @@ ul, li {
   padding-top:80px;
 
   background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -webkit-linear-gradient(-135deg, #9B9ECE, #4158d0);
+  background: -o-linear-gradient(-135deg, #9B9ECE, #4158d0);
+  background: -moz-linear-gradient(-135deg, #9B9ECE, #4158d0);
+  background: linear-gradient(-135deg, #9B9ECE, #4158d0);
+ 
 }
 
 
@@ -445,7 +446,7 @@ ul, li {
   overflow-y: scroll;
 }
 
-.fa{
+.fa-button{
   color: #4158d0;
 }
 
@@ -476,4 +477,8 @@ ul, li {
 .miniature-profile-image{
   height: 150px;
   width: 180px;
+}
+
+.robot-container {
+  padding-top: 40px;
 }
