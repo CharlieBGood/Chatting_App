@@ -8,9 +8,67 @@ class UserProfile extends Component {
   render() {
     return(
       <React.Fragment>
-          <div class="row">
-            <div class="col-5 mt-5">
-              <img src={this.props.user.imagen} alt="user" className="img-fluid mt-5"/>
+          <div className="row">
+            <div className="col img-title"> 
+                <img src={this.props.user.imagen} alt="user" className="img-fluid mt-5"/>
+                <hr /> 
+            </div>
+        </div>
+        <div className= "row">
+        <div class="col">
+              <div class="info">
+                  <div className="card-body">
+                    <div class="info_data row">
+                        <div className="data col-md-3">
+                            <h6>Full Name</h6>
+                        </div>
+                        <div className="data col-md-9 text-seconday">
+                          <p>{this.props.user.nombre}</p>
+                        </div>
+                    </div>
+                  </div>
+    
+                  <hr></hr>
+    
+                  <div className="card-body">
+                    <div class="info_data row">
+                        <div className="data col-md-3">
+                            <h6>Nickname</h6>
+                        </div>
+                        <div className="data col-md-9 text-seconday">
+                          <p>{this.props.user.nickname}</p>
+                        </div>
+                    </div>
+                  </div>
+    
+                  <hr />
+    
+                  <div className="card-body">
+                    <div class="info_data row">
+                        <div className="data col-md-3">
+                            <h6>Phone</h6>
+                        </div>
+                        <div className="data col-md-9 text-seconday">
+                          <p>{this.props.user.telefono}</p>
+                        </div>
+                    </div>
+                  </div>
+    
+                  <hr />
+    
+                  <div className="card-body">
+                    <div class="info_data row">
+                        <div className="data col-md-3">
+                            <h6>Email</h6>
+                        </div>
+                        <div className="data col-md-9 text-seconday">
+                          <p>{this.props.user.email}</p>
+                        </div>
+                    </div>
+                  </div>
+                  <hr />  
+                  </div>
+              </div>
               <div class="social_media">
                 <a href="#" target="_blank" rel="noreferrer"
                   class="ml-2">
@@ -46,62 +104,8 @@ class UserProfile extends Component {
                     New chat
                   </button>
               </div>
-            </div>
-            <div class="col-7 mt-5">
-              <div class="info">
-                  <h3 className="title">Profile</h3>
-                  <hr />
-                  <div className="card-body">
-                    <div class="info_data row">
-                        <div className="data col-md-3">
-                            <h5>Full Name</h5>
-                        </div>
-                        <div className="data col-md-9 text-seconday">
-                          <p>{this.props.user.nombre}</p>
-                        </div>
-                    </div>
-                  </div>
-    
-                  <hr></hr>
-    
-                  <div className="card-body">
-                    <div class="info_data row">
-                        <div className="data col-md-3">
-                            <h5>Nickname</h5>
-                        </div>
-                        <div className="data col-md-9 text-seconday">
-                          <p>{this.props.user.nickname}</p>
-                        </div>
-                    </div>
-                  </div>
-    
-                  <hr />
-    
-                  <div className="card-body">
-                    <div class="info_data row">
-                        <div className="data col-md-3">
-                            <h5>Phone</h5>
-                        </div>
-                        <div className="data col-md-9 text-seconday">
-                          <p>{this.props.user.telefono}</p>
-                        </div>
-                    </div>
-                  </div>
-    
-                  <hr />
-    
-                  <div className="card-body">
-                    <div class="info_data row">
-                        <div className="data col-md-3">
-                            <h5>Email</h5>
-                        </div>
-                        <div className="data col-md-9 text-seconday">
-                          <p>{this.props.user.email}</p>
-                        </div>
-                    </div>
-                  </div>
-                  </div>
-              </div>
+            
+            
         </div>
       </React.Fragment>
     );
