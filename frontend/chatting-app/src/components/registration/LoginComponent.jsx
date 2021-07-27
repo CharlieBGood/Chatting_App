@@ -6,6 +6,7 @@ import Users from '../../dummydb/users.json'
 const FieldAction = () =>{
 
 	const [Email, cambiarEmail] = useState({campo:'', valido:null});
+	const [Password, cambiarPassword] = useState({campo:'', valido:null});
 	const expresiones = {
         usuario: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
         nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -27,11 +28,19 @@ const FieldAction = () =>{
 				cambiarEstado={cambiarEmail}
 				leyendaError="Please enter a valid email, like:  wolverine@xmen.org"/>
 
-			{/* <ComponentInput
+			<div>
+				<br/>
+			</div>
+
+			<ComponentInput 
 				type="password"
-				nombre="pass"
-				placeholder="password"
-				icono="fa fa-lock"/> */}
+				nombre="Password"
+				placeholder="Password"
+				icono="fa fa-lock"
+				expresionRegular={expresiones.password}
+				estado={Password}
+				cambiarEstado={cambiarPassword}
+				leyendaError="Please use almost 4 digits"/>
 
 		</React.Fragment>
 	)

@@ -73,28 +73,28 @@ class UserProfile extends Component {
                 <a href="#" target="_blank" rel="noreferrer"
                   class="ml-2">
                   <span class="fa-stack fa-lg">
-                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-circle fa-button fa-stack-2x"></i>
                       <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                   </span>
                 </a>
                 <a href="#" target="_blank" rel="noreferrer"
                   class="ml-1 ">
                   <span class="fa-stack fa-lg">
-                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-circle fa-button fa-stack-2x"></i>
                       <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
                   </span>
                 </a>
                 <a href="#" target="_blank" rel="noreferrer"
                     class="ml-1">
                     <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-circle fa-button fa-stack-2x"></i>
                         <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                     </span>
                 </a>
                 <a href="#" target="_blank" rel="noreferrer"
                     class="ml-1">
                     <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-circle fa-button fa-stack-2x"></i>
                         <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
                     </span>
                 </a>
