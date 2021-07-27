@@ -13,7 +13,7 @@ const FieldAction = () =>{
         password: /^.{4,12}$/, // 4 a 12 digitos.
         correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
         telefono: /^\d{7,14}$/ // 7 a 14 numeros.
-      }
+    }
 
 	return(
 
@@ -25,6 +25,7 @@ const FieldAction = () =>{
 				icono="fa fa-envelope"
 				expresionRegular={expresiones.correo}
 				estado={Email}
+				id="email"
 				cambiarEstado={cambiarEmail}
 				leyendaError="Please enter a valid email, like:  wolverine@xmen.org"/>
 
@@ -37,6 +38,7 @@ const FieldAction = () =>{
 				nombre="Password"
 				placeholder="Password"
 				icono="fa fa-lock"
+				id="password"
 				expresionRegular={expresiones.password}
 				estado={Password}
 				cambiarEstado={cambiarPassword}
@@ -66,15 +68,15 @@ export default class Login extends Component {
 	  }
 
 	checkUserExists(){
-
 		var userFound = false
 		var email = document.getElementById('email').value;
+		var password = document.getElementById('password').value;
 		if (email === ''){
 			alert('Empty email, please provide some')
 			return userFound;
 		}
 		Users.map((newUser) =>{
-			if (newUser.email === email){
+			if (newUser.email === email && newUser.password === password){
 				this.setState({
 					user: newUser
 				})
@@ -82,7 +84,7 @@ export default class Login extends Component {
 			}
 		})
 		if(!userFound){
-			alert('User does not exists!')
+			alert('Wrong Username or Password!')
 		}
 		return userFound;
 	}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Input, GrupoInput, LeyendaError } from './FormItems';
 
-const ComponentInput = ({estado, cambiarEstado, type, nombre, placeholder, icono, expresionRegular, leyendaError}) =>{
+const ComponentInput = ({estado, cambiarEstado, type, nombre, placeholder, icono, expresionRegular, leyendaError, id}) =>{
 
     
     const onChange = (e) => {
@@ -28,11 +28,11 @@ const ComponentInput = ({estado, cambiarEstado, type, nombre, placeholder, icono
                     type={type} 
                     name={nombre} 
                     placeholder={placeholder}
-                    id="email"
                     value={estado.campo}
                     onChange={onChange}
                     onKeyUp={validacion}
                     onBlur={validacion}
+                    id ={id}
                     valido={estado.valido}/>
             <span className="focus-input100"></span>
             <span className="symbol-input100">
