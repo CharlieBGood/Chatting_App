@@ -1,7 +1,8 @@
 import React, { Component, useState } from "react";
 import ComponentInput from './elements/ComponentInput';
 import { Link } from 'react-router-dom';
-import Users from '../../dummydb/users.json'
+import Users from '../../dummydb/users.json';
+import swal from 'sweetalert';;
 
 const FieldAction = () =>{
 
@@ -72,7 +73,7 @@ export default class Login extends Component {
 		var email = document.getElementById('email').value;
 		var password = document.getElementById('password').value;
 		if (email === ''){
-			alert('Empty email, please provide some')
+			swal('Error', 'Empty email, please provide some', 'error');
 			return userFound;
 		}
 		Users.map((newUser) =>{
@@ -84,7 +85,7 @@ export default class Login extends Component {
 			}
 		})
 		if(!userFound){
-			alert('Wrong Username or Password!')
+			swal('Error', 'Wrong Username or Password!', 'error')
 		}
 		return userFound;
 	}
