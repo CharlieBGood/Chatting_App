@@ -22,6 +22,7 @@ const ComponentInput = ({estado, cambiarEstado, type, nombre, placeholder, icono
     return(
 
         <React.Fragment>
+            <div>
             <GrupoInput>
 
             <Input 
@@ -42,7 +43,7 @@ const ComponentInput = ({estado, cambiarEstado, type, nombre, placeholder, icono
             </GrupoInput>
 
             <LeyendaError valido={estado.valido}>{leyendaError}</LeyendaError>
- 
+            </div>
         </React.Fragment>
         
 
