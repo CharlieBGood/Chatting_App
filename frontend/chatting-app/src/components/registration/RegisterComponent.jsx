@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import ComponentInput from './elements/ComponentInput';
 import {Link} from 'react-router-dom'
 
 const Register = (props) => {
+
+	const [Nombre, cambiarNombre] = useState({campo:'', valido:null});
+	const [NickName, cambiarNickName] = useState({campo:'', valido:null});
+	const [Email, cambiarEmail] = useState({campo:'', valido:null});
+	const [Password, cambiarPassword] = useState({campo:'', valido:null});
+
+	const expresiones = {
+        usuario: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+        nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+        password: /^.{4,12}$/, // 4 a 12 digitos.
+        correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+        telefono: /^\d{7,14}$/ // 7 a 14 numeros.
+      }
+
 	return (
 		<React.Fragment>
 			<div className="container-login100">
@@ -15,48 +30,52 @@ const Register = (props) => {
 							</span>
 
 							<div class="flexButton-container">
-								
-									{/* <button class="login101-form-btn"> */}
-									<Link class="login101-form-btn" to={"/singUpBussness"}>	Busieness</Link>
-									{/* </button> */}
-								
+								<Link class="login101-form-btn" to={"/singUpBussness"}>	Busieness</Link>
 							</div>
 
-							<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-								<input class="input100" type="text" name="Nombre" placeholder="Nombre" />
-								<span class="focus-input100"></span>
-								<span class="symbol-input100">
-									<i class="fa fa-user" aria-hidden="true"></i>
-								</span>
-							</div>
+							<ComponentInput 
+								type="text"
+								nombre="Nombre"
+								placeholder="Nombre"
+								icono="fa fa-user"
+								expresionRegular={expresiones.nombre}
+								estado={Nombre}
+								cambiarEstado={cambiarNombre}
+								leyendaError="Please enter a valid Name"/>
 
-							<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-								<input class="input100" type="text" name="nickName" placeholder="nickName" />
-								<span class="focus-input100"></span>
-								<span class="symbol-input100">
-									<i class="fa fa-address-card" aria-hidden="true"></i>
-								</span>
-							</div>
+							<ComponentInput 
+								type="text"
+								nombre="NickName"
+								placeholder="NickName"
+								icono="fa fa-address-card"
+								expresionRegular={expresiones.nombre}
+								estado={NickName}
+								cambiarEstado={cambiarNickName}
+								leyendaError="Please enter a valid NickName"/>
 
-							<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-								<input class="input100" type="text" name="Email" placeholder="Email" />
-								<span class="focus-input100"></span>
-								<span class="symbol-input100">
-								<i class="fa fa-envelope" aria-hidden="true"></i>
-								</span>
-							</div>
+							<ComponentInput 
+								type="text"
+								nombre="mail"
+								placeholder="Email"
+								icono="fa fa-envelope"
+								expresionRegular={expresiones.correo}
+								estado={Email}
+								cambiarEstado={cambiarEmail}
+								leyendaError="Please enter a valid email, like:  wolverine@xmen.org"/>
 
-							<div class="wrap-input100 validate-input" data-validate = "Password is required">
-								<input class="input100" type="password" name="pass" placeholder="Password" />
-								<span class="focus-input100"></span>
-								<span class="symbol-input100">
-									<i class="fa fa-lock" aria-hidden="true"></i>
-								</span>
-							</div>
+							<ComponentInput 
+								type="password"
+								nombre="Password"
+								placeholder="Password"
+								icono="fa fa-lock"
+								expresionRegular={expresiones.password}
+								estado={Password}
+								cambiarEstado={cambiarPassword}
+								leyendaError="Please use almost 4 digits"/>
 
 							<div class="container-login100-form-btn">
 								<button class="login100-form-btn" onClick={props.login}>
-									Login
+									Create
 								</button>
 							</div>
 
