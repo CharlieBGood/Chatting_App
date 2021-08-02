@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import Users from '../../dummydb/users.json'
 import UserProfile from '../profile/UserProfile'
 
 function GetSortOrder(prop) {    
@@ -55,7 +54,6 @@ class NewContact extends Component{
         super(props)
         this.state = {
           profile : null,
-          users_list : Users
         }
         this.changeProfile = this.changeProfile.bind(this);
     }
@@ -82,7 +80,7 @@ class NewContact extends Component{
                                     placeholder="Contact name..." title="Type in a name" 
                                     class="form-control w-75"/>
                                 </div>
-                                <RenderUsersList users={this.state.users_list} changeProfile={this.changeProfile}/>
+                                <RenderUsersList changeProfile={this.changeProfile} users={this.props.users}/>
                             </div>
                     
                             {/* Parte derecha: Configuraciones de grupo    */}

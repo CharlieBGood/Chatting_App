@@ -1,6 +1,5 @@
 import React from 'react'
 import FormUpdate from './FormUpdate'
-import UserPhoto from './../../img/task26.png'
 
 
 function UserSetup(props) {

@@ -13,11 +13,11 @@ class ChatApp extends Component {
                         <MiniatureProfileSummary user={this.props.user} />
                     </div>
                     <div class="border">
-                        <ChatListComponent />
+                        <ChatListComponent users={this.props.users}/>
                     </div>
                 </div>
                 <div class="col-9">
-                    <ChatsGrid /> 
+                    <ChatsGrid chats_list={this.props.chats_list}/> 
                 </div>
             </div>
         );

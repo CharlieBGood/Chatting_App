@@ -56,7 +56,7 @@ class ChatListComponent extends Component {
     render(){
         return(
             <React.Fragment>
-                <NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal}/>
+                <NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal} users={this.props.users}/>
                 <NewGroup isModalOpen={this.state.isNewGroupModalOpen} toggleModal={this.toggleNewGroupModal}/>
                 <div class="row">
                     <div class="card border-0">
