@@ -41,7 +41,7 @@ class App extends Component {
             <Provider store={store}> 
                 <Router> 
                 <div className="App"> 
-                    <Header isLoggedIn = {false} /> 
+                    <Header /> 
                     <Route exact path="/" component={Login} /> 
                     <Route exact path="/sign-up" component={Register} /> 
                     <Route path="/sign-in" component={Login} /> 
