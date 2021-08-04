@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import Configuration from './modals/ConfigurationModalComponent';
+import Configuration from '../modals/ConfigurationModalComponent';
 
 
 class MiniatureProfileSummary extends Component {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ChatsGrid from './chat/ChatsGrid'
 import ChatListComponent from "./chats_list/ChatsListComponent";
-import MiniatureProfileSummary from "./MiniatureProfileSummaryComponent";
+import MiniatureProfileSummary from "./miniature_profile/MiniatureProfileSummaryComponent";
 
 class ChatApp extends Component {
 

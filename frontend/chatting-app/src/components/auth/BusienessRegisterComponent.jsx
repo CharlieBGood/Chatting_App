@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import ComponentInput from './elements/ComponentInput';
+{/*import React, { useState } from "react";
 
 const BusienessRegister = (props) => {
 
@@ -138,4 +137,4 @@ const BusienessRegister = (props) => {
 	);
 }
 
-export default BusienessRegister;
+export default BusienessRegister;*/}
