@@ -17,10 +17,6 @@ class MiniatureProfileSummary extends Component {
         this.toggleConfigurationtModal = this.toggleConfigurationtModal.bind(this);
     }
 
-    componentDidMount(){
-      console.log(this.props.user.image)
-    }
-
     toggleConfigurationtModal(){
         this.setState({
           isConfigurationModalOpen: !this.state.isConfigurationModalOpen

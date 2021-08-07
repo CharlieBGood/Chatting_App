@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import chatItems from '../../dummydb/contacts.json'
 import NewContact from '../modals/NewContactModalComponent'
 import NewGroup from "../modals/NewGroupModalComponent";
+import PropTypes from "prop-types";
+import { connect } from "react-redux"; 
+import { withRouter } from 'react-router-dom';
 
 
 function RenderUsersList(props){
@@ -30,7 +33,7 @@ function RenderUsersList(props){
     );
 }
 
-class ChatListComponent extends Component {
+class ChatList extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -56,8 +59,8 @@ class ChatListComponent extends Component {
     render(){
         return(
             <React.Fragment>
-                <NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal} users={this.props.users}/>
-                <NewGroup isModalOpen={this.state.isNewGroupModalOpen} toggleModal={this.toggleNewGroupModal}/>
+                {/* <NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal} users={this.props.users}/> */}
+                {/* <NewGroup isModalOpen={this.state.isNewGroupModalOpen} toggleModal={this.toggleNewGroupModal}/> */}
                 <div class="row">
                     <div class="card border-0">
                         <div class="card-header">
@@ -96,4 +99,12 @@ class ChatListComponent extends Component {
     }
 }
 
-export default ChatListComponent;
+ChatList.propTypes = { 
+	auth: PropTypes.object.isRequired, 
+	errors: PropTypes.object.isRequired, 
+};
+
+const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors }); 
+
+export default connect(mapStateToProps)(withRouter(ChatList)); 
+

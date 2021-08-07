@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ChatsGrid from './chat/ChatsGrid'
-import ChatListComponent from "./chats_list/ChatsListComponent";
+import ChatList from "./chats_list/ChatsListComponent";
 import MiniatureProfileSummary from "./miniature_profile/MiniatureProfileSummaryComponent";
 import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
@@ -15,22 +15,18 @@ class ChatApp extends Component {
 		}
     }
 
-    componentDidMount(){
-        console.log(this.props)
-    }
-
     render(){
         return(
-            <div class="row app-container">
-                <div class="col-3">
-                    <div class="miniature-profile-summary">
+            <div className="row app-container">
+                <div className="col-3">
+                    <div className="miniature-profile-summary">
                         <MiniatureProfileSummary user={this.props.auth.user}/> 
                     </div>
-                    <div class="border">
+                    <div className="border">
                         {/* <ChatListComponent users={this.props.users}/> */}
                     </div>
                 </div>
-                <div class="col-9">
+                <div className="col-9">
                     {/* <ChatsGrid chats_list={this.props.chats_list}/> */}
                 </div>
             </div>

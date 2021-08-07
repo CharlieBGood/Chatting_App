@@ -12,7 +12,6 @@ import './App.css';
 import './Utils.css'
 import { Provider } from 'react-redux';
 import store from './redux/store'
-import Main from './components/MainComponent'
 
 
 // Check for token to keep user logged in 

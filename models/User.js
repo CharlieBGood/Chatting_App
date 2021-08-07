@@ -27,7 +27,7 @@ const UserSchema = new Schema({
         required: true 
     },
     contacts: { 
-        type: [Number], 
+        type: [String], 
         required: false 
     },
     image:
