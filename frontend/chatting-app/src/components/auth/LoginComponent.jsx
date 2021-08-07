@@ -3,9 +3,23 @@ import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
-import { Col, Row, Button, Form, Input } from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, FormFeedback, Input } from 'reactstrap';
 import { loginUser } from "../../redux/actions/actionAuth";
+import { cleanErrors } from "../../redux/actions/actionAuth";
 import { withRouter } from 'react-router-dom';
+
+function cleanErrorsForDisplay(props){
+	if (props.email){
+		return props.email
+	}
+	else if (props.password){
+		return props.password
+	}
+	else if (props.passwordincorrect){
+		return props.passwordincorrect
+	}
+}
+
 
 class Login extends Component {
 
@@ -20,14 +34,23 @@ class Login extends Component {
 
 	componentWillReceiveProps(nextProps) { 
 		if (nextProps.auth.isAuthenticated) { 
+			this.props.cleanErrors();
 			this.props.history.push("/temp"); // push user to dashboard when they login */
 	  	} 
-	  	if (nextProps.errors) { 
+	  	else if (nextProps.errors) { 
 			this.setState({ 
 				errors: nextProps.errors, 
 			}); 
-			swal("Error!", JSON.stringify(nextProps.errors), "error");
+			var error = cleanErrorsForDisplay(nextProps.errors)
+			swal("Error!", error, "error");
 	  	} 
+	}
+
+	componentDidMount() { 
+		// If logged in and user navigates to Login page, should redirect them to app 
+		if (this.props.auth.isAuthenticated) { 
+		  this.props.history.push("/temp"); 
+		} 
 	}
 
 	onChange = e => { 
@@ -55,17 +78,19 @@ class Login extends Component {
 					<Form className="login100-form" noValidate onSubmit={this.onSubmit}>
 						<Row className="form-group">
 							<Col md={12} className="wrap-input100">
-								<Input id="email"
-									placeholder="Email" 
-									className="input100" 
-									onChange={this.onChange} 
-									value={this.state.email} 
-									error={errors.email}
-								/>
-								<span className="focus-input100"></span>
-								<span className="symbol-input100">
-									<i className="fa fa-envelope"></i>
-								</span>
+								<FormGroup>
+									<Input id="email"
+										placeholder="Email" 
+										className="input100" 
+										onChange={this.onChange} 
+										value={this.state.email} 
+										error={errors.email}
+									/>
+									<span className="focus-input100"></span>
+									<span className="symbol-input100">
+										<i className="fa fa-envelope"></i>
+									</span>
+								</FormGroup>
 							</Col>
 						</Row>
 						<Row className="form-group">
@@ -110,4 +135,4 @@ Login.propTypes = {
 
 const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors }); 
 
-export default connect(mapStateToProps, { loginUser })(withRouter(Login)); 
+export default connect(mapStateToProps, { loginUser, cleanErrors })(withRouter(Login)); 

@@ -5,9 +5,9 @@ import setAuthToken from "./redux/utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./redux/actions/actionAuth";
 import Register from './components/auth/RegisterComponent'
 import Login from './components/auth/LoginComponent'
+import ChatApp from './components/ChatAppComponent'
 import PrivateRoute from './components/private-route/PrivateRouteComponent'; 
 import Header from './components/HeaderComponent';
-import Temp from './components/temp'
 import './App.css';
 import './Utils.css'
 import { Provider } from 'react-redux';
@@ -17,7 +17,6 @@ import Main from './components/MainComponent'
 
 // Check for token to keep user logged in 
 if (localStorage.jwtToken) { 
-    console.log(localStorage.jwtToken)
     // Set auth token header auth 
     const token = localStorage.jwtToken; 
     setAuthToken(token); 
@@ -31,7 +30,7 @@ if (localStorage.jwtToken) {
         // Logout user 
         store.dispatch(logoutUser()); 
         // Redirect to login 
-        window.location.href = "./login"; 
+        window.location.href = "./sign-in"; 
     } 
 } 
 
@@ -46,7 +45,7 @@ class App extends Component {
                     <Route exact path="/sign-up" component={Register} /> 
                     <Route path="/sign-in" component={Login} /> 
                     <Switch> 
-                        <PrivateRoute exact path="/temp" component={Main} /> 
+                        <PrivateRoute exact path="/temp" component={ChatApp} /> 
                     </Switch> 
                 </div> 
                 </Router> 

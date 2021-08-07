@@ -482,3 +482,7 @@ ul, li {
 .robot-container {
   padding-top: 40px;
 }
+
+.nickname-title{
+  font-size: 2rem;
+}

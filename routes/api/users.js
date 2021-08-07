@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs"); 
 const jwt = require("jsonwebtoken"); 
 const keys = require("../../config/keys"); 
+const multer = require('multer')
 
 // Load input validation 
 const validateRegisterInput = require("../../validation/register"); 
@@ -71,7 +72,7 @@ router.post("/login", (req, res) => {
                 // Create JWT Payload 
                 const payload = { 
                     id: user.id, 
-                    nickname: user.nickname 
+                    nickname: user.nickname,
                 }; 
                 // Sign token 
                 jwt.sign( 
@@ -96,5 +97,27 @@ router.post("/login", (req, res) => {
         }); 
     }); 
 }); 
+
+// @route POST api/users/upload_image 
+// @desc Register user 
+// @access Public 
+router.post("/upload_image", (req, res) => { 
+    // Form validation 
+    const { errors, isValid } = validateRegisterInput(req.body); 
+    // Check validation 
+    if (!isValid) { 
+        return res.status(400).json(errors); 
+    } 
+    User.findOne({ email: req.body.email }).then(user => { 
+        if (user) { 
+             
+        } 
+        else { 
+            return res 
+                .status(400) 
+                .json({ passwordincorrect: "User does not exists" }); 
+        } 
+    }); 
+});
      
 module.exports = router; 
