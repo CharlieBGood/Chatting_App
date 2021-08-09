@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
-import { Col, Row, Button, Form, FormGroup, FormFeedback, Input } from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Input } from 'reactstrap';
 import { loginUser } from "../../redux/actions/actionAuth";
 import { cleanErrors } from "../../redux/actions/actionAuth";
 import { withRouter } from 'react-router-dom';

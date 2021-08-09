@@ -19,11 +19,13 @@ class ChatApp extends Component {
         return(
             <div className="row app-container">
                 <div className="col-3">
-                    <div className="miniature-profile-summary">
-                        <MiniatureProfileSummary user={this.props.auth.user}/> 
+                    <div className="row">
+                        <div className="miniature-profile-summary">
+                            <MiniatureProfileSummary user={this.props.auth.user}/> 
+                        </div>
                     </div>
-                    <div className="border">
-                        {/* <ChatListComponent users={this.props.users}/> */}
+                    <div className="border mt-4">
+                        <ChatList />
                     </div>
                 </div>
                 <div className="col-9">

@@ -121,4 +121,28 @@ router.post("/upload_image", (req, res) => {
     }); 
 });
      
+
+// @route GET api/users/find_user 
+// @desc Find user 
+// @access Public 
+router.get("/find_user", (req, res) => {
+    User.findById(req.query.id).then(user => { 
+        if (user) { 
+            return res.status(200).json(
+                { 
+                    id: user.id, 
+                    nickname: user.nickname,
+                    contacts: user.contacts
+                }
+            ); 
+        } 
+        else { 
+            return res 
+                .status(400) 
+                .json({ passwordincorrect: "User does not exists" }); 
+        } 
+    })
+})
+
 module.exports = router; 
+

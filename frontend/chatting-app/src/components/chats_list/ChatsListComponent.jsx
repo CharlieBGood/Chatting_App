@@ -5,29 +5,31 @@ import NewGroup from "../modals/NewGroupModalComponent";
 import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
 import { withRouter } from 'react-router-dom';
+import { getContacts } from '../../redux/actions/actionContacts';
 
 
 function RenderUsersList(props){
+
     var id = -1;
-    const chatsList = props.chats.sort().map((chat) =>{
+    const contactsList = props.contacts.map((contact) => {
         id++;
         return(
-            <li className="list-group-item" id={"id_user_"+id}>
-                <div class="row">
-                    <div class="col-2">
-                        <img src={chat.imagen} className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
+            <li className="list-group-item" id={"id_user_"+id} key={"id_user_"+id}>
+                <div className="row">
+                    <div className="col-2">
+                        <img src="images/man.png" className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
                     </div>
-                    <div class="col-10">
-                        {chat.nombre}
+                    <div className="col-10">
+                        {contact.nickname}
                     </div>
                 </div>
             </li>
         );
     });
     return(
-        <div class="scrollable w-100">
+        <div className="scrollable w-100">
             <ul className="list-group">
-                {chatsList}
+                {contactsList}
             </ul>
         </div>
     );
@@ -39,7 +41,7 @@ class ChatList extends Component {
         this.state = {
           profile : null,
           isNewContactModalOpen: false,
-          isNewGroupModalOpen: false
+          isNewGroupModalOpen: false,
         }
         this.toggleNewContactModal = this.toggleNewContactModal.bind(this);
         this.toggleNewGroupModal = this.toggleNewGroupModal.bind(this);
@@ -56,39 +58,43 @@ class ChatList extends Component {
         });
     }
 
+    componentWillMount(){
+        this.props.getContacts(this.props.auth.user.id);
+    }
+
     render(){
         return(
             <React.Fragment>
                 {/* <NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal} users={this.props.users}/> */}
                 {/* <NewGroup isModalOpen={this.state.isNewGroupModalOpen} toggleModal={this.toggleNewGroupModal}/> */}
-                <div class="row">
-                    <div class="card border-0">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-6 text-center">
-                                    <span class="fa-stack fa-2x" onClick={this.toggleNewGroupModal}>
-                                        <i class="fa fa-circle fa-button fa-stack-2x"></i>
-                                        <i class="fa fa-users fa-stack-1x fa-inverse"></i>
+                <div className="row">
+                    <div className="card border-0">
+                        <div className="card-header">
+                            <div className="row">
+                                <div className="col-6 text-center">
+                                    <span className="fa-stack fa-2x" onClick={this.toggleNewGroupModal}>
+                                        <i className="fa fa-circle fa-button fa-stack-2x"></i>
+                                        <i className="fa fa-users fa-stack-1x fa-inverse"></i>
                                     </span>
                                 </div>
-                                <div class="col-6 text-center" onClick={this.toggleNewContactModal}>
-                                    <span class="fa-stack fa-2x" >
-                                        <i class="fa fa-circle fa-button fa-stack-2x"></i>
-                                        <i class="fa fa-user-plus fa-stack-1x fa-inverse"></i>
+                                <div className="col-6 text-center" onClick={this.toggleNewContactModal}>
+                                    <span className="fa-stack fa-2x" >
+                                        <i className="fa fa-circle fa-button fa-stack-2x"></i>
+                                        <i className="fa fa-user-plus fa-stack-1x fa-inverse"></i>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="card">
-                                <div class="card-header text-center">
+                        <div className="card-body">
+                            <div className="card">
+                                <div className="card-header text-center">
                                     Chats
                                 </div>
-                                <div class="card-body">
-                                    <input type="text" id="myInput" onkeyup="myFunction()" 
+                                <div className="card-body">
+                                    <input type="text" id="myInput" 
                                     placeholder="Contact name..." title="Type in a name" 
-                                    class="form-control mb-1"/>
-                                    <RenderUsersList chats={chatItems} />
+                                    className="form-control mb-1"/>
+                                    <RenderUsersList contacts={this.props.contacts} />
                                 </div>
                             </div>
                         </div>
@@ -104,7 +110,7 @@ ChatList.propTypes = {
 	errors: PropTypes.object.isRequired, 
 };
 
-const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors }); 
+const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors, contacts: state.contacts }); 
 
-export default connect(mapStateToProps)(withRouter(ChatList)); 
+export default connect(mapStateToProps, { getContacts })(withRouter(ChatList)); 
 

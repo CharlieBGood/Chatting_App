@@ -6,6 +6,23 @@ import { withRouter } from 'react-router-dom';
 import { registerUser } from "../../redux/actions/actionAuth";
 import swal from 'sweetalert';
 
+
+function cleanErrorsForDisplay(props){
+	if (props.nickname){
+		return props.nickname
+	}
+	else if (props.email){
+		return props.email
+	}
+	else if (props.password){
+		return props.password
+	}
+	else if (props.password2){
+		return props.password2
+	}
+}
+
+
 class Register extends Component {
 
 	constructor(){
@@ -24,7 +41,8 @@ class Register extends Component {
 			this.setState({ 
 				errors: nextProps.errors, 
 			}); 
-			swal("Error!", JSON.stringify(nextProps.errors), "error");
+			var error = cleanErrorsForDisplay(nextProps.errors)
+			swal("Error!", error, "error");
 		} 
 	} 
 
