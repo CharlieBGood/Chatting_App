@@ -4,11 +4,13 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({ 
     name: { 
         type: String, 
-        required: false 
+        required: false,
+        default: 'NN'
     }, 
     lastname: { 
         type: String, 
-        required: false 
+        required: false,
+        default: 'NN'
     }, 
     nickname: { 
         type: String, 
@@ -20,7 +22,8 @@ const UserSchema = new Schema({
     }, 
     phone: { 
         type: Number, 
-        required: false 
+        required: false,
+        default: '1234567890'
     }, 
     password: { 
         type: String, 
@@ -28,7 +31,8 @@ const UserSchema = new Schema({
     },
     contacts: { 
         type: [String], 
-        required: false 
+        required: false,
+        default: []
     },
     image:
     {

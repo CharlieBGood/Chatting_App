@@ -144,5 +144,40 @@ router.get("/find_user", (req, res) => {
     })
 })
 
+
+// @route PATCH api/users/add-contact 
+// @desc Register user 
+// @access Registered User
+router.patch("/add-contact", (req, res) => {
+
+    const id_user = req.body.id_user;
+    const id_contact = req.body.id_contact;
+    const contacts_list = req.body.contacts_list;
+
+    User.findById(id_contact).then(user => {
+        if (user) {
+            if (contacts_list.includes(id_contact)) {
+                return res.status(400).json({ message: "The contact already exists in your contacts list" });
+            }
+            else {
+                User.findById(id_user).then(main_user => {
+                    main_user.contacts.push(id_contact);
+                    main_user.save();
+                })
+                return res.status(200).json(
+                    { 
+                        message: 'contact added'
+                    }
+                ); 
+            }
+        }
+        else {
+            return res.status(400).json({ message: "Unfortunately, your contact is not on Chatting App yet, invite him!" });
+        }
+    })
+});
+
+
+
 module.exports = router; 
 
