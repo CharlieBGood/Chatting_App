@@ -1,6 +1,22 @@
 import React, { Component } from 'react'
 import './UserProfile.css'
 
+function RenderNewChatButton(props){
+  if (props.renderNewChatButton){
+    return(
+      <div className="button-new-chat" id="newChat">
+          <button>
+            New chat
+          </button>
+      </div>   
+    )
+  }
+  else{
+    return("")
+  }
+}
+
+
 class UserProfile extends Component {
   constructor(props){
     super(props)
@@ -10,7 +26,7 @@ class UserProfile extends Component {
       <React.Fragment>
           <div className="row">
             <div className="col img-title"> 
-                <img src="" alt="user" className="img-fluid mt-5"/>
+                <img src="images/woman.png" alt="user" className="img-fluid mt-5"/>
                 <hr /> 
             </div>
           </div>
@@ -99,11 +115,7 @@ class UserProfile extends Component {
                       </span>
                   </a>
                 </div>
-                <div className="button-new-chat" id="newChat">
-                    <button>
-                      New chat
-                    </button>
-                </div>   
+                <RenderNewChatButton renderNewChatButton={this.props.renderNewChatButton} />
           </div>
       </React.Fragment>
     );

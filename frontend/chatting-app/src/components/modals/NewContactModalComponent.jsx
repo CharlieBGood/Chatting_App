@@ -23,7 +23,7 @@ function RenderUsersList(props){
         id++;
         return(
             <li className="list-group-item" id={"id_user_"+id}
-            key={"id_user_"+id} onClick={props.changeProfile()}>
+            key={"id_user_"+id} onClick={() => props.changeProfile(user)}>
                 {user.nickname}
             </li>
         );
@@ -47,7 +47,7 @@ function RightSide({profile}){
     else{
         console.log(profile)
         return(
-            <UserProfile user={profile} />
+            <UserProfile user={profile} renderNewChatButton={false}/>
         );
     }
 };
