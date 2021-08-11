@@ -23,7 +23,7 @@ function RenderUsersList(props){
         id++;
         return(
             <li className="list-group-item" id={"id_user_"+id}
-            key={"id_user_"+id}>
+            key={"id_user_"+id} onClick={props.changeProfile()}>
                 {user.nickname}
             </li>
         );
@@ -36,9 +36,6 @@ function RenderUsersList(props){
             </ul>
         </div>
     );
-    return(
-        <h1>Users list</h1>
-    )
 }
 
 function RightSide({profile}){
@@ -48,6 +45,7 @@ function RightSide({profile}){
         );
     }
     else{
+        console.log(profile)
         return(
             <UserProfile user={profile} />
         );
@@ -70,18 +68,14 @@ class NewContact extends Component{
         })
     }
 
-    compo(){
-
-    }
-
-    componentWillReceiveProps(){
+    componentWillReceiveProps(nextProps){
+        console.log('nextProps')
         if (this.props.contacts.contacts.length > 0) {
             var list = this.props.auth.user.id
             this.props.contacts.contacts.map((contact) => {
                 list += '-' + contact.id
             })
             if (this.props.users.length === 0){
-                console.log('now here')
                 this.props.getUsers(list);
             }
         }
@@ -103,7 +97,7 @@ class NewContact extends Component{
                                     placeholder="Contact name..." title="Type in a name" 
                                     className="form-control w-75"/>
                                 </div>
-                                <RenderUsersList users={this.props.users}/>
+                                <RenderUsersList users={this.props.users} changeProfile={this.changeProfile}/>
                             </div>
                     
                             {/* Parte derecha: Configuraciones de grupo    */}
