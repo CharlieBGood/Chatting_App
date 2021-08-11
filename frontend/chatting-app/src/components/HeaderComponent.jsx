@@ -31,19 +31,6 @@ function ReturnNavElements(props){
 
 class Header extends Component{
 
-  constructor(){
-    super();
-    this.state = {
-      isAuthenticated : false
-    }
-  }
-
-  componentWillReceiveProps(nextProps) { 
-		this.setState({
-      isAuthenticated : nextProps.auth.isAuthenticated
-    })
-	}
-
   onLogoutClick = (e) => { 
     e.preventDefault(); 
     this.props.logoutUser(); 
@@ -56,7 +43,7 @@ class Header extends Component{
           <div className="container">
             <Link className="navbar-brand" to={"/"}>Chatting App</Link>
               <ul className="navbar-nav">
-                <ReturnNavElements isAuthenticated={this.state.isAuthenticated} logOut={this.props.logoutUser}/>
+                <ReturnNavElements isAuthenticated={this.props.auth.isAuthenticated} logOut={this.props.logoutUser}/>
               </ul>
           </div>
         </nav>

@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
 import { withRouter } from 'react-router-dom';
 import { getContacts } from '../../redux/actions/actionContacts';
+import { getUsers } from '../../redux/actions/actionUsers';
 
 
 function RenderUsersList(props){
@@ -26,13 +27,21 @@ function RenderUsersList(props){
             </li>
         );
     });
-    return(
-        <div className="scrollable w-100">
-            <ul className="list-group">
-                {contactsList}
-            </ul>
-        </div>
-    );
+
+    if (props.isLoading) {
+        return(
+            <h1>Is Loading</h1>
+        )
+    }
+    else{
+        return(
+            <div className="scrollable w-100">
+                <ul className="list-group">
+                    {contactsList}
+                </ul>
+            </div>
+        );
+    }
 }
 
 class ChatList extends Component {
@@ -58,14 +67,15 @@ class ChatList extends Component {
         });
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.props.getContacts(this.props.auth.user.id);
+        
     }
 
     render(){
         return(
             <React.Fragment>
-                {/* <NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal} users={this.props.users}/> */}
+                <NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal} /> 
                 {/* <NewGroup isModalOpen={this.state.isNewGroupModalOpen} toggleModal={this.toggleNewGroupModal}/> */}
                 <div className="row">
                     <div className="card border-0">
@@ -94,7 +104,7 @@ class ChatList extends Component {
                                     <input type="text" id="myInput" 
                                     placeholder="Contact name..." title="Type in a name" 
                                     className="form-control mb-1"/>
-                                    <RenderUsersList contacts={this.props.contacts} />
+                                    <RenderUsersList isLoading={this.props.contacts.isLoading} contacts={this.props.contacts.contacts} />
                                 </div>
                             </div>
                         </div>
@@ -110,7 +120,7 @@ ChatList.propTypes = {
 	errors: PropTypes.object.isRequired, 
 };
 
-const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors, contacts: state.contacts }); 
+const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors, contacts: state.contacts, users: state.users }); 
 
-export default connect(mapStateToProps, { getContacts })(withRouter(ChatList)); 
+export default connect(mapStateToProps, { getContacts, getUsers })(withRouter(ChatList)); 
 

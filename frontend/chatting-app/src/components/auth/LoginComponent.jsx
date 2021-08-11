@@ -7,6 +7,7 @@ import { Col, Row, Button, Form, FormGroup, Input } from 'reactstrap';
 import { loginUser } from "../../redux/actions/actionAuth";
 import { cleanErrors } from "../../redux/actions/actionAuth";
 import { withRouter } from 'react-router-dom';
+import { getContacts } from '../../redux/actions/actionContacts';
 
 function cleanErrorsForDisplay(props){
 	if (props.email){
@@ -35,7 +36,7 @@ class Login extends Component {
 	componentWillReceiveProps(nextProps) { 
 		if (nextProps.auth.isAuthenticated) { 
 			this.props.cleanErrors();
-			this.props.history.push("/temp"); // push user to dashboard when they login */
+			this.props.history.push("/app"); // push user to dashboard when they login */
 	  	} 
 	  	else if (nextProps.errors) { 
 			this.setState({ 
@@ -49,7 +50,7 @@ class Login extends Component {
 	componentDidMount() { 
 		// If logged in and user navigates to Login page, should redirect them to app 
 		if (this.props.auth.isAuthenticated) { 
-		  this.props.history.push("/temp"); 
+		  this.props.history.push("/app"); 
 		} 
 	}
 
@@ -135,4 +136,4 @@ Login.propTypes = {
 
 const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors }); 
 
-export default connect(mapStateToProps, { loginUser, cleanErrors })(withRouter(Login)); 
+export default connect(mapStateToProps, { loginUser, cleanErrors, getContacts })(withRouter(Login)); 

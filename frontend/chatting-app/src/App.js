@@ -44,7 +44,7 @@ class App extends Component {
                     <Route exact path="/sign-up" component={Register} /> 
                     <Route path="/sign-in" component={Login} /> 
                     <Switch> 
-                        <PrivateRoute exact path="/temp" component={ChatApp} /> 
+                        <PrivateRoute exact path="/app" component={ChatApp} /> 
                     </Switch> 
                 </div> 
                 </Router> 

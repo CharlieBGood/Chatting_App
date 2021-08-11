@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import UserProfile from '../profile/UserProfile'
+import { connect } from "react-redux"; 
+import { withRouter } from 'react-router-dom';
+import { getUsers } from '../../redux/actions/actionUsers';
 
 function GetSortOrder(prop) {    
     return function(a, b) {    
@@ -16,23 +19,26 @@ function GetSortOrder(prop) {
 function RenderUsersList(props){
     
     var id = -1;
-    const usersList = props.users.sort(GetSortOrder("nombre")).map((user) =>{
+    const usersList = props.users.map((user) =>{
         id++;
         return(
             <li className="list-group-item" id={"id_user_"+id}
-            key={"id_user_"+id} onClick={() => props.changeProfile(user)}>
-                {user.nombre}
+            key={"id_user_"+id}>
+                {user.nickname}
             </li>
         );
     });
 
     return(
-        <div class="scrollable w-100">
+        <div className="scrollable w-100">
             <ul className="list-group scrollable">
                 {usersList}
             </ul>
         </div>
     );
+    return(
+        <h1>Users list</h1>
+    )
 }
 
 function RightSide({profile}){
@@ -64,27 +70,44 @@ class NewContact extends Component{
         })
     }
 
+    compo(){
+
+    }
+
+    componentWillReceiveProps(){
+        if (this.props.contacts.contacts.length > 0) {
+            var list = this.props.auth.user.id
+            this.props.contacts.contacts.map((contact) => {
+                list += '-' + contact.id
+            })
+            if (this.props.users.length === 0){
+                console.log('now here')
+                this.props.getUsers(list);
+            }
+        }
+    }
+
     render(){
         return (
             <Modal isOpen={this.props.isModalOpen} toggle={this.props.toggleModal} size='lg'>
                 <ModalHeader>New Contact</ModalHeader>
                 <ModalBody>
                     <div className='container border'>
-                        <div class="row">
+                        <div className="row">
                             {/* Parte izquierda: barra de búsqueda de contactos */}
                             <div className="col-5 text-center mt-5">
             
                                 <h1>App Users</h1>
                                 <div className="form-group my-5">
-                                    <input type="text" id="myInput" onkeyup="myFunction()" 
+                                    <input type="text" id="myInput"
                                     placeholder="Contact name..." title="Type in a name" 
-                                    class="form-control w-75"/>
+                                    className="form-control w-75"/>
                                 </div>
-                                <RenderUsersList changeProfile={this.changeProfile} users={this.props.users}/>
+                                <RenderUsersList users={this.props.users}/>
                             </div>
                     
                             {/* Parte derecha: Configuraciones de grupo    */}
-                            <div  class="col-7 text-center"> 
+                            <div  className="col-7 text-center"> 
                                 <RightSide profile={this.state.profile} />
                             </div>
                         </div>
@@ -99,4 +122,6 @@ class NewContact extends Component{
     }
 }
 
-export default NewContact;
+const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors, contacts: state.contacts, users: state.users }); 
+
+export default connect(mapStateToProps, { getUsers })(withRouter(NewContact)); 

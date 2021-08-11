@@ -146,7 +146,7 @@ router.get("/find_user", (req, res) => {
 
 
 // @route PATCH api/users/add-contact 
-// @desc Register user 
+// @desc Add contact to registered user 
 // @access Registered User
 router.patch("/add-contact", (req, res) => {
 
@@ -164,9 +164,10 @@ router.patch("/add-contact", (req, res) => {
                     main_user.contacts.push(id_contact);
                     main_user.save();
                 })
+                contacts_list.push(id_contact);
                 return res.status(200).json(
                     { 
-                        message: 'contact added'
+                        contacts_list: contacts_list
                     }
                 ); 
             }
@@ -176,6 +177,40 @@ router.patch("/add-contact", (req, res) => {
         }
     })
 });
+
+
+// @route GET api/users/get-users
+// @desc Get all users registered in app 
+// @access Public
+router.get("/get-users", (req, res) => {
+    
+    const contacts_list = req.query.list.split('-');
+    console.log(contacts_list)
+    User.find({ _id: {$nin : contacts_list} }, (err, users) => {
+        if(err) {
+            console.log(err)
+        }
+        else{
+            users_list = []
+            users.map(user => {
+                users_list.push({
+                    id: user.id,
+                    nickname: user.nickname,
+                    email: user.email,
+                    name: user.name,
+                    lastname: user.lastname,
+                    phone: user.phone
+                })
+            })
+            return res.status(200).json(
+                { 
+                    users_list: users_list
+                }
+            ); 
+        } 
+    })
+
+})
 
 
 
