@@ -1,4 +1,4 @@
-import { GET_CONTACTS, CONTACTS_LOADING } from "../actions/actionTypes";
+import { UPDATE_CONTACTS, CONTACTS_LOADING, CLEAN_CONTACTS } from "../actions/actionTypes";
 
 const initialState = {
     contacts : [],
@@ -7,7 +7,7 @@ const initialState = {
 
 export default function(state = initialState, action) { 
     switch (action.type) { 
-        case GET_CONTACTS: 
+        case UPDATE_CONTACTS: 
             return {
                 contacts : action.payload,
                 isLoading : false
@@ -16,6 +16,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 isLoading : true
+            }
+        case CLEAN_CONTACTS:
+            return {
+                contacts : [],
+                isLoading : false
             }
         default: 
             return state; 

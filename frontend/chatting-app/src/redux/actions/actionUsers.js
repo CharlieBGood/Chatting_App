@@ -1,6 +1,6 @@
 import axios from "axios"; 
 import { baseUrl } from "../baseUrl";
-import { GET_USERS, GET_ERRORS } from "./actionTypes"; 
+import { GET_USERS, GET_ERRORS, CLEAN_USERS } from "./actionTypes"; 
 
 export const getUsers = (list) => (dispatch) => {
     axios 
@@ -23,3 +23,9 @@ export const updateUsers = (users_list) => {
         payload: users_list, 
     }; 
 }; 
+
+export const cleanUsers = () => {
+    return {
+        type: CLEAN_USERS
+    }
+}

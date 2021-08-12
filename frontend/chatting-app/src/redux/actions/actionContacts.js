@@ -1,6 +1,6 @@
 import axios from "axios"; 
 import { baseUrl } from "../baseUrl";
-import { GET_CONTACTS, GET_ERRORS, CONTACTS_LOADING } from "./actionTypes"; 
+import { UPDATE_CONTACTS, GET_ERRORS, CONTACTS_LOADING, CLEAN_CONTACTS } from "./actionTypes"; 
 
 
 export const getContacts = (id) => (dispatch) => { 
@@ -41,21 +41,28 @@ export const getContacts = (id) => (dispatch) => {
 // Update contacts list 
 export const updateContacts = (contactsList) => { 
     return { 
-        type: GET_CONTACTS, 
+        type: UPDATE_CONTACTS, 
         payload: contactsList, 
     }; 
 }; 
 
-export const addContact = (id_user, id_contact, contacts_list) => (dispatch) => {
+export const addContact = (contacts_data) => (dispatch) => {
+
     axios
-        .patch(baseUrl + 'api/users/add-contact', id_user, id_contact, contacts_list)
+        .patch(baseUrl + '/api/users/add-contact', contacts_data)
         .then((res) => {
-            dispatch(updateContacts(res.contacts_list))
+            dispatch(updateContacts(res.data.contacts_list));
         })
 }
 
 export const loadingContacts = () => {
     return {
         type: CONTACTS_LOADING
+    }
+}
+
+export const cleanContacts = () => {
+    return {
+        type: CLEAN_CONTACTS
     }
 }

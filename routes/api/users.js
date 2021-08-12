@@ -150,30 +150,33 @@ router.get("/find_user", (req, res) => {
 // @access Registered User
 router.patch("/add-contact", (req, res) => {
 
-    const id_user = req.body.id_user;
-    const id_contact = req.body.id_contact;
-    const contacts_list = req.body.contacts_list;
+    const { id_user, id_contact, contacts_list } = req.body; 
 
-    User.findById(id_contact).then(user => {
-        if (user) {
-            if (contacts_list.includes(id_contact)) {
-                return res.status(400).json({ message: "The contact already exists in your contacts list" });
+    User.findById(id_contact).then(contact => {
+        if (contact) {
+            contacts_list.map((contact_element) => {
+                if (contact_element.id === id_contact) {
+                    return res.status(400).json({ message: "The contact already exists in your contacts list" });
+                }
+            })
+            User.findById(id_user).then(main_user => {
+                main_user.contacts.push(id_contact);
+                main_user.save();
+            })
+            const new_contact = {
+                id : contact.id,
+                nickname : contact.nickname,
+                contacts : contact.contacts
             }
-            else {
-                User.findById(id_user).then(main_user => {
-                    main_user.contacts.push(id_contact);
-                    main_user.save();
-                })
-                contacts_list.push(id_contact);
-                return res.status(200).json(
-                    { 
-                        contacts_list: contacts_list
-                    }
-                ); 
-            }
+            contacts_list.push(new_contact);
+            return res.status(200).json(
+                { 
+                    contacts_list: contacts_list
+                }
+            ); 
         }
         else {
-            return res.status(400).json({ message: "Unfortunately, your contact is not on Chatting App yet, invite him!" });
+            return res.status(400).json({ message: "Unfortunately, the contact you are trying to add is not on Chatting App yet, invite him!" });
         }
     })
 });
@@ -185,7 +188,6 @@ router.patch("/add-contact", (req, res) => {
 router.get("/get-users", (req, res) => {
     
     const contacts_list = req.query.list.split('-');
-    console.log(contacts_list)
     User.find({ _id: {$nin : contacts_list} }, (err, users) => {
         if(err) {
             console.log(err)

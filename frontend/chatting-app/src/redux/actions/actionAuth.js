@@ -3,6 +3,8 @@ import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode"; 
 import { GET_ERRORS, CLEAN_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./actionTypes"; 
 import { baseUrl } from "../baseUrl";
+import { cleanContacts, getContacts } from './actionContacts'
+import { cleanUsers } from "./actionUsers";
 
 // Register User 
 export const registerUser = (userData, history) => (dispatch) => { 
@@ -33,7 +35,8 @@ export const loginUser = (userData) => (dispatch) => {
             const decoded = jwt_decode(token); 
             // Set current user 
             dispatch(setCurrentUser(decoded));
-        }) 
+            dispatch(getContacts(decoded.id));
+        })
         .catch((err) => 
             dispatch({ 
             type: GET_ERRORS, 
@@ -65,6 +68,8 @@ export const logoutUser = () => (dispatch) => {
     setAuthToken(false); 
     // Set current user to empty object {} which will set isAuthenticated to false 
     dispatch(setCurrentUser({}));
+    dispatch(cleanContacts());
+    dispatch(cleanUsers());
 };
 
 export const cleanErrors = () => { 
