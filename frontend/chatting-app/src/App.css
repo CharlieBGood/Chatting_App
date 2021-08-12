@@ -495,3 +495,8 @@ ul, li {
   max-height: 500px;
   overflow-y: scroll;
 }
+
+.scroll-contacts-list{
+  max-height: 200px;
+  overflow-y: scroll;
+}

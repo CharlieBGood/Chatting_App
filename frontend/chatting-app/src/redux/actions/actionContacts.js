@@ -66,3 +66,12 @@ export const cleanContacts = () => {
         type: CLEAN_CONTACTS
     }
 }
+
+export const removeContact = (contact_data) => (dispatch) => {
+    axios
+        .post(baseUrl + '/api/users/remove-contact', contact_data)
+        .then((res) => {
+            dispatch(loadingContacts());
+            dispatch(updateContacts(res.data.contacts_list));
+        })
+}

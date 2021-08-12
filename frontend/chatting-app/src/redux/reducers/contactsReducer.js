@@ -14,7 +14,7 @@ export default function(state = initialState, action) {
             }
         case CONTACTS_LOADING:
             return {
-                ...state,
+                contacts : [],
                 isLoading : true
             }
         case CLEAN_CONTACTS:

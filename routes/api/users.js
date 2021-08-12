@@ -11,6 +11,7 @@ const validateLoginInput = require("../../validation/login");
 
 // Load User model 
 const User = require("../../models/User");
+const { useRef } = require("react");
 
 // @route POST api/users/register 
 // @desc Register user 
@@ -212,6 +213,65 @@ router.get("/get-users", (req, res) => {
         } 
     })
 
+})
+
+// @route POST api/users/remove-contact
+// @desc Remove the contact from contacts list
+// @access Registered User
+router.post("/remove-contact", (req, res) => {
+
+    const { id_user, id_contact } = req.body; 
+
+    User.findById(id_user).then((user) => {
+        if (user.contacts.includes(id_contact)) {
+            let index = user.contacts.indexOf(id_contact)
+            user.contacts.splice(index)
+            user.save()
+
+            return res.status(200).json(
+                { 
+                    contacts_list: user.contacts
+                }
+            ); 
+        }
+        else { 
+            return res 
+                .status(400) 
+                .json({ user: "Contact does not exits in your contacts list" }); 
+        } 
+    })
+})
+
+
+// @route PATCH api/users/update-user
+// @desc Update user info
+// @access Registered User
+router.post("/update-user", (req, res) => {
+
+    const { id_user, name, lastname, nickname, phone } = req.body; 
+
+    User.findById(id_user).then((user) => {
+        console.log(user)
+        if (user) {
+            user.name = name
+            user.lastname = lastname
+            user.nickname = nickname
+            user.phone = phone
+
+            user.save()
+            
+            return res.status(200).json(
+                { 
+                    user_updated: user
+                }
+            ); 
+        }
+        else { 
+            return res 
+                .status(400) 
+                .json({ user: "User is not registered in Chatting App" }); 
+        } 
+    })
 })
 
 

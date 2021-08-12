@@ -9,9 +9,9 @@ import swal from 'sweetalert';
 
 function GetSortOrder(prop) {    
     return function(a, b) {    
-        if (a[prop] > b[prop]) {    
+        if (a[prop].toLowerCase() > b[prop].toLowerCase()) {    
             return 1;    
-        } else if (a[prop] < b[prop]) {    
+        } else if (a[prop].toLowerCase() < b[prop].toLowerCase()) {    
             return -1;    
         }    
         return 0;    
@@ -20,20 +20,27 @@ function GetSortOrder(prop) {
 
 function RenderUsersList(props){
 
-    const usersList = props.users.map((user) =>{
+    const usersList = props.users.sort(GetSortOrder('nickname')).map((user) =>{
         return(
             <li className="list-group-item"
             key={user.id} onClick={() => props.changeProfile(user)}>
-                {user.nickname}
+                <div className="row">
+                        <div className="col-2">
+                            <img src="images/woman.png" className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
+                        </div>
+                        <div className="col-10">
+                            {user.nickname}
+                        </div>
+                    </div>
             </li>
         );
     });
 
     return(
-        <div className="container scroll-users-list">
-            <ul className="list-group">
-            {usersList}
-        </ul>
+        <div className="d-flex scroll-users-list border">
+            <ul className="list-group border">
+                {usersList}
+            </ul>
         </div>
         
     );
@@ -92,14 +99,11 @@ class NewContact extends Component{
                     <div className='container scroll-modal'>
                         <div className="row">
                             {/* Parte izquierda: barra de búsqueda de contactos */}
-                            <div className="col-5 text-center mt-5 align-content-center">
-                                <h1>App Users</h1>
-                                <div className="form-group my-4">
-                                    <input type="text" id="myInput"
-                                    placeholder="Contact name..." title="Type in a name" 
-                                    className="form-control"/>
-                                </div>
-                                <RenderUsersList users={this.props.users} changeProfile={this.changeProfile}/>
+                            <div className="col-5 mt-5">
+                                <input type="text" id="myInput"
+                                placeholder="Contact name..." title="Type in a name" 
+                                className="form-control mb-1"/>
+                                <RenderUsersList users={this.props.users} changeProfile={this.changeProfile} />
                             </div>
                     
                             {/* Parte derecha: Configuraciones de grupo    */}

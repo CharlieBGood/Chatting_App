@@ -5,11 +5,19 @@ import NewGroup from "../modals/NewGroupModalComponent";
 import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
 import { withRouter } from 'react-router-dom';
-import { getContacts } from '../../redux/actions/actionContacts';
+import { getContacts, removeContact } from '../../redux/actions/actionContacts';
 import { getUsers } from '../../redux/actions/actionUsers';
-const _ = require('lodash');
 
-
+function GetSortOrder(prop) {    
+    return function(a, b) {    
+        if (a[prop] > b[prop]) {    
+            return 1;    
+        } else if (a[prop] < b[prop]) {    
+            return -1;    
+        }    
+        return 0;    
+    }    
+} 
 
 function RenderUsersList(props){
 
@@ -20,9 +28,9 @@ function RenderUsersList(props){
     }
    
     else {
-        const contactsList = props.contacts.contacts.map((contact) => {
+        const contactsList = props.contacts.contacts.sort(GetSortOrder('nickname')).map((contact) => {
             return(
-                <li className="list-group-item" key={contact.id}>
+                <li className="list-group-item" key={contact.id} id={contact.id}>
                     <div className="row">
                         <div className="col-2">
                             <img src="images/man.png" className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
@@ -35,7 +43,7 @@ function RenderUsersList(props){
             );
         });
         return(
-            <div className="scrollable w-100">
+            <div className="d-flex scroll-contacts-list">
                 <ul className="list-group">
                     {contactsList}
                 </ul>
@@ -105,7 +113,7 @@ class ChatList extends Component {
                                     <input type="text" id="myInput" 
                                     placeholder="Contact name..." title="Type in a name" 
                                     className="form-control mb-1"/>
-                                    <RenderUsersList contacts={this.props.contacts} />
+                                    <RenderUsersList contacts={this.props.contacts} removeContact={this.removeContact}/>
                                 </div>
                             </div>
                         </div>
@@ -123,5 +131,5 @@ ChatList.propTypes = {
 
 const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors, contacts: state.contacts, users: state.users }); 
 
-export default connect(mapStateToProps, { getContacts, getUsers })(withRouter(ChatList)); 
+export default connect(mapStateToProps, { getContacts, getUsers, removeContact })(withRouter(ChatList)); 
 
