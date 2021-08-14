@@ -81,7 +81,6 @@ router.post("/login", (req, res) => {
                     instagram : user.instagram,
                     twitter: user.twitter,
                     linkedin: user.linkedin,
-                    contacts : user.contacts
                 }; 
                 // Sign token 
                 jwt.sign( 

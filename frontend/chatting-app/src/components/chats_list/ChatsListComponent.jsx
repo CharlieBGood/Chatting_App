@@ -80,11 +80,15 @@ class ChatList extends Component {
         });
     }
 
+    componentDidMount(){
+        this.props.getContacts();
+    }
+
     render(){
         return(
             <React.Fragment>
-                <NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal} 
-                users={this.props.users} /> 
+                {/*<NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal} 
+                users={this.props.users} /> */}
                 {/* <NewGroup isModalOpen={this.state.isNewGroupModalOpen} toggleModal={this.toggleNewGroupModal}/> */}
                 <div className="row">
                     <div className="card border-0">
@@ -127,6 +131,7 @@ class ChatList extends Component {
 ChatList.propTypes = { 
 	auth: PropTypes.object.isRequired, 
 	errors: PropTypes.object.isRequired, 
+    contacts : PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors, contacts: state.contacts, users: state.users }); 
