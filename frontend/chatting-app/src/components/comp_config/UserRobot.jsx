@@ -21,7 +21,7 @@ class UserSetup extends Component {
 
      render(){
           return (
-               <div className="container">
+               <div className="container scroll-modal">
                     <PasswordModal isModalOpen={this.state.isPasswordModalOpen} toggleModal={this.togglePasswordModal} />
                     <div className="row robot-container">
                          <div className="col-md-12 col-12 mt-5 text-center">
@@ -33,16 +33,18 @@ class UserSetup extends Component {
                               <br />
                               <textarea className="form-control"></textarea>
                               <div className="form-check mt-2 text-left">
-                                   <input type="checkbox" className="form-check-input"/>
+                                   <input type="checkbox" className="form-check-input" readOnly/>
                                    <label className="form-check-label">Automatic Answer</label>
                               </div>
                               <br />
-                              <button className="btn btn-primary mt-3" type="submit">Program</button>
+                              <p>Available soon!</p>
+                              {/*<button className="btn btn-primary mt-3" type="submit">Program</button>*/}
+                              <hr></hr>
                          </div>
                          <div className="col-md-12 col-12 mt-5 text-center">
-                              <span class="fa-stack fa-2x" onClick={this.togglePasswordModal}>
-                                   <i class="fa fa-circle fa-button fa-stack-2x"></i>
-                                   <i class="fa fa-user-secret fa-stack-1x fa-inverse"></i>
+                              <span className="fa-stack fa-2x" onClick={this.togglePasswordModal}>
+                                   <i className="fa fa-circle fa-button fa-stack-2x"></i>
+                                   <i className="fa fa-user-secret fa-stack-1x fa-inverse"></i>
                               </span>
                          </div>
                     </div>

@@ -42,7 +42,6 @@ class Configuration extends Component {
                twitter: this.state.twitter,
                linkedin: this.state.linkedin
 		};
-          alert(userData)
 		this.props.updateUser(userData); 
           this.props.toggleModal();
 	}
@@ -56,9 +55,9 @@ class Configuration extends Component {
                          <div className="container-fluid">
                               <div className="row">
                                    <div className="col-md-5 col-12 mb-md-1">
-                                        {/* <UserRobot/> */}
+                                         <UserRobot/> 
                                    </div>
-                                   <div className="col-md-7 col-12 mt-md-1">
+                                   <div className="col-md-7 col-12 mt-1 mr-4">
                                         <div className="row justify-content-center">
                                              <img className="miniature-profile-image" src="images/man.png" alt="ActRazer" />
                                              <hr />

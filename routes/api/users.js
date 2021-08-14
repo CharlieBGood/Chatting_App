@@ -262,7 +262,6 @@ router.post("/update-user", (req, res) => {
     const { id_user, name, lastname, nickname, phone, github, instagram, twitter, linkedin } = req.body; 
 
     User.findById(id_user).then((user) => {
-        console.log(user)
         if (user) {
             user.name = name
             user.lastname = lastname
