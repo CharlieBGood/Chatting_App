@@ -110,9 +110,9 @@ class ChatList extends Component {
                                     Chats
                                 </div>
                                 <div className="card-body">
-                                    <input type="text" id="myInput" 
+                                    {/*<input type="text" id="myInput" 
                                     placeholder="Contact name..." title="Type in a name" 
-                                    className="form-control mb-1"/>
+                            className="form-control mb-1"/>*/}
                                     <RenderUsersList contacts={this.props.contacts} removeContact={this.removeContact}/>
                                 </div>
                             </div>

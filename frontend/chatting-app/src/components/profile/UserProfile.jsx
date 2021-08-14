@@ -86,28 +86,28 @@ class UserProfile extends Component {
                     </div>
                 </div>
                 <div className="social_media">
-                  <a href="#" target="_blank" rel="noreferrer"
+                  <a href={this.props.user.github} target="_blank" rel="noreferrer"
                     className="ml-2">
                     <span className="fa-stack fa-lg">
                         <i className="fa fa-circle fa-button fa-stack-2x"></i>
                         <i className="fa fa-github fa-stack-1x fa-inverse"></i>
                     </span>
                   </a>
-                  <a href="#" target="_blank" rel="noreferrer"
+                  <a href={this.props.user.instagram} target="_blank" rel="noreferrer"
                     className="ml-1 ">
                     <span className="fa-stack fa-lg">
                         <i className="fa fa-circle fa-button fa-stack-2x"></i>
                         <i className="fa fa-instagram fa-stack-1x fa-inverse"></i>
                     </span>
                   </a>
-                  <a href="#" target="_blank" rel="noreferrer"
+                  <a href={this.props.user.twitter} target="_blank" rel="noreferrer"
                       className="ml-1">
                       <span className="fa-stack fa-lg">
                           <i className="fa fa-circle fa-button fa-stack-2x"></i>
                           <i className="fa fa-twitter fa-stack-1x fa-inverse"></i>
                       </span>
                   </a>
-                  <a href="#" target="_blank" rel="noreferrer"
+                  <a href={this.props.user.linkedin} target="_blank" rel="noreferrer"
                       className="ml-1">
                       <span className="fa-stack fa-lg">
                           <i className="fa fa-circle fa-button fa-stack-2x"></i>

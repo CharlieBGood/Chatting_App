@@ -39,6 +39,27 @@ const UserSchema = new Schema({
         data: Buffer,
         contentType: String,
         required: false
-    }
+    },
+    github: { 
+        type: String, 
+        required: false,
+        default: ''
+    }, 
+    instagram: { 
+        type: String, 
+        required: false,
+        default: ''
+    }, 
+    twitter: { 
+        type: String, 
+        required: false,
+        default: ''
+    }, 
+    linkedin: { 
+        type: String, 
+        required: false,
+        default: ''
+    }, 
+
 }); 
 module.exports = User = mongoose.model("users", UserSchema); 

@@ -100,9 +100,9 @@ class NewContact extends Component{
                         <div className="row">
                             {/* Parte izquierda: barra de búsqueda de contactos */}
                             <div className="col-5 mt-5">
-                                <input type="text" id="myInput"
+                                {/*<input type="text" id="myInput"
                                 placeholder="Contact name..." title="Type in a name" 
-                                className="form-control mb-1"/>
+        className="form-control mb-1"/>*/}
                                 <RenderUsersList users={this.props.users} changeProfile={this.changeProfile} />
                             </div>
                     

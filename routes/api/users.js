@@ -74,6 +74,13 @@ router.post("/login", (req, res) => {
                 const payload = { 
                     id: user.id, 
                     nickname: user.nickname,
+                    name : user.name,
+                    lastname : user.lastname,
+                    phone: user.phone, 
+                    github : user.github,
+                    instagram : user.instagram,
+                    twitter: user.twitter,
+                    linkedin: user.linkedin,
                     contacts : user.contacts
                 }; 
                 // Sign token 
@@ -202,7 +209,11 @@ router.get("/get-users", (req, res) => {
                     email: user.email,
                     name: user.name,
                     lastname: user.lastname,
-                    phone: user.phone
+                    phone: user.phone,
+                    github : user.github,
+                    instagram : user.instagram,
+                    twitter: user.twitter,
+                    linkedin: user.linkedin,
                 })
             })
             return res.status(200).json(
@@ -248,7 +259,7 @@ router.post("/remove-contact", (req, res) => {
 // @access Registered User
 router.post("/update-user", (req, res) => {
 
-    const { id_user, name, lastname, nickname, phone } = req.body; 
+    const { id_user, name, lastname, nickname, phone, github, instagram, twitter, linkedin } = req.body; 
 
     User.findById(id_user).then((user) => {
         console.log(user)
@@ -257,13 +268,38 @@ router.post("/update-user", (req, res) => {
             user.lastname = lastname
             user.nickname = nickname
             user.phone = phone
+            user.github = github
+            user.instagram = instagram
+            user.linkedin = linkedin
+            user.twitter = twitter
 
             user.save()
             
-            return res.status(200).json(
+            const payload = { 
+                id: user.id, 
+                nickname: user.nickname,
+                name : user.name,
+                lastname : user.lastname,
+                phone: user.phone, 
+                github : user.github,
+                instagram : user.instagram,
+                twitter: user.twitter,
+                linkedin: user.linkedin,
+                contacts : user.contacts
+            }; 
+            // Sign token 
+            jwt.sign( 
+                payload, 
+                keys.secretOrKey, 
                 { 
-                    user_updated: user
-                }
+                    expiresIn: 3600 // 1 hour in seconds 
+                }, 
+                (err, token) => { 
+                    res.json({ 
+                        success: true, 
+                        token: "Bearer " + token 
+                    }); 
+                }  
             ); 
         }
         else { 
