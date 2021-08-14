@@ -8,28 +8,10 @@ export const getContacts = (id) => (dispatch) => {
     dispatch(loadingContacts(true));
 
     axios 
-        .get(baseUrl + "/api/users/find_user?id="+id) 
+        .get(baseUrl + "/api/users/get-contacts?id="+id) 
         .then((res) => { 
-            // Get contacts id from logged user 
-            const contactsId = res.data.contacts; 
-            const contactsList = []
-            // Get user info from every contact
-            contactsId.map((contactId) => {
-                axios
-                    .get(baseUrl + "/api/users/find_user?id="+contactId)
-                    .then((res) => {
-                        contactsList.push(res.data)
-                    })
-                    .catch((err) => 
-                        dispatch({ 
-                        type: GET_ERRORS, 
-                        payload: err.response.data, 
-                        }) 
-                    ); 
-            })
-            return contactsList;
+            dispatch(updateContacts(res.data))
         }) 
-        .then((contactsList) => dispatch(updateContacts(contactsList)))
         .catch((err) => 
             dispatch({ 
             type: GET_ERRORS, 
