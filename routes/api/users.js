@@ -81,6 +81,7 @@ router.post("/login", (req, res) => {
                     instagram : user.instagram,
                     twitter: user.twitter,
                     linkedin: user.linkedin,
+                    contacts : user.contacts
                 }; 
                 // Sign token 
                 jwt.sign( 
@@ -253,38 +254,38 @@ router.post("/remove-contact", (req, res) => {
 })
 
 // @route GET api/users/get-contacts
-// @desc Get all contacts from the current user 
-// @access Registered user
-router.get("/get-contacts", (req, res) => {
+// @desc Get all contacts from the current us 
+// @access Public
+router.get("/get-contacts", async (req, res) => {
     
-    User.findById(req.query.id).then(user => { 
-        if (user) { 
-            const contacts_list = []
-            user.contacts.map((contactId) => {
-                const contact = async () => await User.findOne({'_id' : contactId}) 
-                console.log(contact)
-                contacts_list.push({
-                    id: contact.id,
-                    nickname: contact.nickname,
-                    email: contact.email,
-                    name: contact.name,
-                    lastname: contact.lastname,
-                    phone: contact.phone,
-                    github : contact.github,
-                    instagram : contact.instagram,
-                    twitter: contact.twitter,
-                    linkedin: contact.linkedin,
-                })
+    const contacts_list = req.query.list.split('-');
+    try{
+        const lista = await User.find({ _id: {$in : contacts_list} });
+        return_contacts_list = []
+        lista.map(contact => {
+            return_contacts_list.push({
+                id: contact.id,
+                nickname: contact.nickname,
+                email: contact.email,
+                name: contact.name,
+                lastname: contact.lastname,
+                phone: contact.phone,
+                github : contact.github,
+                instagram : contact.instagram,
+                twitter: contact.twitter,
+                linkedin: contact.linkedin,
             })
-            return res.status(200).json({contacts : contacts_list}); 
-        } 
-        else { 
-            return res 
-                .status(400) 
-                .json({ passwordincorrect: "User does not exists" }); 
-        } 
-    })
+        })
+        
+        return res.status(200).json(
+            { 
+                contacts_list: return_contacts_list
+            }
+        ); 
+    }
+    catch {
 
+    }
 })
 
 

@@ -23,7 +23,10 @@ function RenderUsersList(props){
 
     if (props.contacts.isLoading){
         return(
-            <h1>Is Loading</h1>
+            <div class="col-12">
+                <img src="images/ghost.gif" alt="searching..." className="img-fluid rounded mx-auto d-block mt-5"/>
+            </div>
+            
         )
     }
    
@@ -81,14 +84,14 @@ class ChatList extends Component {
     }
 
     componentDidMount(){
-        this.props.getContacts();
+        this.props.getContacts(this.props.auth.user.contacts.join('-'));
     }
 
     render(){
         return(
             <React.Fragment>
-                {/*<NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal} 
-                users={this.props.users} /> */}
+                <NewContact isModalOpen={this.state.isNewContactModalOpen} toggleModal={this.toggleNewContactModal} 
+                users={this.props.users} /> 
                 {/* <NewGroup isModalOpen={this.state.isNewGroupModalOpen} toggleModal={this.toggleNewGroupModal}/> */}
                 <div className="row">
                     <div className="card border-0">

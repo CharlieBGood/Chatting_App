@@ -3,15 +3,16 @@ import { baseUrl } from "../baseUrl";
 import { UPDATE_CONTACTS, GET_ERRORS, CONTACTS_LOADING, CLEAN_CONTACTS } from "./actionTypes"; 
 
 
-export const getContacts = (id) => (dispatch) => { 
+export const getContacts = (list) => (dispatch) => { 
     
     dispatch(loadingContacts(true));
 
     axios 
-        .get(baseUrl + "/api/users/get-contacts?id="+id) 
+        .get(baseUrl + "/api/users/get-contacts?list="+list) 
         .then((res) => { 
-            dispatch(updateContacts(res.data))
+            return res.data.contacts_list
         }) 
+        .then((contactsList) => dispatch(updateContacts(contactsList)))
         .catch((err) => 
             dispatch({ 
             type: GET_ERRORS, 
