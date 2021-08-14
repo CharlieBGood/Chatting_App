@@ -19,6 +19,9 @@ function cleanErrorsForDisplay(props){
 	else if (props.passwordincorrect){
 		return props.passwordincorrect
 	}
+	else if (props.emailnotfound){
+		return props.emailnotfound
+	}
 }
 
 
