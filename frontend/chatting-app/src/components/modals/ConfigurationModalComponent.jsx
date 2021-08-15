@@ -182,7 +182,6 @@ class Configuration extends Component {
 }
 
 Configuration.propTypes = { 
-	loginUser: PropTypes.func.isRequired, 
 	auth: PropTypes.object.isRequired, 
 	errors: PropTypes.object.isRequired, 
 };

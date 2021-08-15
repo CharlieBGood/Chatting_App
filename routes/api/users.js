@@ -229,19 +229,19 @@ router.get("/get-users", (req, res) => {
 // @route POST api/users/remove-contact
 // @desc Remove the contact from contacts list
 // @access Registered User
-router.post("/remove-contact", (req, res) => {
+router.patch("/remove-contact", (req, res) => {
 
     const { id_user, id_contact } = req.body; 
 
     User.findById(id_user).then((user) => {
         if (user.contacts.includes(id_contact)) {
             let index = user.contacts.indexOf(id_contact)
-            user.contacts.splice(index)
+            user.contacts.splice(index, 1)
             user.save()
 
             return res.status(200).json(
                 { 
-                    contacts_list: user.contacts
+                    user_id: user.id
                 }
             ); 
         }

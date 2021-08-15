@@ -50,11 +50,20 @@ export const cleanContacts = () => {
     }
 }
 
-export const removeContact = (contact_data) => (dispatch) => {
+export const removeContact = (data) => (dispatch) => {
+    dispatch(loadingContacts());
+    
     axios
-        .post(baseUrl + '/api/users/remove-contact', contact_data)
+        .patch(baseUrl + '/api/users/remove-contact', data)
         .then((res) => {
-            dispatch(loadingContacts());
-            dispatch(updateContacts(res.data.contacts_list));
+            
+            return res.data.user_id
         })
+        .then((user_id) => dispatch(getContacts(user_id)))
+        .catch((err) => 
+            dispatch({ 
+            type: GET_ERRORS, 
+            payload: err.response.data, 
+            }) 
+        ); 
 }
