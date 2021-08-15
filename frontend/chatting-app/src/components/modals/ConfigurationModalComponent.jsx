@@ -31,6 +31,7 @@ class Configuration extends Component {
 	};
 
      updateUser() {
+
 		const userData = {
                id_user : this.props.auth.user.id,
 			name: this.state.name, 
@@ -42,6 +43,15 @@ class Configuration extends Component {
                twitter: this.state.twitter,
                linkedin: this.state.linkedin
 		};
+
+          const claves = Object.keys(userData);
+    
+           for(let i = 0; i < claves.length ; i++){
+                if (userData[claves[i]] === ""){
+                     userData[claves[i]]=this.props.auth.user[claves[i]]
+                }
+           }
+
 		this.props.updateUser(userData); 
           this.props.toggleModal();
 	}
