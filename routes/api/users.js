@@ -258,34 +258,34 @@ router.post("/remove-contact", (req, res) => {
 // @access Public
 router.get("/get-contacts", async (req, res) => {
     
-    const contacts_list = req.query.list.split('-');
-    try{
-        const lista = await User.find({ _id: {$in : contacts_list} });
-        return_contacts_list = []
+    try {
+        const user = await User.findOne({ _id : req.query.id })
+        const lista = await User.find({ _id : {$in : user.contacts} })
+
+        const contacts_list = []
         lista.map(contact => {
-            return_contacts_list.push({
-                id: contact.id,
+            contacts_list.push({
+                id: contact.id, 
                 nickname: contact.nickname,
-                email: contact.email,
-                name: contact.name,
-                lastname: contact.lastname,
-                phone: contact.phone,
+                name : contact.name,
+                lastname : contact.lastname,
+                phone: contact.phone, 
                 github : contact.github,
                 instagram : contact.instagram,
                 twitter: contact.twitter,
                 linkedin: contact.linkedin,
             })
         })
-        
         return res.status(200).json(
             { 
-                contacts_list: return_contacts_list
+                contacts_list: contacts_list
             }
-        ); 
+        );  
     }
-    catch {
+    catch{
 
     }
+    
 })
 
 

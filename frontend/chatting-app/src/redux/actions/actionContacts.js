@@ -3,12 +3,12 @@ import { baseUrl } from "../baseUrl";
 import { UPDATE_CONTACTS, GET_ERRORS, CONTACTS_LOADING, CLEAN_CONTACTS } from "./actionTypes"; 
 
 
-export const getContacts = (list) => (dispatch) => { 
+export const getContacts = (id) => (dispatch) => { 
     
     dispatch(loadingContacts(true));
 
     axios 
-        .get(baseUrl + "/api/users/get-contacts?list="+list) 
+        .get(baseUrl + "/api/users/get-contacts?id="+id) 
         .then((res) => { 
             return res.data.contacts_list
         }) 

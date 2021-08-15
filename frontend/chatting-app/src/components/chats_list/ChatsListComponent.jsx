@@ -84,7 +84,7 @@ class ChatList extends Component {
     }
 
     componentDidMount(){
-        this.props.getContacts(this.props.auth.user.contacts.join('-'));
+        this.props.getContacts(this.props.auth.user.id);
     }
 
     render(){
