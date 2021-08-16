@@ -183,7 +183,7 @@ class Configuration extends Component {
                          </div>
                     </ModalBody>
                     <ModalFooter>
-                         <Button color="primary" onClick={this.updateUser}>Actualizar</Button>{' '}
+                         <Button color="primary" onClick={this.updateUser}>Update</Button>{' '}
                          <Button color="secondary" onClick={this.props.toggleModal}>Cancel</Button>
                     </ModalFooter>
                </Modal>

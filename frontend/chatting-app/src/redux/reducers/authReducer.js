@@ -1,10 +1,10 @@
-import { SET_CURRENT_USER, USER_LOADING } from "../actions/actionTypes"; 
+import { PASSWORD_CHANGED, SET_CURRENT_USER, USER_LOADING } from "../actions/actionTypes"; 
 const isEmpty = require("is-empty");
 
 const initialState = { 
     isAuthenticated: false, 
     user: {}, 
-    loading: false 
+    loading: false,
 }; 
 export default function(state = initialState, action) { 
     switch (action.type) { 
@@ -19,6 +19,8 @@ export default function(state = initialState, action) {
                 ...state, 
                 loading: true 
             }; 
+        case PASSWORD_CHANGED:
+            return state
         default: 
             return state; 
     } 

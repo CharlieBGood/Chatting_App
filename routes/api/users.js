@@ -8,6 +8,7 @@ const multer = require('multer')
 // Load input validation 
 const validateRegisterInput = require("../../validation/register"); 
 const validateLoginInput = require("../../validation/login"); 
+const validateChangePassword = require("../../validation/password"); 
 
 // Load User model 
 const User = require("../../models/User");
@@ -285,7 +286,6 @@ router.get("/get-contacts", async (req, res) => {
     catch{
 
     }
-    
 })
 
 
@@ -344,6 +344,53 @@ router.post("/update-user", (req, res) => {
     })
 })
 
+// @route PATCH api/users/change-password
+// @desc Change the password for the current user
+// @access Registered User
+router.patch("/change-password", (req, res) => {
+
+    const { errors, isValid } = validateChangePassword(req.body); 
+
+    // Check validation 
+    if (!isValid) { 
+        return res.status(400).json(errors); 
+    } 
+    else{
+        User.findById(req.body.id).then((user) => {
+            if (user){ 
+                // Check password 
+                bcrypt.compare(req.body.old_password, user.password).then(isMatch => {
+                    if (isMatch){
+
+                        // Hash password before saving in database 
+                        bcrypt.genSalt(10, (err, salt) => { 
+                            bcrypt.hash(req.body.password, salt, (err, hash) => { 
+                                if (err) throw err; 
+                                user.password = hash; 
+                                user 
+                                .save() 
+                                .then(() => res.status(200).json({success:true})) 
+                                .catch(err => console.log(err)); 
+                            }); 
+                        }); 
+                    }
+                    else {
+                        return res 
+                            .status(400) 
+                            .json({ old_password: "Your old password does not match your current password" }); 
+                    }
+                })
+            }
+            else { 
+                return res 
+                    .status(400) 
+                    .json({ user: "User is not registered in Chatting App" }); 
+            } 
+        })
+    }
+
+    
+})
 
 
 module.exports = router; 
