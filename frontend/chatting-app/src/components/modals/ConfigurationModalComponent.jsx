@@ -183,7 +183,7 @@ class Configuration extends Component {
                          </div>
                     </ModalBody>
                     <ModalFooter>
-                         <Button color="primary" onClick={this.updateUser}>Actualizar</Button>{' '}
+                         <Button color="primary" onClick={this.updateUser}>Update</Button>{' '}
                          <Button color="secondary" onClick={this.props.toggleModal}>Cancel</Button>
                     </ModalFooter>
                </Modal>
@@ -192,7 +192,6 @@ class Configuration extends Component {
 }
 
 Configuration.propTypes = { 
-	loginUser: PropTypes.func.isRequired, 
 	auth: PropTypes.object.isRequired, 
 	errors: PropTypes.object.isRequired, 
 };

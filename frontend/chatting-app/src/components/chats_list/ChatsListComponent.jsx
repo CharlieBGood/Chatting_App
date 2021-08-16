@@ -23,7 +23,7 @@ function RenderUsersList(props){
 
     if (props.contacts.isLoading){
         return(
-            <div class="col-12">
+            <div className="col-12">
                 <img src="images/ghost.gif" alt="searching..." className="img-fluid rounded mx-auto d-block mt-5"/>
             </div>
             
@@ -38,8 +38,11 @@ function RenderUsersList(props){
                         <div className="col-2">
                             <img src="images/man.png" className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
                         </div>
-                        <div className="col-10">
+                        <div className="col-8">
                             {contact.nickname}
+                        </div>
+                        <div className="col-2" onClick={() => props.removeContact(contact.id)}>
+                            X
                         </div>
                     </div>
                 </li>
@@ -64,6 +67,7 @@ class ChatList extends Component {
         }
         this.toggleNewContactModal = this.toggleNewContactModal.bind(this);
         this.toggleNewGroupModal = this.toggleNewGroupModal.bind(this);
+        this.removeContact = this.removeContact.bind(this);
     }
 
     toggleNewContactModal(){
@@ -84,7 +88,12 @@ class ChatList extends Component {
     }
 
     componentDidMount(){
-        this.props.getContacts(this.props.auth.user.contacts.join('-'));
+        this.props.getContacts(this.props.auth.user.id);
+    }
+
+    removeContact(contact) {
+        const data = {id_user : this.props.auth.user.id, id_contact : contact}
+        this.props.removeContact(data);
     }
 
     render(){

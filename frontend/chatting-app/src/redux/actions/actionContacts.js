@@ -3,12 +3,12 @@ import { baseUrl } from "../baseUrl";
 import { UPDATE_CONTACTS, GET_ERRORS, CONTACTS_LOADING, CLEAN_CONTACTS } from "./actionTypes"; 
 
 
-export const getContacts = (list) => (dispatch) => { 
+export const getContacts = (id) => (dispatch) => { 
     
     dispatch(loadingContacts(true));
 
     axios 
-        .get(baseUrl + "/api/users/get-contacts?list="+list) 
+        .get(baseUrl + "/api/users/get-contacts?id="+id) 
         .then((res) => { 
             return res.data.contacts_list
         }) 
@@ -50,11 +50,20 @@ export const cleanContacts = () => {
     }
 }
 
-export const removeContact = (contact_data) => (dispatch) => {
+export const removeContact = (data) => (dispatch) => {
+    dispatch(loadingContacts());
+    
     axios
-        .post(baseUrl + '/api/users/remove-contact', contact_data)
+        .patch(baseUrl + '/api/users/remove-contact', data)
         .then((res) => {
-            dispatch(loadingContacts());
-            dispatch(updateContacts(res.data.contacts_list));
+            
+            return res.data.user_id
         })
+        .then((user_id) => dispatch(getContacts(user_id)))
+        .catch((err) => 
+            dispatch({ 
+            type: GET_ERRORS, 
+            payload: err.response.data, 
+            }) 
+        ); 
 }

@@ -25,7 +25,7 @@ class UserSetup extends Component {
                     <PasswordModal isModalOpen={this.state.isPasswordModalOpen} toggleModal={this.togglePasswordModal} />
                     <div className="row robot-container">
                          <div className="col-md-12 col-12 mt-5 text-center">
-                              <h2 class="TitlePass">ROBOT</h2>
+                              <h2 className="TitlePass">ROBOT</h2>
                               <br />
                               <div className="mt-4">
                                    <DateTime/>

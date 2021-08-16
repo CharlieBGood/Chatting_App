@@ -8,6 +8,7 @@ const multer = require('multer')
 // Load input validation 
 const validateRegisterInput = require("../../validation/register"); 
 const validateLoginInput = require("../../validation/login"); 
+const validateChangePassword = require("../../validation/password"); 
 
 // Load User model 
 const User = require("../../models/User");
@@ -229,19 +230,19 @@ router.get("/get-users", (req, res) => {
 // @route POST api/users/remove-contact
 // @desc Remove the contact from contacts list
 // @access Registered User
-router.post("/remove-contact", (req, res) => {
+router.patch("/remove-contact", (req, res) => {
 
     const { id_user, id_contact } = req.body; 
 
     User.findById(id_user).then((user) => {
         if (user.contacts.includes(id_contact)) {
             let index = user.contacts.indexOf(id_contact)
-            user.contacts.splice(index)
+            user.contacts.splice(index, 1)
             user.save()
 
             return res.status(200).json(
                 { 
-                    contacts_list: user.contacts
+                    user_id: user.id
                 }
             ); 
         }
@@ -258,32 +259,31 @@ router.post("/remove-contact", (req, res) => {
 // @access Public
 router.get("/get-contacts", async (req, res) => {
     
-    const contacts_list = req.query.list.split('-');
-    try{
-        const lista = await User.find({ _id: {$in : contacts_list} });
-        return_contacts_list = []
+    try {
+        const user = await User.findOne({ _id : req.query.id })
+        const lista = await User.find({ _id : {$in : user.contacts} })
+
+        const contacts_list = []
         lista.map(contact => {
-            return_contacts_list.push({
-                id: contact.id,
+            contacts_list.push({
+                id: contact.id, 
                 nickname: contact.nickname,
-                email: contact.email,
-                name: contact.name,
-                lastname: contact.lastname,
-                phone: contact.phone,
+                name : contact.name,
+                lastname : contact.lastname,
+                phone: contact.phone, 
                 github : contact.github,
                 instagram : contact.instagram,
                 twitter: contact.twitter,
                 linkedin: contact.linkedin,
             })
         })
-        
         return res.status(200).json(
             { 
-                contacts_list: return_contacts_list
+                contacts_list: contacts_list
             }
-        ); 
+        );  
     }
-    catch {
+    catch{
 
     }
 })
@@ -344,6 +344,53 @@ router.post("/update-user", (req, res) => {
     })
 })
 
+// @route PATCH api/users/change-password
+// @desc Change the password for the current user
+// @access Registered User
+router.patch("/change-password", (req, res) => {
+
+    const { errors, isValid } = validateChangePassword(req.body); 
+
+    // Check validation 
+    if (!isValid) { 
+        return res.status(400).json(errors); 
+    } 
+    else{
+        User.findById(req.body.id).then((user) => {
+            if (user){ 
+                // Check password 
+                bcrypt.compare(req.body.old_password, user.password).then(isMatch => {
+                    if (isMatch){
+
+                        // Hash password before saving in database 
+                        bcrypt.genSalt(10, (err, salt) => { 
+                            bcrypt.hash(req.body.password, salt, (err, hash) => { 
+                                if (err) throw err; 
+                                user.password = hash; 
+                                user 
+                                .save() 
+                                .then(() => res.status(200).json({success:true})) 
+                                .catch(err => console.log(err)); 
+                            }); 
+                        }); 
+                    }
+                    else {
+                        return res 
+                            .status(400) 
+                            .json({ old_password: "Your old password does not match your current password" }); 
+                    }
+                })
+            }
+            else { 
+                return res 
+                    .status(400) 
+                    .json({ user: "User is not registered in Chatting App" }); 
+            } 
+        })
+    }
+
+    
+})
 
 
 module.exports = router; 
