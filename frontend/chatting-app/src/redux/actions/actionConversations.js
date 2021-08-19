@@ -1,6 +1,7 @@
 import axios from "axios"; 
 import { baseUrl } from "../baseUrl";
-import { CREATE_NEW_CONVERSATION, UPDATE_CONVERSATIONS, SET_CURRENT_CONVERSATION, GET_ERRORS} from "./actionTypes"; 
+import { CREATE_NEW_CONVERSATION, UPDATE_CONVERSATIONS, SET_CURRENT_CONVERSATION, 
+    GET_ERRORS, UPDATE_FRIEND_CURRENT_CONVERSATION} from "./actionTypes"; 
 
 
 
@@ -30,8 +31,6 @@ export const reportNewConversation =(newConversation) =>(dispatch) =>{
 }
 
 
-
-
 export const getConversations = (userId) => (dispatch) => { 
    
     axios.get(baseUrl +"/api/conversations/get-conversations?userId="+ userId) 
@@ -58,6 +57,12 @@ export const updateConversations = (conversations) =>{
 
 };
 
+export const setCurrentFriendConversation = (friend) => {
+    return{
+        type : UPDATE_FRIEND_CURRENT_CONVERSATION,
+        payload : friend
+    }
+}
 
 export const setCurrentConversation = (conversationId)=> {
     return { 

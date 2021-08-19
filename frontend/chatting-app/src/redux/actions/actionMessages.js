@@ -29,13 +29,11 @@ export const updateMessages = (messages) =>{
 }
 
 
-export function getMessage(messageId){
-    const data = axios.get(baseUrl + '/api/messages/get-messages?_id='+ messageId)
-        .then(response => response.data);
-    
+export function getMessage(message){
+        
     return {
         type: AFTER_POST_MESSAGE,
-        payload: data
+        payload: message
     }
 }
 

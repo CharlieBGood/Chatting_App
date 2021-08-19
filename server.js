@@ -64,14 +64,9 @@ io.on("connection", socket => {
               console.log(doc)
               if(err) return res.json({ success: false, err })
   
-  
-              Message.find({ "_id": doc._id })
-              //.populate("sender")
-              .exec((err, doc)=> {
-  
-                  return io.emit("Output Chat Message", doc);
+                  return io.emit("Output Chat Message", message);
               })
-            })
+           
           } catch (err) {
             console.error(err);
           }

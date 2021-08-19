@@ -7,7 +7,8 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import { getContacts, removeContact } from '../../redux/actions/actionContacts';
 import { getUsers } from '../../redux/actions/actionUsers';
-import {getConversations, setCurrentConversation, createNewConversation} from '../../redux/actions/actionConversations'
+import {getConversations, setCurrentConversation, createNewConversation,
+    setCurrentFriendConversation} from '../../redux/actions/actionConversations'
 import { getMessage, getMessagesConversation} from '../../redux/actions/actionMessages'
 
 function GetSortOrder(prop) {    
@@ -40,7 +41,7 @@ function RenderUsersList(props){
                         <div className="col-2">
                             <img src="images/man.png" className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
                         </div>
-                        <div className="col-8" onClick={()=>props.setFriendConversation(contact.id)}>
+                        <div className="col-8" onClick={()=>props.setFriendConversation(contact)}>
                             {contact.nickname}
                         </div>
                         <div className="col-2" onClick={() => props.removeContact(contact.id)}>
@@ -102,23 +103,29 @@ class ChatList extends Component {
         this.props.removeContact(data);
     }
 
-    setFriendConversation(friendId){  
+    setFriendConversation(friend){  
         
-        console.log(this.props.auth.user.id, friendId)
-
+        let friendId = friend.id;
+            
         if(this.props.conversations.conversations.length===0){
             const members = {senderId:this.props.auth.user.id, receiverId: friendId }
-                this.props.createNewConversation(members)      
+                this.props.createNewConversation(members)  
+                this.props.setCurrentFriendConversation(friend)
         }else{
+            let found = false;
             this.props.conversations.conversations.map(conversation => {
-                if(conversation.members.find((m)=> m=== friendId)){
+                
+                if(conversation.members.includes(this.props.auth.user.id) && conversation.members.includes(friend.id)){
                     this.props.setCurrentConversation(conversation._id)
-                }else{
-                    const members = {senderId:this.props.auth.user.id, receiverId: friendId}
-                    this.props.createNewConversation(members)
-                    
+                    this.props.setCurrentFriendConversation(friend)
+                    found= true;
                 }
             });   
+            if(!found){
+                const members = {senderId:this.props.auth.user.id, receiverId: friendId }
+                this.props.createNewConversation(members)
+                this.props.setCurrentFriendConversation(friend)
+            }
         }         
     }
 
@@ -175,5 +182,6 @@ ChatList.propTypes = {
 
 const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors, contacts: state.contacts, users: state.users, conversations:state.conversations }); 
 
-export default connect(mapStateToProps, { getContacts, getUsers, removeContact, createNewConversation, getConversations, setCurrentConversation, getMessagesConversation })(withRouter(ChatList)); 
+export default connect(mapStateToProps, { getContacts, getUsers, removeContact, createNewConversation, 
+    getConversations, setCurrentConversation, getMessagesConversation, setCurrentFriendConversation })(withRouter(ChatList)); 
 
