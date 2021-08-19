@@ -116,7 +116,7 @@ class ChatList extends Component {
                     this.props.setCurrentConversation(conversation._id)
                     this.props.setCurrentFriendConversation(friend)
                 }else{
-                    const members = [this.props.auth.user.id, friendId ]
+                    const members = {senderId:this.props.auth.user.id, receiverId: friendId }
                     this.props.createNewConversation(members)
                     this.props.setCurrentFriendConversation(friend)
                 }
