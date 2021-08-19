@@ -66,6 +66,7 @@ class ChatList extends Component {
         this.state = {
           isNewContactModalOpen: false,
           isNewGroupModalOpen: false,
+          
         }
         this.toggleNewContactModal = this.toggleNewContactModal.bind(this);
         this.toggleNewGroupModal = this.toggleNewGroupModal.bind(this);
@@ -102,7 +103,9 @@ class ChatList extends Component {
     }
 
     setFriendConversation(friendId){  
-            
+        
+        console.log(this.props.auth.user.id, friendId)
+
         if(this.props.conversations.conversations.length===0){
             const members = {senderId:this.props.auth.user.id, receiverId: friendId }
                 this.props.createNewConversation(members)      
@@ -111,7 +114,7 @@ class ChatList extends Component {
                 if(conversation.members.find((m)=> m=== friendId)){
                     this.props.setCurrentConversation(conversation._id)
                 }else{
-                    const members = [this.props.auth.user.id, friendId ]
+                    const members = {senderId:this.props.auth.user.id, receiverId: friendId}
                     this.props.createNewConversation(members)
                     
                 }

@@ -15,6 +15,7 @@ const socket = io(ENDPOINT);
 
 
 function IsCurrentConversation({handleSearchChange, submitChatMessage, messageValue, currentConversationID,  friendCurrentConversation, currentUser, messages }){
+  console.log(friendCurrentConversation)
   if(currentConversationID!== null){
         
     return(
@@ -94,7 +95,7 @@ export class Chat extends Component {
 
 
   friendCurrentConversation(){
-    const friendId = this.props.currentConversation.members.find((m)=> m!== this.props.auth.user._id);
+    const friendId = this.props.conversations.currentConversation.members.find((m)=> m!== this.props.auth.user._id);
     const friend= this.props.contacts.contacts.find(m=> m.id === friendId);
     return friend;
   }
