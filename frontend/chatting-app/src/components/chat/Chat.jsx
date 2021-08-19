@@ -90,6 +90,12 @@ export class Chat extends Component {
     
   }
 
+  componentWillReceiveProps(nextProps){
+    if (this.props.conversations.currentConversation != nextProps.conversations.currentConversation){
+      this.props.getMessagesConversation(nextProps.conversations.currentConversation)
+    }
+  }
+
   handleSearchChange = (e) =>{
     this.setState({
       messageValue: e.target.value

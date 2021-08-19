@@ -35,7 +35,7 @@ require("./config/passport")(passport);
 // Routes 
 app.use("/api/users", usersRoute);
 app.use("/api/conversations", conversationsRoute);
-app.use("api/messages", messagesRoute);
+app.use("/api/messages", messagesRoute);
 
 const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there 
 const server = app.listen(port, () => console.log(`Backend server up and running on port ${port} !`));
