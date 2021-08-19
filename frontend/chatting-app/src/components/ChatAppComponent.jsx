@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ChatsGrid from './chat/ChatsGrid'
+import Chat from './chat/Chat'
 import ChatList from "./chats_list/ChatsListComponent";
 import MiniatureProfileSummary from "./miniature_profile/MiniatureProfileSummaryComponent";
 import PropTypes from "prop-types";
@@ -29,7 +29,7 @@ class ChatApp extends Component {
                     </div>
                 </div>
                 <div className="col-9">
-                    {/* <ChatsGrid chats_list={this.props.chats_list}/> */}
+                    <Chat /> 
                 </div>
             </div>
         );

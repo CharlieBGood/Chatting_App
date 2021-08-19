@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { Component } from "react";
+import {format} from 'timeago.js'
 
-const ChatItem = (props) => {
+
+export default class ChatItem extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
     return (
-
-        <div className={`chat__item ${props.user ? props.user : ""}`}>
-            <div className="chat__item__content">
-            <div className="chat__msg">{props.msg}</div>
-            <div className="chat__meta">
-                <span>16 minutes ago</span>
-            </div>
-            </div>
-        
+      <div
+        className={`chat__item ${this.props.user ? this.props.user : ""}`}
+      >
+        <div className="chat__item__content">
+          <div className="chat__msg">{this.props.msg}</div>
+          <div className="chat__meta">
+            <span>{format(this.props.time)}</span>
+          </div>
+        </div>
       </div>
-     );
+    );
+  }
 }
- 
-export default ChatItem;

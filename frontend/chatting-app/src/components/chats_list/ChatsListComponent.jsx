@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import { getContacts, removeContact } from '../../redux/actions/actionContacts';
 import { getUsers } from '../../redux/actions/actionUsers';
+import {getConversations, setCurrentConversation, createNewConversation} from '../../redux/actions/actionConversations'
+import { getMessage, getMessagesConversation} from '../../redux/actions/actionMessages'
 
 function GetSortOrder(prop) {    
     return function(a, b) {    
@@ -38,7 +40,7 @@ function RenderUsersList(props){
                         <div className="col-2">
                             <img src="images/man.png" className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
                         </div>
-                        <div className="col-8">
+                        <div className="col-8" onClick={()=>props.setFriendConversation(contact.id)}>
                             {contact.nickname}
                         </div>
                         <div className="col-2" onClick={() => props.removeContact(contact.id)}>
@@ -68,6 +70,13 @@ class ChatList extends Component {
         this.toggleNewContactModal = this.toggleNewContactModal.bind(this);
         this.toggleNewGroupModal = this.toggleNewGroupModal.bind(this);
         this.removeContact = this.removeContact.bind(this);
+        this.setFriendConversation = this.setFriendConversation.bind(this);
+    }
+
+
+    componentDidMount(){
+        this.props.getContacts(this.props.auth.user.id);
+        this.props.getConversations(this.props.auth.user.id)
     }
 
     toggleNewContactModal(){
@@ -87,13 +96,27 @@ class ChatList extends Component {
         });
     }
 
-    componentDidMount(){
-        this.props.getContacts(this.props.auth.user.id);
-    }
-
     removeContact(contact) {
         const data = {id_user : this.props.auth.user.id, id_contact : contact}
         this.props.removeContact(data);
+    }
+
+    setFriendConversation(friendId){  
+            
+        if(this.props.conversations.conversations.length===0){
+            const members = {senderId:this.props.auth.user.id, receiverId: friendId }
+                this.props.createNewConversation(members)      
+        }else{
+            this.props.conversations.conversations.map(conversation => {
+                if(conversation.members.find((m)=> m=== friendId)){
+                    this.props.setCurrentConversation(conversation._id)
+                }else{
+                    const members = [this.props.auth.user.id, friendId ]
+                    this.props.createNewConversation(members)
+                    
+                }
+            });   
+        }         
     }
 
     render(){
@@ -129,7 +152,8 @@ class ChatList extends Component {
                                     {/*<input type="text" id="myInput" 
                                     placeholder="Contact name..." title="Type in a name" 
                             className="form-control mb-1"/>*/}
-                                    <RenderUsersList contacts={this.props.contacts} removeContact={this.removeContact}/>
+                                    <RenderUsersList contacts={this.props.contacts} removeContact={this.removeContact}
+                                        setFriendConversation= {this.setFriendConversation}/>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +170,7 @@ ChatList.propTypes = {
     contacts : PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors, contacts: state.contacts, users: state.users }); 
+const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors, contacts: state.contacts, users: state.users, conversations:state.conversations }); 
 
-export default connect(mapStateToProps, { getContacts, getUsers, removeContact })(withRouter(ChatList)); 
+export default connect(mapStateToProps, { getContacts, getUsers, removeContact, createNewConversation, getConversations, setCurrentConversation, getMessagesConversation })(withRouter(ChatList)); 
 
