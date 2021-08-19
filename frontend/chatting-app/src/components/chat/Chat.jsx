@@ -15,7 +15,7 @@ const socket = io(ENDPOINT);
 
 
 function IsCurrentConversation({handleSearchChange, submitChatMessage, messageValue, currentConversationID,  friendCurrentConversation, currentUser, messages }){
-  if(currentConversationID!== null){
+  if(currentConversationID!== null && friendCurrentConversation !== null){
         
     return(
       <div className="main__chatcontent">
@@ -71,10 +71,10 @@ export class Chat extends Component {
     super(props)
     this.state = {
       messageValue: "",
-      messages: []
+      messages: [],
+      friend : null
       
     }
-    this.friendCurrentConversation = this.friendCurrentConversation.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.submitChatMessage = this.submitChatMessage.bind(this);
 }
@@ -82,21 +82,12 @@ export class Chat extends Component {
 
   componentDidMount(){
     this.props.getMessagesConversation(this.props.conversations.currentConversation)
-
-    
-   
     
     socket.on('Output Chat Message', messageFromBackend =>{
       console.log(messageFromBackend);
       this.props.getMessage(messageFromBackend)
     });
-  }
-
-
-  friendCurrentConversation(){
-    const friendId = this.props.currentConversation.members.find((m)=> m!== this.props.auth.user._id);
-    const friend= this.props.contacts.contacts.find(m=> m.id === friendId);
-    return friend;
+    
   }
 
   handleSearchChange = (e) =>{
@@ -121,17 +112,12 @@ export class Chat extends Component {
     this.setState({messageValue: ""})
   }
 
-  
-  componentWillReceiveProps(propsa){
-    console.log(propsa.conversations.currentConversation)
-  }
-
   render() {
     return (
     
     <IsCurrentConversation
       currentConversationID = {this.props.conversations.currentConversation}
-      friendCurrentConversation={this.friendCurrentConversation}
+      friendCurrentConversation={this.props.conversations.currentConversationFriend}
       currentUser={this.props.auth.user.id}
       messageValue={this.state.messageValue}
       handleSearchChange={this.handleSearchChange}
@@ -148,7 +134,6 @@ export class Chat extends Component {
 Chat.propTypes = { 
 	auth: PropTypes.object.isRequired, 
 	errors: PropTypes.object.isRequired,
-  
 };
 
 const mapStateToProps = (state) => ({ 
