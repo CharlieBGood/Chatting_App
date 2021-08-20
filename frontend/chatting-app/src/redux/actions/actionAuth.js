@@ -118,10 +118,11 @@ export const changePassword = (data) => (dispatch) => {
 
 export const changeImage = (data) => (dispatch) => {
     axios 
-        .patch(baseUrl + "/api/users/change-Image", data) 
-        .then(() => { 
+        .patch(baseUrl + "/api/users/add-image", data) 
+        .then((res) => { 
             dispatch({
-                type: IMAGE_CHANGED
+                type: SET_CURRENT_USER,
+                payload : res.data
             })
         })
         .catch((err) => 

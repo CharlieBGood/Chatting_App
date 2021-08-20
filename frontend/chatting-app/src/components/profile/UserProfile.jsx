@@ -26,7 +26,7 @@ class UserProfile extends Component {
       <React.Fragment>
           <div className="row">
             <div className="col img-title"> 
-                <img src="images/woman.png" alt="user" className="img-fluid mt-5"/>
+                <img src={this.props.user.image != '' ? this.props.user.image : 'images/profile_dummy.png'} alt="user" className="img-fluid mt-5"/>
                 <hr /> 
             </div>
           </div>

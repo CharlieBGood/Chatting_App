@@ -21,7 +21,8 @@ function IsCurrentConversation({handleSearchChange, submitChatMessage, messageVa
       <div className="main__chatcontent">
       <div className="content__header">
           <div className="current-chatting-user">
-              <img src="images/man.png" alt="" />              
+            <img src={friendCurrentConversation.image != '' ? friendCurrentConversation.image : 'images/profile_dummy.png'} className='miniature-profile-image' alt="profile img" 
+                />              
             <p>{friendCurrentConversation.nickname}</p>
           </div>
       </div>

@@ -36,9 +36,9 @@ const UserSchema = new Schema({
     },
     image:
     {
-        type: [String], 
+        type: String, 
         required: false,
-        default: []
+        default: ''
     },
     github: { 
         type: String, 

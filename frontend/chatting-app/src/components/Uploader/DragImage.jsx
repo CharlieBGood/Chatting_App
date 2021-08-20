@@ -85,7 +85,7 @@ export const DragImage = ({setMedia, setLoading}) => {
             setLoading(true);
         } else{
             setError(true)
-            setMessageError('Firt, upload an image')
+            setMessageError('First, upload an image')
         }
 
     }
@@ -103,8 +103,8 @@ export const DragImage = ({setMedia, setLoading}) => {
 
     return (
         <div className='drag'>
-            <h2 className='drag__title'>Uploader your image</h2>
-            <div className='drag__info'>File shoul be Jpeg, Png</div>
+            <h2 className='drag__title'>Upload your image</h2>
+            <div className='drag__info'>File shoul be JPEG or PNG</div>
 
             {error && <div className='drag__message'>{messageError}</div>}
 

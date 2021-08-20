@@ -6,10 +6,19 @@ import { } from 'reactstrap';
 import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
 import { withRouter } from 'react-router-dom';
-import { updateUser } from "../../redux/actions/actionAuth"; 
 import { Uploader } from '../Uploader/Uploader';
+import { updateUser, changeImage } from '../../redux/actions/actionAuth';
 
-class Configuration extends React.Component {
+
+function DisplayUserImage(props){
+     console.log('in')
+     return(
+          <img src={props.image != '' ? props.image : 'images/profile_dummy.png'} className='miniature-profile-image' alt="profile img" 
+                /> 
+     )
+}
+
+class Configuration extends Component {
 
      constructor(){
           super();
@@ -24,9 +33,11 @@ class Configuration extends React.Component {
                linkedin: "",
                url: "",
                errors: {},
+               isChangingImage : false
           }
           this.updateUser = this.updateUser.bind(this)
           this.setUrl = this.setUrl.bind(this)
+          this.changeProfileImage = this.changeProfileImage.bind(this)
      }
 
      setUrl=(valueUrl)=>{
@@ -59,7 +70,23 @@ class Configuration extends React.Component {
           this.props.toggleModal();
 	}
 
-     
+     changeProfileImage(){
+          this.setState({
+               isChangingImage : !this.state.isChangingImage
+          })
+     }
+
+     componentDidUpdate(){
+          if (this.state.url != ''){
+               this.props.changeImage({
+                    url : this.state.url,
+                    user_id : this.props.auth.user.id
+               });
+               this.setState({
+                    url : ''
+               })
+          } 
+     }
 
      render(){
 
@@ -75,9 +102,10 @@ class Configuration extends React.Component {
                                    </div>
                                    <div className="col-md-7 col-12 mt-1 mr-4">
                                         <div className="row justify-content-center">
-                                             <Uploader setUrl={this.setUrl} />
+                                             {this.state.isChangingImage == true ? <Uploader setUrl={this.setUrl} />
+                                             : <DisplayUserImage image={this.props.auth.user.image} />}
                                              <hr />
-                                             <span className="fa-stack fa-2x mb-4">
+                                             <span className="fa-stack fa-2x mb-4" onClick={this.changeProfileImage}>
                                                   <i className="fa fa-circle fa-button fa-stack-2x"></i>
                                                   <i className="fa fa-id-badge fa-stack-1x fa-inverse"></i>
                                              </span>
@@ -204,4 +232,4 @@ Configuration.propTypes = {
 
 const mapStateToProps = (state) => ({ auth: state.auth, errors: state.errors }); 
 
-export default connect(mapStateToProps, {updateUser})(withRouter(Configuration)); 
+export default connect(mapStateToProps, { updateUser, changeImage })(withRouter(Configuration)); 

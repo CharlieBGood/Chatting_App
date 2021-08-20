@@ -26,7 +26,7 @@ function RenderUsersList(props){
             key={user.id} onClick={() => props.changeProfile(user)}>
                 <div className="row">
                         <div className="col-2">
-                            <img src="images/woman.png" className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
+                            <img src={user.image != '' ? user.image : 'images/profile_dummy.png'} className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
                         </div>
                         <div className="col-10">
                             {user.nickname}

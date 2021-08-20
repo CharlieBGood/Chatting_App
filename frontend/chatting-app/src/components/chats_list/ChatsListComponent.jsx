@@ -5,7 +5,7 @@ import NewGroup from "../modals/NewGroupModalComponent";
 import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
 import { withRouter } from 'react-router-dom';
-import { getContacts, removeContact } from '../../redux/actions/actionContacts';
+import { addContact, getContacts, removeContact } from '../../redux/actions/actionContacts';
 import { getUsers } from '../../redux/actions/actionUsers';
 import {getConversations, setCurrentConversation, createNewConversation,
     setCurrentFriendConversation} from '../../redux/actions/actionConversations'
@@ -39,7 +39,7 @@ function RenderUsersList(props){
                 <li className="list-group-item" key={contact.id} id={contact.id}>
                     <div className="row">
                         <div className="col-2">
-                            <img src="images/man.png" className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
+                            <img src={contact.image != '' ? contact.image : 'images/profile_dummy.png'} className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
                         </div>
                         <div className="col-8" onClick={()=>props.setFriendConversation(contact)}>
                             {contact.nickname}

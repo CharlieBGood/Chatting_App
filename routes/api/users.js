@@ -82,7 +82,8 @@ router.post("/login", (req, res) => {
                     instagram : user.instagram,
                     twitter: user.twitter,
                     linkedin: user.linkedin,
-                    contacts : user.contacts
+                    contacts : user.contacts,
+                    image : user.image
                 }; 
                 // Sign token 
                 jwt.sign( 
@@ -107,28 +108,6 @@ router.post("/login", (req, res) => {
         }); 
     }); 
 }); 
-
-// @route POST api/users/upload_image 
-// @desc Register user 
-// @access Public 
-router.post("/upload_image", (req, res) => { 
-    // Form validation 
-    const { errors, isValid } = validateRegisterInput(req.body); 
-    // Check validation 
-    if (!isValid) { 
-        return res.status(400).json(errors); 
-    } 
-    User.findOne({ email: req.body.email }).then(user => { 
-        if (user) { 
-             
-        } 
-        else { 
-            return res 
-                .status(400) 
-                .json({ passwordincorrect: "User does not exists" }); 
-        } 
-    }); 
-});
      
 
 // @route GET api/users/find_user 
@@ -194,37 +173,33 @@ router.patch("/add-contact", (req, res) => {
 // @route PATCH api/users/add-image 
 // @desc Add image to registered user 
 // @access Registered User
-router.patch("/add-image", (req, res) => {
+router.patch("/add-image", async (req, res) => {
 
-    const { id_user, id_image, images_list } = req.body; 
+    const { url, user_id } = req.body; 
 
-    User.findById(id_image).then(image => {
-        if (image) {
-            images_list.map((image_element) => {
-                if (image_element.id === id_image) {
-                    return res.status(400).json({ message: "The image already exists in your images list" });
-                }
-            })
-            User.findById(id_user).then(main_user => {
-                main_user.images.push(id_image);
-                main_user.save();
-            })
-            const new_image = {
-                id : image.id,
-                nickname : image.nickname,
-                images : image.images
-            }
-            images_list.push(new_image);
-            return res.status(200).json(
-                { 
-                    images_list: images_list
-                }
-            ); 
+    const user = await User.findById(user_id);
+    if (user) {
+        user.image = url;
+        main_user = await user.save();
+        payload = {
+            id: main_user.id, 
+            nickname: main_user.nickname,
+            name : main_user.name,
+            lastname : main_user.lastname,
+            phone: main_user.phone, 
+            github : main_user.github,
+            instagram : main_user.instagram,
+            twitter: main_user.twitter,
+            linkedin: main_user.linkedin,
+            contacts : main_user.contacts,
+            image : main_user.image
         }
-        else {
-            return res.status(400).json({ message: "Unfortunately, the image you are trying to add is not on Chatting App yet, invite him!" });
-        }
-    })
+        console.log(main_user)
+        return res.status(200).json(payload)
+    }
+    else {
+        return res.status(400).json({ message: "User is not registered in Chatting App" });
+    }
 });
 
 
@@ -252,6 +227,7 @@ router.get("/get-users", (req, res) => {
                     instagram : user.instagram,
                     twitter: user.twitter,
                     linkedin: user.linkedin,
+                    image : user.image
                 })
             })
             return res.status(200).json(
@@ -312,6 +288,7 @@ router.get("/get-contacts", async (req, res) => {
                 instagram : contact.instagram,
                 twitter: contact.twitter,
                 linkedin: contact.linkedin,
+                image : contact.image
             })
         })
         return res.status(200).json(
