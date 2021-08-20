@@ -7,8 +7,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
 import { withRouter } from 'react-router-dom';
 import { updateUser } from "../../redux/actions/actionAuth"; 
+import { Uploader } from '../Uploader/Uploader';
 
-class Configuration extends Component {
+class Configuration extends React.Component {
 
      constructor(){
           super();
@@ -21,13 +22,15 @@ class Configuration extends Component {
                instagram : "",
                twitter: "",
                linkedin: "",
+               url: "",
                errors: {},
           }
           this.updateUser = this.updateUser.bind(this)
+          this.setUrl = this.setUrl.bind(this)
      }
 
-     onChange = e => { 
-		this.setState({ [e.target.id]: e.target.value }); 
+     setUrl=(valueUrl)=>{
+         this.setState({url:valueUrl})
 	};
 
      updateUser() {
@@ -56,7 +59,10 @@ class Configuration extends Component {
           this.props.toggleModal();
 	}
 
+     
+
      render(){
+
           return (
 
                <Modal isOpen={this.props.isModalOpen} toggle={this.props.toggleModal} size='lg'>
@@ -69,7 +75,7 @@ class Configuration extends Component {
                                    </div>
                                    <div className="col-md-7 col-12 mt-1 mr-4">
                                         <div className="row justify-content-center">
-                                             <img className="miniature-profile-image" src="images/man.png" alt="ActRazer" />
+                                             <Uploader setUrl={this.setUrl} />
                                              <hr />
                                              <span className="fa-stack fa-2x mb-4">
                                                   <i className="fa fa-circle fa-button fa-stack-2x"></i>

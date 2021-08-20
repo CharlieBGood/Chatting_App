@@ -1,7 +1,7 @@
 import axios from "axios"; 
 import setAuthToken from "../utils/setAuthToken"; 
 import jwt_decode from "jwt-decode"; 
-import { GET_ERRORS, CLEAN_ERRORS, SET_CURRENT_USER, USER_LOADING, PASSWORD_CHANGED } from "./actionTypes"; 
+import { GET_ERRORS, CLEAN_ERRORS, SET_CURRENT_USER, USER_LOADING, PASSWORD_CHANGED, IMAGE_CHANGED } from "./actionTypes"; 
 import { baseUrl } from "../baseUrl";
 import { cleanContacts, getContacts } from './actionContacts'
 import { cleanUsers } from "./actionUsers";
@@ -106,6 +106,22 @@ export const changePassword = (data) => (dispatch) => {
         .then(() => { 
             dispatch({
                 type: PASSWORD_CHANGED
+            })
+        })
+        .catch((err) => 
+            dispatch({ 
+            type: GET_ERRORS, 
+            payload: err.response.data, 
+            }) 
+        ); 
+}
+
+export const changeImage = (data) => (dispatch) => {
+    axios 
+        .patch(baseUrl + "/api/users/change-Image", data) 
+        .then(() => { 
+            dispatch({
+                type: IMAGE_CHANGED
             })
         })
         .catch((err) => 

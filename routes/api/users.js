@@ -191,6 +191,43 @@ router.patch("/add-contact", (req, res) => {
 });
 
 
+// @route PATCH api/users/add-image 
+// @desc Add image to registered user 
+// @access Registered User
+router.patch("/add-image", (req, res) => {
+
+    const { id_user, id_image, images_list } = req.body; 
+
+    User.findById(id_image).then(image => {
+        if (image) {
+            images_list.map((image_element) => {
+                if (image_element.id === id_image) {
+                    return res.status(400).json({ message: "The image already exists in your images list" });
+                }
+            })
+            User.findById(id_user).then(main_user => {
+                main_user.images.push(id_image);
+                main_user.save();
+            })
+            const new_image = {
+                id : image.id,
+                nickname : image.nickname,
+                images : image.images
+            }
+            images_list.push(new_image);
+            return res.status(200).json(
+                { 
+                    images_list: images_list
+                }
+            ); 
+        }
+        else {
+            return res.status(400).json({ message: "Unfortunately, the image you are trying to add is not on Chatting App yet, invite him!" });
+        }
+    })
+});
+
+
 // @route GET api/users/get-users
 // @desc Get all users registered in app 
 // @access Public
