@@ -194,7 +194,6 @@ router.patch("/add-image", async (req, res) => {
             contacts : main_user.contacts,
             image : main_user.image
         }
-        console.log(main_user)
         return res.status(200).json(payload)
     }
     else {
@@ -337,13 +336,12 @@ router.post("/update-user", (req, res) => {
                 linkedin: user.linkedin,
                 contacts : user.contacts
             }; 
-            console.log(payload)
             // Sign token 
             jwt.sign( 
                 payload, 
                 keys.secretOrKey, 
                 { 
-                    expiresIn: 3600 // 1 hour in seconds 
+                    expiresIn: 86400 // 1 day in seconds 
                 }, 
                 (err, token) => { 
                     res.json({ 

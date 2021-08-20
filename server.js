@@ -55,21 +55,18 @@ const io = require("socket.io")(server, {
 io.on("connection", socket => {
 
   socket.on("Input Chat Message", async (msgData) => {
-      console.log(msgData)
-
         try {
           let message = new Message({conversationId: msgData.conversationId, sender: msgData.sender, text: msgData.text})
-          console.log(message)  
           message.save((err, doc) => {
-              console.log(doc)
-              if(err) return res.json({ success: false, err })
-  
-                  return io.emit("Output Chat Message", message);
-              })
-           
-          } catch (err) {
-            console.error(err);
-          }
-
-      
+              if(err){
+                return res.json({ success: false, err })
+              } 
+              else{
+                return io.emit("Output Chat Message", message);
+              }
+          })
+        } catch (err) {
+          console.error(err);
+        }
+ 
 })});

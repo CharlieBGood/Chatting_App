@@ -5,6 +5,8 @@ import { GET_ERRORS, CLEAN_ERRORS, SET_CURRENT_USER, USER_LOADING, PASSWORD_CHAN
 import { baseUrl } from "../baseUrl";
 import { cleanContacts, getContacts } from './actionContacts'
 import { cleanUsers } from "./actionUsers";
+import { cleanConversations } from "./actionConversations";
+import { cleanMessages } from "./actionMessages";
 
 // Register User 
 export const registerUser = (userData, history) => (dispatch) => { 
@@ -69,6 +71,8 @@ export const logoutUser = () => (dispatch) => {
     dispatch(setCurrentUser({}));
     dispatch(cleanContacts());
     dispatch(cleanUsers());
+    dispatch(cleanConversations());
+    dispatch(cleanMessages());
 };
 
 export const cleanErrors = () => { 

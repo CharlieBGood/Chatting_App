@@ -1,7 +1,7 @@
 import axios from "axios"; 
 import { baseUrl } from "../baseUrl";
 import { CREATE_NEW_CONVERSATION, UPDATE_CONVERSATIONS, SET_CURRENT_CONVERSATION, 
-    GET_ERRORS, UPDATE_FRIEND_CURRENT_CONVERSATION} from "./actionTypes"; 
+    GET_ERRORS, UPDATE_FRIEND_CURRENT_CONVERSATION, CLEAN_CONVERSATIONS} from "./actionTypes"; 
 
 
 
@@ -71,4 +71,9 @@ export const setCurrentConversation = (conversationId)=> {
     }
 };
 
+export const cleanConversations = () => {
+    return {
+        type : CLEAN_CONVERSATIONS
+    }
+}
 

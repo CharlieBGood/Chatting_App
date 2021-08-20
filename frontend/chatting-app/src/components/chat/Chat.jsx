@@ -5,16 +5,14 @@ import './chatContent.css'
 import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
 import { withRouter } from 'react-router-dom';
-import { getContacts} from '../../redux/actions/actionContacts';
-import {getConversations, setCurrentConversation} from '../../redux/actions/actionConversations'
+import {getConversations} from '../../redux/actions/actionConversations'
 import { getMessage, getMessagesConversation} from '../../redux/actions/actionMessages'
 const io = require("socket.io-client");
 const ENDPOINT = "http://localhost:5000";
 const socket = io(ENDPOINT);
 
-
-
-function IsCurrentConversation({handleSearchChange, submitChatMessage, messageValue, currentConversationID,  friendCurrentConversation, currentUser, messages }){
+function IsCurrentConversation({handleSearchChange, submitChatMessage, messageValue, currentConversationID,  
+  friendCurrentConversation, currentUser, messages, handleKeyPress }){
   if(currentConversationID!== null && friendCurrentConversation !== null){
         
     return(
@@ -45,14 +43,14 @@ function IsCurrentConversation({handleSearchChange, submitChatMessage, messageVa
         </div>
       </div>
       <div className="content__footer">
-        <div className="sendNewMessage" onSubmit={submitChatMessage}>
+        <div className="sendNewMessage">
           <input
             type="text"
             placeholder="Type a message here"
             id= "input-conversation"
             value= {messageValue}
             onChange={handleSearchChange}
-            
+            onKeyPress={handleKeyPress}
           />
           <button className="btnSendMsg" id="sendMsgBtn" onClick={submitChatMessage}>
             <i className="fa fa-paper-plane"></i>
@@ -78,11 +76,13 @@ export class Chat extends Component {
     this.state = {
       messageValue: "",
       messages: [],
-      friend : null
+      friend : null,
+      socket : null
       
     }
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.submitChatMessage = this.submitChatMessage.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
 }
    
 
@@ -90,10 +90,11 @@ export class Chat extends Component {
     this.props.getMessagesConversation(this.props.conversations.currentConversation)
     
     socket.on('Output Chat Message', messageFromBackend =>{
-      console.log(messageFromBackend);
       this.props.getMessage(messageFromBackend)
     });
-    
+    this.setState({
+      socket : socket
+    })
   }
 
   componentWillReceiveProps(nextProps){
@@ -108,20 +109,26 @@ export class Chat extends Component {
     })
   }
 
-  submitChatMessage=(e)=>{
-    e.preventDefault();
+  handleKeyPress(e){
+    if (e.charCode === 13) {
+      this.submitChatMessage()
+    }
+  }
+
+  submitChatMessage=()=>{
 
     let text = this.state.messageValue
     let sender= this.props.auth.user.id;
     let conversationId = this.props.conversations.currentConversation
-
-    socket.emit('Input Chat Message', {
-      conversationId,
-      text,
-      sender,
-      
-    })
-    this.setState({messageValue: ""})
+    if (text != ''){
+      socket.emit('Input Chat Message', {
+        conversationId,
+        text,
+        sender,
+        
+      })
+      this.setState({messageValue: ""})
+    }
   }
 
   render() {
@@ -135,7 +142,7 @@ export class Chat extends Component {
       handleSearchChange={this.handleSearchChange}
       submitChatMessage={this.submitChatMessage}
       messages={this.props.messages}
-
+      handleKeyPress={this.handleKeyPress}
     />
       
    

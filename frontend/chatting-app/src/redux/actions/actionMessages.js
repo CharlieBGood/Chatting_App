@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {UPDATE_MESSAGES, AFTER_POST_MESSAGE, GET_ERRORS} from '../actions/actionTypes';
+import { UPDATE_MESSAGES, AFTER_POST_MESSAGE, GET_ERRORS, CLEAN_MESSAGES } from '../actions/actionTypes';
 import { baseUrl } from "../baseUrl";
 
 
@@ -29,7 +29,7 @@ export const updateMessages = (messages) =>{
 }
 
 
-export function getMessage(message){
+export const getMessage = (message) =>{
         
     return {
         type: AFTER_POST_MESSAGE,
@@ -37,3 +37,8 @@ export function getMessage(message){
     }
 }
 
+export const cleanMessages = () => {
+    return {
+        type: CLEAN_MESSAGES,
+    }
+}

@@ -1,4 +1,4 @@
-import {CREATE_NEW_CONVERSATION, SET_CURRENT_CONVERSATION, UPDATE_CONVERSATIONS,
+import {CLEAN_CONVERSATIONS, CREATE_NEW_CONVERSATION, SET_CURRENT_CONVERSATION, UPDATE_CONVERSATIONS,
     UPDATE_FRIEND_CURRENT_CONVERSATION} from "../actions/actionTypes";
 
 const initialState = {
@@ -29,6 +29,12 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 currentConversationFriend : action.payload
+            }
+        case CLEAN_CONVERSATIONS:
+            return {
+                currentConversation: null,
+                currentConversationFriend : null,
+                conversations : [],
             }
         default: 
             return state; 
