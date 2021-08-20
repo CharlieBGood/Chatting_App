@@ -44,6 +44,31 @@ class Configuration extends Component {
          this.setState({url:valueUrl})
 	};
 
+     handleName=(e)=>{
+          this.setState({name: e.target.value})
+     };
+     handleLastName=(e)=>{
+          this.setState({lastname: e.target.value})
+     };
+     handleNickName=(e)=>{
+          this.setState({nickname: e.target.value})
+     };
+     handlePhone=(e)=>{
+          this.setState({phone: e.target.value})
+     };
+     handleGithub=(e)=>{
+          this.setState({github: e.target.value})
+     };
+     handleInstagram=(e)=>{
+          this.setState({instagram: e.target.value})
+     };
+     handleTwitter=(e)=>{
+          this.setState({twitter: e.target.value})
+     };
+     handleLinkeding=(e)=>{
+          this.setState({linkedin: e.target.value})
+     }
+
      updateUser() {
 
 		const userData = {
@@ -52,10 +77,12 @@ class Configuration extends Component {
 			lastname: this.state.lastname, 
                nickname: this.state.nickname,
                phone: this.state.phone,
+               image: this.state.url,
                github: this.state.github,
                instagram: this.state.instagram,
                twitter: this.state.twitter,
-               linkedin: this.state.linkedin
+               linkedin: this.state.linkedin,
+               
 		};
 
           const claves = Object.keys(userData);
@@ -115,10 +142,12 @@ class Configuration extends Component {
                                                   <Row className="form-group text-center">
                                                        <Col md={12} className="wrap-input100">
                                                             <Input id="name"
+                                                                 type="text"
+                                                                 name="name"
                                                                  placeholder={this.props.auth.user.name}
                                                                  className="input100" 
-                                                                 onChange={this.onChange} 
                                                                  value={this.state.name} 
+                                                                 onChange={this.handleName} 
                                                             />
                                                             <span className="focus-input100"></span>
                                                             <span className="symbol-input100">
@@ -129,7 +158,7 @@ class Configuration extends Component {
                                                             <Input id="lastname" 
                                                                  placeholder={this.props.auth.user.lastname} 
                                                                  className="input100" 
-                                                                 onChange={this.onChange} 
+                                                                 onChange={this.handleLastName} 
                                                                  value={this.state.lastname} 
                                                             />
                                                             <span className="focus-input100"></span>
@@ -139,10 +168,12 @@ class Configuration extends Component {
                                                        </Col>
                                                        <Col md={12} className="wrap-input100">
                                                             <Input id="nickname" 
+                                                                 type="text"
                                                                  placeholder={this.props.auth.user.nickname} 
                                                                  className="input100" 
-                                                                 onChange={this.onChange} 
+                                                                 
                                                                  value={this.state.nickname} 
+                                                                 onChange={this.handleNickName} 
                                                             />
                                                             <span className="focus-input100"></span>
                                                             <span className="symbol-input100">
@@ -153,7 +184,7 @@ class Configuration extends Component {
                                                             <Input id="phone" 
                                                                  placeholder={this.props.auth.user.phone} 
                                                                  className="input100" 
-                                                                 onChange={this.onChange} 
+                                                                 onChange={this.handlePhone} 
                                                                  value={this.state.phone} 
                                                             />
                                                             <span className="focus-input100"></span>
@@ -165,7 +196,7 @@ class Configuration extends Component {
                                                             <Input id="github" 
                                                                  placeholder={this.props.auth.user.github} 
                                                                  className="input100" 
-                                                                 onChange={this.onChange} 
+                                                                 onChange={this.handleGithub} 
                                                                  value={this.state.github} 
                                                             />
                                                             <span className="focus-input100"></span>
@@ -177,7 +208,7 @@ class Configuration extends Component {
                                                             <Input id="instagram" 
                                                                  placeholder={this.props.auth.user.instagram} 
                                                                  className="input100" 
-                                                                 onChange={this.onChange} 
+                                                                 onChange={this.handleInstagram} 
                                                                  value={this.state.instagram} 
                                                             />
                                                             <span className="focus-input100"></span>
@@ -189,7 +220,7 @@ class Configuration extends Component {
                                                             <Input id="twitter" 
                                                                  placeholder={this.props.auth.user.twitter} 
                                                                  className="input100" 
-                                                                 onChange={this.onChange} 
+                                                                 onChange={this.handleTwitter} 
                                                                  value={this.state.twitter} 
                                                             />
                                                             <span className="focus-input100"></span>
@@ -201,7 +232,7 @@ class Configuration extends Component {
                                                             <Input id="linkedin" 
                                                                  placeholder={this.props.auth.user.linkedin} 
                                                                  className="input100" 
-                                                                 onChange={this.onChange} 
+                                                                 onChange={this.handleLinkeding} 
                                                                  value={this.state.linkedin} 
                                                             />
                                                             <span className="focus-input100"></span>

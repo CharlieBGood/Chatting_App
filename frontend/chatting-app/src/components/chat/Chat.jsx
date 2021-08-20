@@ -21,7 +21,7 @@ function IsCurrentConversation({handleSearchChange, submitChatMessage, messageVa
       <div className="main__chatcontent">
       <div className="content__header">
           <div className="current-chatting-user">
-            <img src={friendCurrentConversation.image != '' ? friendCurrentConversation.image : 'images/profile_dummy.png'} className='miniature-profile-image' alt="profile img" 
+            <img src={friendCurrentConversation.image != '' ? friendCurrentConversation.image : 'images/profile_dummy.png'} className='miniature-profile-image'  alt="profile img" 
                 />              
             <p>{friendCurrentConversation.nickname}</p>
           </div>
@@ -62,7 +62,12 @@ function IsCurrentConversation({handleSearchChange, submitChatMessage, messageVa
     </div>
     );
   }else{
-    return <span className="Message-no-open-chat">Open a conversation to start a chat. </span>;
+    return (
+      <div className='contenedor'>
+        <img src='images/withOutChat.png' className='image_witout' alt=''/>
+        {/* <span className="Message-no-open-chat">Open a conversation to start a chat. </span> */}
+       </div> 
+      );
   }
 }
 

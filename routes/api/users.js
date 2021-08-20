@@ -308,7 +308,7 @@ router.get("/get-contacts", async (req, res) => {
 // @access Registered User
 router.post("/update-user", (req, res) => {
 
-    const { id_user, name, lastname, nickname, phone, github, instagram, twitter, linkedin } = req.body; 
+    const { id_user, name, lastname, nickname, phone, image, github, instagram, twitter, linkedin } = req.body; 
 
     User.findById(id_user).then((user) => {
         if (user) {
@@ -316,6 +316,7 @@ router.post("/update-user", (req, res) => {
             user.lastname = lastname
             user.nickname = nickname
             user.phone = phone
+            user.image = image
             user.github = github
             user.instagram = instagram
             user.linkedin = linkedin
@@ -328,13 +329,15 @@ router.post("/update-user", (req, res) => {
                 nickname: user.nickname,
                 name : user.name,
                 lastname : user.lastname,
-                phone: user.phone, 
+                phone: user.phone,
+                image: user.image, 
                 github : user.github,
                 instagram : user.instagram,
                 twitter: user.twitter,
                 linkedin: user.linkedin,
                 contacts : user.contacts
             }; 
+            console.log(payload)
             // Sign token 
             jwt.sign( 
                 payload, 

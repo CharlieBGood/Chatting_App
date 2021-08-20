@@ -186,3 +186,30 @@
   cursor: default;
   margin-left: 100px;
 }
+
+.square_image{
+  max-width: 50%;
+  object-fit: cover; 
+  border-radius: 50%;
+}
+
+.image_witout{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 40%;
+  border-radius: 30%;
+  align-items: center;
+  
+}
+.contenedor{
+  display: flex;
+  align-content: center;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  
+}
