@@ -120,7 +120,15 @@ router.get("/find_user", (req, res) => {
                 { 
                     id: user.id, 
                     nickname: user.nickname,
-                    contacts: user.contacts
+                    name : user.name,
+                    lastname : user.lastname,
+                    phone: user.phone, 
+                    github : user.github,
+                    instagram : user.instagram,
+                    twitter: user.twitter,
+                    linkedin: user.linkedin,
+                    contacts : user.contacts,
+                    image : user.image
                 }
             ); 
         } 
@@ -152,9 +160,17 @@ router.patch("/add-contact", (req, res) => {
                 main_user.save();
             })
             const new_contact = {
-                id : contact.id,
-                nickname : contact.nickname,
-                contacts : contact.contacts
+                id: contact.id, 
+                nickname: contact.nickname,
+                name : contact.name,
+                lastname : contact.lastname,
+                phone: contact.phone, 
+                github : contact.github,
+                instagram : contact.instagram,
+                twitter: contact.twitter,
+                linkedin: contact.linkedin,
+                contacts : contact.contacts,
+                image : contact.image
             }
             contacts_list.push(new_contact);
             return res.status(200).json(

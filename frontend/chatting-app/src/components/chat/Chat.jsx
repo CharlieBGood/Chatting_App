@@ -7,9 +7,6 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import {getConversations} from '../../redux/actions/actionConversations'
 import { getMessage, getMessagesConversation} from '../../redux/actions/actionMessages'
-const io = require("socket.io-client");
-const ENDPOINT = "http://localhost:5000";
-const socket = io(ENDPOINT);
 
 function IsCurrentConversation({handleSearchChange, submitChatMessage, messageValue, currentConversationID,  
   friendCurrentConversation, currentUser, messages, handleKeyPress }){
@@ -28,7 +25,7 @@ function IsCurrentConversation({handleSearchChange, submitChatMessage, messageVa
         <div className="chat__items">
 
           
-          { Object.keys(messages).length === 0? 'Send a message':
+          { Object.keys(messages).length === 0 ? 'Send a message':
           messages.messages.map((itm) => {
         
             return (
@@ -88,13 +85,6 @@ export class Chat extends Component {
 
   componentDidMount(){
     this.props.getMessagesConversation(this.props.conversations.currentConversation)
-    
-    socket.on('Output Chat Message', messageFromBackend =>{
-      this.props.getMessage(messageFromBackend)
-    });
-    this.setState({
-      socket : socket
-    })
   }
 
   componentWillReceiveProps(nextProps){
@@ -121,7 +111,7 @@ export class Chat extends Component {
     let sender= this.props.auth.user.id;
     let conversationId = this.props.conversations.currentConversation
     if (text != ''){
-      socket.emit('Input Chat Message', {
+      this.props.socket.emit('Input Chat Message', {
         conversationId,
         text,
         sender,
@@ -130,6 +120,14 @@ export class Chat extends Component {
       this.setState({messageValue: ""})
     }
   }
+
+  componentWillMount(){
+    this.props.socket.on('Output Chat Message', messageFromBackend =>{
+      console.log('once')
+      this.props.getMessage(messageFromBackend)
+    })
+  }
+
 
   render() {
     return (
