@@ -1,4 +1,3 @@
-  
 import React, { Component, useState, createRef, useEffect } from "react";
 import ChatItem from "./ChatItem";
 import './chatContent.css'
@@ -7,6 +6,8 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import {getConversations} from '../../redux/actions/actionConversations'
 import { getMessage, getMessagesConversation} from '../../redux/actions/actionMessages'
+import socket from '../../Socket'
+
 
 function IsCurrentConversation({handleSearchChange, submitChatMessage, messageValue, currentConversationID,  
   friendCurrentConversation, currentUser, messages, handleKeyPress }){
@@ -48,6 +49,8 @@ function IsCurrentConversation({handleSearchChange, submitChatMessage, messageVa
             value= {messageValue}
             onChange={handleSearchChange}
             onKeyPress={handleKeyPress}
+            className="border"
+            autoComplete="off"
           />
           <button className="btnSendMsg" id="sendMsgBtn" onClick={submitChatMessage}>
             <i className="fa fa-paper-plane"></i>
@@ -74,7 +77,6 @@ export class Chat extends Component {
       messageValue: "",
       messages: [],
       friend : null,
-      socket : null
       
     }
     this.handleSearchChange = this.handleSearchChange.bind(this);
@@ -85,6 +87,11 @@ export class Chat extends Component {
 
   componentDidMount(){
     this.props.getMessagesConversation(this.props.conversations.currentConversation)
+    if (socket.listeners('Output Chat Message').length == 0){
+      socket.on('Output Chat Message', messageFromBackend =>{
+        this.props.getMessage(messageFromBackend)
+      })
+    }
   }
 
   componentWillReceiveProps(nextProps){
@@ -111,7 +118,7 @@ export class Chat extends Component {
     let sender= this.props.auth.user.id;
     let conversationId = this.props.conversations.currentConversation
     if (text != ''){
-      this.props.socket.emit('Input Chat Message', {
+      socket.emit('Input Chat Message', {
         conversationId,
         text,
         sender,
@@ -119,13 +126,6 @@ export class Chat extends Component {
       })
       this.setState({messageValue: ""})
     }
-  }
-
-  componentWillMount(){
-    this.props.socket.on('Output Chat Message', messageFromBackend =>{
-      console.log('once')
-      this.props.getMessage(messageFromBackend)
-    })
   }
 
 

@@ -458,7 +458,7 @@ ul, li {
 }
 
 .miniature-profile-summary{
-  height: 20%;
+  height: 40%;
   color: green;
 }
 
@@ -497,11 +497,15 @@ ul, li {
 }
 
 .scroll-contacts-list{
-  max-height: 200px;
+  height: 35vh;
   overflow-y: scroll;
 }
 
 .scroll-update-profile-modal{
   max-height: 300px;
   overflow-y: scroll;
+}
+
+.extra {
+  height: 50vh;
 }

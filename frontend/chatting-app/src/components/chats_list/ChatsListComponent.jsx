@@ -153,7 +153,7 @@ class ChatList extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="card-body">
+                        <div className="card-body extra">
                             <div className="card">
                                 <div className="card-header text-center">
                                     Chats

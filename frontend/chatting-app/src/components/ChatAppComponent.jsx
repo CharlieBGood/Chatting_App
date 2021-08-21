@@ -29,7 +29,7 @@ class ChatApp extends Component {
                     </div>
                 </div>
                 <div className="col-9">
-                    <Chat socket={this.props.socket}/> 
+                    <Chat /> 
                 </div>
             </div>
         );

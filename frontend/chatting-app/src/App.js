@@ -12,9 +12,6 @@ import './App.css';
 import './Utils.css'
 import { Provider } from 'react-redux';
 import store from './redux/store'
-const io = require("socket.io-client");
-const ENDPOINT = "http://localhost:5000";
-const socket = io(ENDPOINT);
 
 
 // Check for token to keep user logged in 
@@ -47,7 +44,7 @@ class App extends Component {
                     <Route exact path="/sign-up" component={Register} /> 
                     <Route path="/sign-in" component={Login} /> 
                     <Switch> 
-                        <PrivateRoute exact path="/app"><ChatApp socket={socket} /></PrivateRoute> 
+                        <PrivateRoute exact path="/app" component={ChatApp}></PrivateRoute> 
                     </Switch> 
                 </div> 
                 </Router> 
