@@ -10,6 +10,7 @@ const conversationsRoute = require("./routes/api/conversations");
 const messagesRoute = require("./routes/api/messages");
 
 // Bodyparser middleware - now done only with express
+app.use(express.static('public'))
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({
