@@ -1,5 +1,6 @@
-import React, { Component, useState, createRef, useEffect } from "react";
+import React, { Component } from "react";
 import ChatItem from "./ChatItem";
+import ContactProfile from "../modals/ContactProfileModalComponent";
 import './chatContent.css'
 import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
@@ -10,25 +11,22 @@ import socket from '../../Socket'
 
 
 function IsCurrentConversation({handleSearchChange, submitChatMessage, messageValue, currentConversationID,  
-  friendCurrentConversation, currentUser, messages, handleKeyPress }){
+  friendCurrentConversation, currentUser, messages, handleKeyPress, showContactProfile }){
   if(currentConversationID!== null && friendCurrentConversation !== null){
         
     return(
       <div className="main__chatcontent">
       <div className="content__header">
           <div className="current-chatting-user">
-            <img src={friendCurrentConversation.image != '' ? friendCurrentConversation.image : 'images/profile_dummy.png'} className='miniature-profile-image'  alt="profile img" 
-                />              
+            <img src={friendCurrentConversation.image !== '' ? friendCurrentConversation.image : 'images/profile_dummy.png'} className='miniature-profile-image'  alt="profile img" 
+                onClick={showContactProfile}/>              
             <p>{friendCurrentConversation.nickname}</p>
           </div>
       </div>
-      <div className="content__body">
+      <div className="content__body mt-3">
         <div className="chat__items">
-
-          
           { Object.keys(messages).length === 0 ? 'Send a message':
           messages.messages.map((itm) => {
-        
             return (
               <ChatItem
                 key={itm._id}
@@ -62,9 +60,9 @@ function IsCurrentConversation({handleSearchChange, submitChatMessage, messageVa
   }else{
     return (
       <div className='contenedor'>
+        <span className="message-no-open-chat">Open a conversation to start a chat</span>
         <img src='images/withOutChat.png' className='image_witout' alt=''/>
-        {/* <span className="Message-no-open-chat">Open a conversation to start a chat. </span> */}
-       </div> 
+      </div> 
       );
   }
 }
@@ -76,26 +74,33 @@ export class Chat extends Component {
     this.state = {
       messageValue: "",
       messages: [],
-      friend : null,
-      
+      contact : null,
+      isContactProfileModalOpen: false,
     }
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.submitChatMessage = this.submitChatMessage.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-}
+    this.toggleContactProfileModal = this.toggleContactProfileModal.bind(this);
+  }
    
 
   componentDidMount(){
     this.props.getMessagesConversation(this.props.conversations.currentConversation)
-    if (socket.listeners('Output Chat Message').length == 0){
+    if (socket.listeners('Output Chat Message').length === 0){
       socket.on('Output Chat Message', messageFromBackend =>{
         this.props.getMessage(messageFromBackend)
       })
     }
   }
 
+  toggleContactProfileModal(){
+    this.setState({
+      isContactProfileModalOpen: !this.state.isContactProfileModalOpen
+    });
+  }
+
   componentWillReceiveProps(nextProps){
-    if (this.props.conversations.currentConversation != nextProps.conversations.currentConversation){
+    if (this.props.conversations.currentConversation !== nextProps.conversations.currentConversation){
       this.props.getMessagesConversation(nextProps.conversations.currentConversation)
     }
   }
@@ -117,7 +122,7 @@ export class Chat extends Component {
     let text = this.state.messageValue
     let sender= this.props.auth.user.id;
     let conversationId = this.props.conversations.currentConversation
-    if (text != ''){
+    if (text !== ''){
       socket.emit('Input Chat Message', {
         conversationId,
         text,
@@ -131,19 +136,21 @@ export class Chat extends Component {
 
   render() {
     return (
-    
-    <IsCurrentConversation
-      currentConversationID = {this.props.conversations.currentConversation}
-      friendCurrentConversation={this.props.conversations.currentConversationFriend}
-      currentUser={this.props.auth.user.id}
-      messageValue={this.state.messageValue}
-      handleSearchChange={this.handleSearchChange}
-      submitChatMessage={this.submitChatMessage}
-      messages={this.props.messages}
-      handleKeyPress={this.handleKeyPress}
-    />
-      
-   
+      <React.Fragment>
+        <ContactProfile isModalOpen={this.state.isContactProfileModalOpen} toggleModal={this.toggleContactProfileModal} 
+          user={this.props.conversations.currentConversationFriend}/>
+        <IsCurrentConversation
+          currentConversationID = {this.props.conversations.currentConversation}
+          friendCurrentConversation={this.props.conversations.currentConversationFriend}
+          currentUser={this.props.auth.user.id}
+          messageValue={this.state.messageValue}
+          handleSearchChange={this.handleSearchChange}
+          submitChatMessage={this.submitChatMessage}
+          messages={this.props.messages}
+          handleKeyPress={this.handleKeyPress}
+          showContactProfile={this.toggleContactProfileModal}
+        />
+      </React.Fragment>
     );
   }
 }

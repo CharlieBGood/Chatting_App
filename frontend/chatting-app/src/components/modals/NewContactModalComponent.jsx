@@ -26,7 +26,7 @@ function RenderUsersList(props){
             key={user.id} onClick={() => props.changeProfile(user)}>
                 <div className="row">
                         <div className="col-2">
-                            <img src={user.image != '' ? user.image : 'images/profile_dummy.png'} className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
+                            <img src={user.image !== '' ? user.image : 'images/profile_dummy.png'} className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
                         </div>
                         <div className="col-10">
                             {user.nickname}
@@ -87,6 +87,9 @@ class NewContact extends Component{
                 contacts_list : this.props.contacts.contacts
             }
             this.props.addContact(contacts_data);
+            this.setState({
+                profile : null
+            })
         };
         this.props.toggleModal()
     }
@@ -94,7 +97,7 @@ class NewContact extends Component{
     render(){
         return (
             <Modal isOpen={this.props.isModalOpen} toggle={this.props.toggleModal} size='lg'>
-                <ModalHeader>New Contact</ModalHeader>
+                <ModalHeader modalClassName="modal-header">New Contact</ModalHeader>
                 <ModalBody>
                     <div className='container scroll-modal'>
                         <div className="row">
@@ -114,7 +117,7 @@ class NewContact extends Component{
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={this.addNewContact}>Add Contact</Button>{' '}
+                    <Button color="primary" onClick={this.addNewContact}>Add Contact</Button>
                     <Button color="secondary" onClick={this.props.toggleModal}>Cancel</Button>
                 </ModalFooter>
             </Modal>

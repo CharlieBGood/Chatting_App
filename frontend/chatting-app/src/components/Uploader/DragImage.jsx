@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import './dragImage.scss'
-import useFirestore from '../../Hooks/useFirestore';
 
 
 export const DragImage = ({setMedia, setLoading}) => {

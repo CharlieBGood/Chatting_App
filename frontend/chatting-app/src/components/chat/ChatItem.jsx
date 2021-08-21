@@ -3,9 +3,6 @@ import {format} from 'timeago.js'
 
 
 export default class ChatItem extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div

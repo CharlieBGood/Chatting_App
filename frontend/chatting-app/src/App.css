@@ -459,14 +459,20 @@ ul, li {
 
 .miniature-profile-summary{
   height: 40%;
-  color: green;
+  color: #6e7ecf;
 }
 
 /*------------------------------------------------------------------
 [ ChatListComponent ]*/
 .chat-list-miniature{
   width: 100%;
-  height: 100%;
+  height: 80%;
+  border-radius: 50%;
+}
+
+.no-chat-image {
+  width: 60%;
+  height: 60%;
 }
 
 /*------------------------------------------------------------------
@@ -474,6 +480,7 @@ ul, li {
 .miniature-profile-image{
   height: 150px;
   width: 180px;
+  border-radius: 50%;
 }
 
 .robot-container {
@@ -497,7 +504,7 @@ ul, li {
 }
 
 .scroll-contacts-list{
-  height: 35vh;
+  height: 30vh;
   overflow-y: scroll;
 }
 
@@ -507,5 +514,15 @@ ul, li {
 }
 
 .extra {
-  height: 50vh;
+  height: 42vh;
+}
+
+.modal-header {
+  background-color: #6e7ecf;
+}
+
+.modal-title {
+  font-family: Poppins-Regular;
+  font-size: 20px;
+  color: #333333;
 }

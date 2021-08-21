@@ -27,10 +27,8 @@ class MiniatureProfileSummary extends Component {
           <div className="container">
              <Configuration isModalOpen={this.state.isConfigurationModalOpen} toggleModal={this.toggleConfigurationtModal} /> 
             <div className="row justify-content-center mt-4">
-              {/* <div className="square_image"> */}
-                <img src={this.props.user.image != '' ? this.props.user.image : 'images/profile_dummy.png'} className='square_image' alt="profile img" 
+                <img src={this.props.user.image !== '' ? this.props.user.image : 'images/profile_dummy.png'} className='miniature-profile-image' alt="profile img" 
                   /> 
-              {/* </div> */}
             </div>                     
             <div className="row justify-content-center mt-4 nickname-title">
               {capitalizeFirstLetter(this.props.user.nickname)}    

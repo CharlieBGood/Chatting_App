@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import chatItems from '../../dummydb/contacts.json'
 import NewContact from '../modals/NewContactModalComponent'
-import NewGroup from "../modals/NewGroupModalComponent";
 import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
 import { withRouter } from 'react-router-dom';
-import { addContact, getContacts, removeContact } from '../../redux/actions/actionContacts';
+import { getContacts, removeContact } from '../../redux/actions/actionContacts';
 import { getUsers } from '../../redux/actions/actionUsers';
 import {getConversations, setCurrentConversation, createNewConversation,
     setCurrentFriendConversation} from '../../redux/actions/actionConversations'
-import { getMessage, getMessagesConversation} from '../../redux/actions/actionMessages'
+import { getMessagesConversation} from '../../redux/actions/actionMessages'
 
 function GetSortOrder(prop) {    
     return function(a, b) {    
@@ -32,32 +30,41 @@ function RenderUsersList(props){
             
         )
     }
-   
     else {
-        const contactsList = props.contacts.contacts.sort(GetSortOrder('nickname')).map((contact) => {
+        if (props.contacts.contacts.length === 0){
             return(
-                <li className="list-group-item" key={contact.id} id={contact.id}>
-                    <div className="row">
-                        <div className="col-2">
-                            <img src={contact.image != '' ? contact.image : 'images/profile_dummy.png'} className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
+                <div class="col-12 text-center">
+                    <p>Add friends to star chatting!</p>
+                    <img src='images/add-friend.png' className="img-fluid no-chat-image" id="fotoGrupo" alt="logo" />
+                </div>
+            )
+        }
+        else{
+            const contactsList = props.contacts.contacts.sort(GetSortOrder('nickname')).map((contact) => {
+                return(
+                    <li className="list-group-item" key={contact.id} id={contact.id}>
+                        <div className="row">
+                            <div className="col-2">
+                                <img src={contact.image != '' ? contact.image : 'images/profile_dummy.png'} className="img-fluid chat-list-miniature" id="fotoGrupo" alt="logo" />
+                            </div>
+                            <div className="col-8" onClick={()=>props.setFriendConversation(contact)}>
+                                {contact.nickname}
+                            </div>
+                            <div className="col-2" onClick={() => props.removeContact(contact.id)}>
+                                <i className="fa fa-user-times"></i>
+                            </div>
                         </div>
-                        <div className="col-8" onClick={()=>props.setFriendConversation(contact)}>
-                            {contact.nickname}
-                        </div>
-                        <div className="col-2" onClick={() => props.removeContact(contact.id)}>
-                            X
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                );
+            });
+            return(
+                <div className="d-flex scroll-contacts-list">
+                    <ul className="list-group">
+                        {contactsList}
+                    </ul>
+                </div>
             );
-        });
-        return(
-            <div className="d-flex scroll-contacts-list">
-                <ul className="list-group">
-                    {contactsList}
-                </ul>
-            </div>
-        );
+        }   
     }
 }
 

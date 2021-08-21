@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UserRobot from '../comp_config/UserRobot'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,
-     Col, Row, Form, FormGroup, Input  } from 'reactstrap';
+     Col, Row, Form, Input  } from 'reactstrap';
 import { } from 'reactstrap';
 import PropTypes from "prop-types";
 import { connect } from "react-redux"; 
@@ -13,7 +13,7 @@ import { updateUser, changeImage } from '../../redux/actions/actionAuth';
 function DisplayUserImage(props){
      console.log('in')
      return(
-          <img src={props.image != '' ? props.image : 'images/profile_dummy.png'} className='miniature-profile-image' alt="profile img" 
+          <img src={props.image !== '' ? props.image : 'images/profile_dummy.png'} className='miniature-profile-image' alt="profile img" 
                 /> 
      )
 }
@@ -104,7 +104,7 @@ class Configuration extends Component {
      }
 
      componentDidUpdate(){
-          if (this.state.url != ''){
+          if (this.state.url !== ''){
                this.props.changeImage({
                     url : this.state.url,
                     user_id : this.props.auth.user.id
@@ -129,7 +129,7 @@ class Configuration extends Component {
                                    </div>
                                    <div className="col-md-7 col-12 mt-1 mr-4">
                                         <div className="row justify-content-center">
-                                             {this.state.isChangingImage == true ? <Uploader setUrl={this.setUrl} />
+                                             {this.state.isChangingImage === true ? <Uploader setUrl={this.setUrl} />
                                              : <DisplayUserImage image={this.props.auth.user.image} />}
                                              <hr />
                                              <span className="fa-stack fa-2x mb-4" onClick={this.changeProfileImage}>

@@ -100,11 +100,8 @@ class PasswordModal extends Component {
                                                   onChange={this.onChange} 
                                              />
                                              <span className="focus-input100"></span>
-                                             <span className="symbol-input100">
-                                                  <i className="fa fa-lock"></i>
-                                             </span>
                                         </FormGroup>
-                                        <FormGroup>
+                                        <FormGroup className="mt-4">
                                              <Label>New Password</Label>
                                              <Input type="password" id="password"
                                                   placeholder="" 
@@ -112,11 +109,8 @@ class PasswordModal extends Component {
                                                   onChange={this.onChange} 
                                              />
                                              <span className="focus-input100"></span>
-                                             <span className="symbol-input100">
-                                                  <i className="fa fa-lock"></i>
-                                             </span>
                                         </FormGroup>
-                                        <FormGroup>
+                                        <FormGroup className="mt-4">
                                              <Label>Confirm New Password</Label>
                                              <Input type="password" id="password2"
                                                   placeholder="" 
@@ -124,9 +118,6 @@ class PasswordModal extends Component {
                                                   onChange={this.onChange} 
                                              />
                                              <span className="focus-input100"></span>
-                                             <span className="symbol-input100">
-                                                  <i className="fa fa-lock"></i>
-                                             </span>
                                         </FormGroup>
                                    </Col>
                               </Row>

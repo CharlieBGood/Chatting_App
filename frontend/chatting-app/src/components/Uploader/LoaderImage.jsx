@@ -13,7 +13,7 @@ export const LoaderImage = ({file, setFile, setLoading, setUrl }) => {
             setLoading(false)
             setUrl(url)
         }
-    },[url, setFile, setLoading])
+    },[url, setFile, setLoading, setUrl])
     
     return (
 

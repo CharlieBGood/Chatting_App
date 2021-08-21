@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import { DragImage } from './DragImage';
 import { LoaderImage } from './LoaderImage';
-import useStorage from '../../Hooks/useStorage'
 
 export const Uploader = (props) => {
     const [loading, setLoading] = useState(false);
     const [file, setFile] = useState(null);
-
     const [valueURL, setUrl] = useState(null);
 
     useEffect(() =>{
